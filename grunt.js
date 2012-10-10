@@ -44,8 +44,8 @@ module.exports = function(grunt) {
 
     // Paths
     project: {
-      partials: 'assets/partials/',
-      pages:    'assets/pages/',
+      partials: 'assets/partials',
+      pages:    'assets/pages',
       less:     'assets/less',
       css:      'assets/css',
       img:      'assets/img',
@@ -57,9 +57,15 @@ module.exports = function(grunt) {
 
     concat: {
 
-      extras: {
-        src: ['<%= project.js %>/bootstrap/application.js', '<%= project.js %>/custom.js'],
-        dest: '<%= project.js %>/project.js'
+      // Include application.js for docs
+      docs: {
+        src: ['<%= project.js %>/bootstrap/bootstrap.min.js', '<%= project.js %>/bootstrap/application.js', '<%= project.js %>/plugins/holder.js', '<%= project.js %>/custom.js'],
+        dest: '<%= project.js %>/docs.js'
+      },
+      // Exclude application.js for production
+      app: {
+        src: ['<%= project.js %>/bootstrap/bootstrap.min.js', '<%= project.js %>/plugins/holder.js', '<%= project.js %>/custom.js'],
+        dest: '<%= project.js %>/app.js'
       },
 
       // HTML Pages
@@ -80,7 +86,7 @@ module.exports = function(grunt) {
         dest: 'contact.html'
       },      
       contact: {
-        src: ['<%= project.partials %>/head.html', '<%= project.pages %>/get-started.html','<%= project.partials %>/footer.html'],
+        src: ['<%= project.partials %>/head.html', '<%= project.partials %>/navbar.html', '<%= project.pages %>/get-started.html','<%= project.partials %>/footer.html'],
         dest: 'get-started.html'
       },
       projects: {
@@ -107,7 +113,7 @@ module.exports = function(grunt) {
     // -----
 
     watch: {
-      files: ['assets/**/*.*'], // 'less/.*\.less'
+      files: ['assets/**/*.*','assets/.*\.less'],  
       tasks: 'concat less'
     },
 
