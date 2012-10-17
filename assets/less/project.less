@@ -1,0 +1,32 @@
+//
+// PRE Styles
+// --------------------------------------------------
+
+
+// Import Reset
+@import "imports/reset.less"; // Import reset from Bootstrap
+
+
+// Variables and Mixins
+@import "theme/variables-bootstrap.less"; // Customize Bootstrap's variables
+@import "theme/variables-toolkit.less"; // Customize Tookit's variables
+@import "imports/mixins.less"; // Import mixins from Bootstrap and Tookit
+
+
+// Import Components
+@import "imports/components-bootstrap.less"; // edit this file to specify the components to @import
+@import "imports/components-toolkit.less"; // edit this file to specify the components to @import
+
+
+// Theme Styles
+@import "theme/docs.less"; // Keep docs styles separate. Remove if unnecessary for theme.
+@import "theme/typography.less"; // override and add styles
+@import "theme/styles.less"; // override and add styles
+
+
+// Responsive
+@import "theme/responsive.less"; // keep 2nd last to override other styles
+
+
+// Utilities (keep last to override other styles!)
+@import "imports/utilities.less"; // Import bootstrap and Tookit Utilities
