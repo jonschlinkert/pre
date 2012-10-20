@@ -1,0 +1,151 @@
+//
+// Ad Placeholders
+// --------------------------------------------------
+
+// Sizing shortcuts
+// -------------------------
+
+.adSize(@width: 100, @height: 100){
+  width: @width + 0px;
+  height: @height + 0px;
+}
+
+// TODO
+// - ad-bordered?
+// - ad-transparent? ad-scaffold, ad-placeholder
+
+
+// BASE STYLES
+// -----------
+
+.ad {
+  position: relative;
+  display: table;
+  font-weight: bold;
+  color: @grayLight;
+  text-align: center;
+  overflow: hidden;
+  background-color: @grayLighter;
+  border: 1px solid darken(@grayLighter, 7%);
+}
+// Generated content, for placeholder text
+.ad:after {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+// Ad Header
+.ads-header h6 {
+  font-weight: normal;
+  color: @grayLight;
+  padding: 0;
+  margin: 0 0 5px;
+}
+
+
+// Stacked Ads (Vertical) 
+.ads-stacked {
+  display: block;
+}
+
+.ads-stacked .ad + .ad {
+  margin-top: @baseLineHeight;
+}
+
+
+// Inline Ads (Horizontal) 
+.ads-inline {
+  .clearfix();
+  .ad {
+    float: left;
+    display: inline-block;
+  }
+  .ad + .ad {
+    margin-left: 6px;
+  }
+}
+
+
+// AD VARIATIONS
+// -------------
+
+
+// Rectangles
+// ---------------------------------
+
+.rectangle {
+  .adSize(180, 150);
+  &:after {
+    content: "Rectangle Ad";
+  }
+}
+
+.rectangle-med {
+  .adSize(300, 250);
+}
+.rectangle-large {
+  .adSize(336, 280);
+}
+.rectangle-vertical {
+  .adSize(240, 400);
+}
+.rectangle-three-one {
+  .adSize(300, 100);
+}
+
+// Popups & Popunders
+// ---------------------------------
+
+.ad-pop-under {
+  .adSize(720, 300);
+}
+.ad-popup-square {
+  .adSize(250, 250);
+}
+
+
+// Banners & Buttons  
+// ---------------------------------
+
+.ad-micro-bar {
+  .adSize(88, 31)
+}
+.ad-button-1 {
+  .adSize(120, 90)
+}
+.ad-button-2 {
+  .adSize(120, 60)
+}
+.ad-button-square {
+  .adSize(125, 125)
+}
+.banner-full {
+  .adSize(468, 60)
+}
+.banner-half {
+  .adSize(234, 60)
+}
+.banner-vertical {
+  .adSize(120, 240)
+}
+.leaderboard {
+  .adSize(728, 90)
+}
+
+
+
+// Skyscrapers
+// ---------------------------------
+
+.skyscraper {
+  .adSize(120, 600)
+}
+.skyscraper-wide {
+  .adSize(160, 600)
+}
+.ad-half-page {
+  .adSize(300, 600)
+}
+
+
+

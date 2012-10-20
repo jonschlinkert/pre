@@ -1,0 +1,70 @@
+//
+// Sidenav
+// ----------------------------------------
+
+// Bootstrap Docs Overrides
+// ------------------------
+
+.bs-docs-sidenav {
+  .border-radius(0);
+  .box-shadow(0 1px 2px rgba(0,0,0,.065));
+}
+.bs-docs-sidenav > li > a {
+  font-weight: normal;
+  border: 1px solid #ddd;
+}
+.bs-docs-sidenav > li:first-child > a,
+.bs-docs-sidenav > li:last-child > a {
+  .border-radius(0);
+
+.bs-docs-sidenav > .active > a {
+  font-weight: bold;
+  padding: 8px 14px;
+  border: 1px solid #ddd
+  .box-shadow(none);
+}
+.bs-docs-sidenav .icon-right-arrow {
+  float: right;
+  font-size: bold;
+  opacity: .5;
+}
+.bs-docs-sidenav a:hover .icon-right-arrow {
+  opacity: .75;
+}
+.bs-docs-sidenav .active a .icon-right-arrow,
+.bs-docs-sidenav .active a:hover .icon-right-arrow {
+  opacity: 1;
+}
+.bs-docs-sidenav.affix {
+  top: 100px;
+}
+
+.bs-docs-sidenav.affix-bottom {
+  bottom: 300px;
+}
+
+
+/* Responsive
+-------------------------------------------------- */
+
+/* Desktop large
+------------------------- */
+@media (min-width: 1200px) {
+  .bs-docs-container {
+    max-width: 970px;
+  }
+  .bs-docs-sidenav {
+    width: 248px;
+  }
+}
+
+/* Tablet to desktop
+------------------------- */
+@media (min-width: 768px) and (max-width: 980px) {
+  /* Adjust sidenav width */
+  .bs-docs-sidenav {
+    width: 156px;
+    margin-top: 20px;
+  }
+}
+

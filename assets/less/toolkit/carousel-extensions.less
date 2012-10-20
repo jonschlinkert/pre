@@ -1,0 +1,54 @@
+//
+// Carousel Extensions
+// --------------------------------------------------
+
+
+
+.carousel-control {
+  top: 50%; 
+  .box-shadow(0 1px 1px);
+}
+
+
+// Caption for text below images
+// -----------------------------
+
+.carousel-caption {
+  right: auto;
+  width: 50%; // resize captions to half of the carousel width
+  .box-sizing(border-box); 
+
+  // Right floated captions
+  &.pull-right {
+    float: none;
+    left: auto;
+    right: 0;
+  }
+  h4 {
+    font-size: @baseFontSize + 2;
+  }
+  p {
+    font-size: @baseFontSize - 1;
+  }
+}
+
+
+// Caption background appears as blue
+.caption-info {
+  #translucent > .background(@linkColor, 0.8);
+  text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+}
+
+// Caption background appears as white
+.caption-white {
+  #translucent > .background(@white, 0.8);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+.caption-white h4 {
+  color: @grayDarker;
+}
+.caption-white p {
+  color: @grayDarker;
+}
+
+

@@ -1,0 +1,154 @@
+//
+// Panels
+// --------------------------------------------------
+
+// Panel Variables
+@panelBackgroundColor:        @white;
+@panelArrowWidth:             25px;
+@panelArrowColor:             #323334;
+
+// Inverse
+@panelBackgroundColorInverse: @inverseBackground;
+
+
+// TODO
+// - panel-bordered?
+// - panel-transparent? panel-scaffold, panel-placeholder
+
+
+// Base styles
+// --------------------------------------------------
+
+// Core
+.panel {
+  position: relative; // required for drop shadows, generated content and other effects
+  color: @textColor; // redeclare text color and shadow to override specificity with nested panels
+  text-shadow: 0 1px 0 rgba(255,255,255,.75);
+  min-height: @baseLineHeight;
+  padding: 0 @baseLineHeight 40px;
+  margin: @baseLineHeight 0;
+  background-color: #fff;
+  border: 1px solid #d2d3d4;
+  .border-radius(5px);
+  .box-shadow(inset 0 0 0 1px @white);
+  .box-sizing(border-box); // 
+}
+.panel .panel {
+  margin: 0; // remove padding for nested panels
+}
+
+
+// Panel Sizes
+// --------------------------------------------------
+
+// Large
+.panel-large {
+  padding: (@baseLineHeight * 1.5);
+  .border-radius(8px);
+}
+
+// Small
+.panel-small {
+  padding: 9px;
+  .border-radius(3px);
+}
+
+
+// Panel Sections
+// --------------------------------------------------
+
+
+.panel-header {
+  border-bottom: 1px solid @grayLighter;
+  margin: 0 -@baseLineHeight 18px;
+  padding: 0 @baseLineHeight 18px;
+}
+
+
+
+
+
+// Alternate Panels
+// --------------------------------------------------
+
+.repo-divider {
+  
+}
+
+.jumbotron + .container > .panel-flush {
+  padding-top: 0;
+  border-top: 1px solid rgba(0,0,0,.15);
+}
+
+// Inverse Panels
+.panel-inverse {
+  color: @inverseTextColor;
+  text-shadow: 0 1px 1px rgba(0,0,0,.5);
+  background: @inverseBackground;
+  border-color: @black;
+  .box-shadow(0 1px 0 rgba(255,255,255,.2));
+}
+
+// Radial panel 
+.panel-radial {
+  .radial();
+}
+
+.panel-attention {
+  .attention();
+}
+
+// Highlight panels
+.panel-highlight {
+  .highlight();
+}
+
+
+
+// EMBOSSED
+// --------
+// a printing technique used to create raised surfaces in the converted paper stock
+.panel-embossed {
+  .embossed();
+}
+.panel-embossed {
+  .embossed-v2();
+}
+.panel-embossed {
+  .embossed-v3();
+}
+.panel-embossed.panel-inverse {
+  .embossed-inverse();
+}
+
+.panel-raised {
+  .raised();
+}
+
+// LETTERPRESSED
+// -------------
+// A printing method that requires characters being impressed upon the page
+
+.panel-letterpress {
+  .letterpress();
+}
+.panel-letterpress-medium {
+  .letterpress-medium();
+}
+
+
+// THERMOGRAPHED
+// -------------
+// A raised print surface similar to the result of an embossing process
+
+.panel-thermograph {
+  .thermograph();
+}
+
+
+// ENGRAVED
+// --------
+// A process that requires a design to be cut into a plate made of a relatively hard material
+.panel-engraved {}
+.panel-etched {}
+.panel-beveled {}

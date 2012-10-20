@@ -1,0 +1,50 @@
+
+
+// gh-pages footer
+// --------------------------------------------------
+
+.footer-gh {
+  padding: 60px 0 60px;
+  margin-top: -60px;
+  border-top: 1px solid darken(@footerBackgroundColor, 10%);
+  background-color: @footerBackgroundColor;
+}
+.footer-gh p {
+  margin-bottom: 0;
+  color: @white;
+}
+.footer-gh a,
+.footer-gh .footer-nav:hover > li > a, // override footer.less styles
+.footer-gh .footer-links {
+  color: @grayLight;
+  margin: 10px 0;
+  &:hover {
+    color: lighten(@linkColor, 30%);
+  }
+}
+// Hover state for nav only
+.footer-nav:hover li > a {
+  color: lighten(@linkColor, 20%); // Hover over nav section
+  &:hover {
+    color: @linkColor; // Hover over links
+  }
+}
+.footer-gh {
+  .footer-links li {
+    display: inline;
+    margin-right: 10px;
+  }
+  .footer-links li > a {
+    color: lighten(@linkColor, 20%);
+  }
+  .footer-links li > a:hover {
+    color: lighten(@linkColor, 30%);
+  }
+  .footer .icon-up-arrow {
+    width: auto;
+  }
+  .footer-links .text-disabled > a {
+    color: lighten(@footerBackgroundColor, 10%);
+  }
+}
+

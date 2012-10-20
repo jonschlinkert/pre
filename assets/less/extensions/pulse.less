@@ -1,0 +1,144 @@
+
+// BASE STYLES
+// --------------------------
+
+.glow,
+.glow:visited {
+  overflow: visible;
+  color: @white;
+  text-decoration: none;
+  text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIwLjI1Ii8+CiAgICA8c3RvcCBvZmZzZXQ9IjElIiBzdG9wLWNvbG9yPSIjZmZmZmZmIiBzdG9wLW9wYWNpdHk9IjAuMyIvPgogICAgPHN0b3Agb2Zmc2V0PSI1MCUiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMC4yNSIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZmZmZmZmIiBzdG9wLW9wYWNpdHk9IjAuMTIiLz4KICA8L2xpbmVhckdyYWRpZW50PgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
+  background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.25) 0, rgba(255, 255, 255, 0.3) 1%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.12) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(255, 255, 255, 0.25)), color-stop(1%, rgba(255, 255, 255, 0.3)), color-stop(50%, rgba(255, 255, 255, 0.25)), color-stop(100%, rgba(255, 255, 255, 0.12)));
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.25) 0, rgba(255, 255, 255, 0.3) 1%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.12) 100%);
+  background: -o-linear-gradient(top, rgba(255, 255, 255, 0.25) 0, rgba(255, 255, 255, 0.3) 1%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.12) 100%);
+  background: -ms-linear-gradient(top, rgba(255, 255, 255, 0.25) 0, rgba(255, 255, 255, 0.3) 1%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.12) 100%);
+  background: linear-gradient(top, rgba(255, 255, 255, 0.25) 0, rgba(255, 255, 255, 0.3) 1%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.12) 100%);
+  border-bottom: 1px solid rgba(0,0,0,.25);
+  *border: 0; // Remove the border to prevent IE7's black border on input:focus
+  outline: 0;
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#40ffffff', endColorstr='#1fffffff', GradientType=0);
+  .box-shadow(~"0 1px 3px rgba(0,0,0,.5)");
+  .animation-iteration-count(infinite);
+  .animation-duration(2s);
+}
+.glow:hover {
+  color: @white;
+  background-color: rgb(17, 17, 17);
+}
+.glow:active {
+  top: 1px;
+}
+
+
+// Variables
+// -----------------------------------------------
+
+@glowMagenta:             #e90169;
+@glowMagentaHover:        darken(@glowMagenta, 10%);
+@glowRed:                 #e90c0c;
+@glowRedHover:            darken(@glowRed, 10%);
+@glowOrange:              #ff5820;
+@glowOrangeHover:         darken(@glowOrange, 10%);
+@glowYellow:              #ffd62f;
+@glowYellowHover:         darken(@glowYellow, 10%);
+@glowGreen:               @green;
+@glowGreenHover:          darken(@glowGreen, 10%);
+@glowBlue:                @blue;
+@glowBlueHover:           darken(@glowBlue, 10%);
+
+
+// Magenta
+.glow-magenta,
+.glow-magenta:visited    {background-color: @glowMagenta; } 
+.glow-magenta:hover      {background-color: @glowMagentaHover; } // #630030
+
+// Red
+.glow-red, 
+.glow-red:visited        {background-color: @glowRed; } 
+.glow-red:hover          {background-color: @glowRedHover; } // #872300
+
+// Orange
+.glow-orange, 
+.glow-orange:visited     {background-color: @glowOrange; } 
+.glow-orange:hover       {background-color: @glowOrangeHover; } // #d45500
+
+// Yellow
+.glow-yellow, 
+.glow-yellow:visited     {background-color: @glowYellow; } 
+.glow-yellow:hover       {background-color: @glowYellowHover; }  // #fc9200
+
+// Green
+.glow-green, 
+.glow-green:visited      {background-color: @glowGreen; } 
+.glow-green:hover        {background-color: @glowGreenHover; }  // #9acc02
+
+// Blue
+.glow-blue, 
+.glow-blue:visited       {background-color: @glowBlue; } 
+.glow-blue:hover         {background-color: @glowBlueHover; }  // #007d9a
+
+
+
+// Button Animations
+// -----------------------------------------------
+
+.glow-animation (@name: button, @time: 300ms) {
+  -webkit-animation-duration: @time;
+     -moz-animation-duration: @time;
+      -ms-animation-duration: @time;
+          animation-duration: @time;
+      -webkit-animation-name: @name;  
+         -moz-animation-name: @name;     
+          -ms-animation-name: @name;      
+              animation-name: @name;
+} 
+
+
+.glow-magenta        { .glow-animation (magentaPulse,     2s) }
+.glow-red            { .glow-animation (redPulse,         1s) }
+.glow-orange         { .glow-animation (orangePulse,      3s) }
+.glow-yellow         { .glow-animation (yellowPulse,      2s) }
+.glow-green          { .glow-animation (greenPulse,       5s) }
+.glow-blue           { .glow-animation (bluePulse,        4s) }
+
+
+@glowDistance:          3px;
+@glowDistanceMiddle:    7px;
+
+// Keyframe Intervals
+// -----------------------------------------------
+
+@-webkit-keyframes magentaPulse {
+  from { background-color: @glowMagentaHover; .box-shadow(0 0 @glowDistance rgba(0,0,0,.1)); }
+   50% { background-color: @glowMagenta;      .box-shadow(0 0 @glowDistanceMiddle @glowMagenta); }
+    to { background-color: @glowMagentaHover; .box-shadow(0 0 @glowDistance rgba(0,0,0,.1)); }
+}
+@-webkit-keyframes redPulse {
+  from { background-color: @glowRedHover;     .box-shadow(0 0 @glowDistance rgba(0,0,0,.1)); }
+   50% { background-color: @glowRed;          .box-shadow(0 0 @glowDistanceMiddle @glowRed); }
+    to { background-color: @glowRedHover;     .box-shadow(0 0 @glowDistance rgba(0,0,0,.1)); }
+}
+@-webkit-keyframes orangePulse {
+  from { background-color: @glowOrangeHover;  .box-shadow(0 0 @glowDistance rgba(0,0,0,.1)); }
+   50% { background-color: @glowOrange;       .box-shadow(0 0 @glowDistanceMiddle @glowOrange); }
+    to { background-color: @glowOrangeHover;  .box-shadow(0 0 @glowDistance rgba(0,0,0,.1)); }
+}
+@-webkit-keyframes yellowPulse {
+  from { background-color: @glowYellowHover;  .box-shadow(0 0 @glowDistance rgba(0,0,0,.1)); }
+   50% { background-color: @glowYellow;       .box-shadow(0 0 @glowDistanceMiddle @glowYellow); }
+    to { background-color: @glowYellowHover;  .box-shadow(0 0 @glowDistance rgba(0,0,0,.1)); }
+}
+@-webkit-keyframes greenPulse {
+  from { background-color: @glowGreenHover;   .box-shadow(0 0 @glowDistance rgba(0,0,0,.1)); }
+   50% { background-color: @glowGreen;        .box-shadow(0 0 @glowDistanceMiddle @glowGreen); }
+    to { background-color: @glowGreenHover;   .box-shadow(0 0 @glowDistance rgba(0,0,0,.1)); }
+}
+@-webkit-keyframes bluePulse {
+  from { background-color: @glowBlueHover;    .box-shadow(0 0 @glowDistance rgba(0,0,0,.1)); }
+   50% { background-color: @glowBlue;         .box-shadow(0 0 @glowDistanceMiddle @glowBlue); }
+    to { background-color: @glowBlueHover;    .box-shadow(0 0 @glowDistance rgba(0,0,0,.1)); }
+}
+

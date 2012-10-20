@@ -1,0 +1,80 @@
+  //
+  // Gradient Mixins
+// --------------------------------------------------
+
+#gradient {
+
+  
+  // Verical, three stops
+  .vertical-three-stops(@startColor: #191A1C, @firstStop: 0%, @colorTwo: #252728, @secondStop: 32%, @endColor: #1C1D1F, @lastStop: 100%) {
+    background-color: @endColor; // Non CSS3 browsers get the average color
+    background-image: -moz-linear-gradient(top,  @startColor @firstStop, @colorTwo @secondStop, @endColor @lastStop);
+    background-image: -webkit-gradient(linear,  left top, left bottom, color-stop(@firstStop, @startColor), color-stop(@secondStop, @colorTwo), color-stop(@lastStop, @endColor));
+    background-image: -webkit-linear-gradient(top,  @startColor @firstStop, @colorTwo @secondStop, @endColor @lastStop);
+    background-image: -o-linear-gradient(top,  @startColor @firstStop, @colorTwo @secondStop, @endColor @lastStop);
+    background-image:  -ms-linear-gradient(top,  @startColor @firstStop, @colorTwo @secondStop, @endColor @lastStop);
+    background-image: linear-gradient(to bottom,  @startColor @firstStop, @colorTwo @secondStop, @endColor @lastStop);
+    -ms-filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr=%d, endColorstr=%d)", @startColor, @endColor)); 
+        filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(@startColor),argb(@endColor))); // IE9 and down, gets no color-stop at all for proper fallback
+  }
+  .horizontal-three-stops(@startColor: #191A1C, @firstStop: 0%, @colorTwo: #252728, @secondStop: 32%, @endColor: #1C1D1F, @lastStop: 100%) {
+    background: @endColor; // Non CSS3 browsers get the average color
+    background: -moz-linear-gradient(left,  @startColor @firstStop, @colorTwo @secondStop, @endColor @lastStop);
+    background: -webkit-gradient(linear, left top, right top, color-stop(@firstStop, @startColor), color-stop(@secondStop, @colorTwo), color-stop(@lastStop, @endColor));
+    background: -webkit-linear-gradient(left,  @startColor @firstStop, @colorTwo @secondStop, @endColor @lastStop);
+    background: -o-linear-gradient(left,  @startColor @firstStop, @colorTwo @secondStop, @endColor @lastStop);
+    background: -ms-linear-gradient(left,  @startColor @firstStop, @colorTwo @secondStop, @endColor @lastStop);
+    background: linear-gradient(to right,  @startColor @firstStop, @colorTwo @secondStop, @endColor @lastStop);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ddd', endColorstr='#1c1d1f',GradientType=1 );
+  }
+
+  // Radial, gray well, currently used in showcase-wells
+  .radial-three-colors(@posX: center, @posY: center, @startColor:@white, @midColor:@gray, @endColor:@black){
+    background-repeat: repeat-x, no-repeat;
+    background-color: @endColor / 2 + @startColor / 2;
+    background-image: -webkit-radial-gradient(@posX @posY, @startColor 0%, @midColor 50%, @endColor 100%);
+    background-image: -moz-radial-gradient(@posX @posY, @startColor 0%, @midColor 50%, @endColor 100%);
+    background-image: -ms-radial-gradient(@posX @posY, @startColor 0%, @midColor 50%, @endColor 100%);
+    background-image: -o-radial-gradient(@posX @posY, @startColor 0%, @midColor 50%, @endColor 100%);
+    background-image: radial-gradient(@posX @posY, @startColor 0%, @midColor 50%, @endColor 100%);
+    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",@startColor,@endColor)); // IE9 and down, gets no color-stop at all for proper fallback
+  }
+
+  .radial-three-stops(@posX: center, @posY: center, @startColor: @white, @startPos: 0%, @midColor: @gray, @middlePos: 0%, @endColor: @black, @lastPos: 0% ){
+    background-repeat: repeat-x, no-repeat;
+    background-color: @endColor / 2 + @startColor / 2;
+    background-image: -webkit-radial-gradient(@posX @posY, @startColor @startPos, @midColor @middlePos, @endColor @lastPos);
+    background-image: -moz-radial-gradient(@posX @posY, @startColor @startPos, @midColor @middlePos, @endColor @lastPos);
+    background-image: -ms-radial-gradient(@posX @posY, @startColor @startPos, @midColor @middlePos, @endColor @lastPos);
+    background-image: -o-radial-gradient(@posX @posY, @startColor @startPos, @midColor @middlePos, @endColor @lastPos);
+    background-image: radial-gradient(@posX @posY, @startColor @startPos, @midColor @middlePos, @endColor @lastPos);
+    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",@startColor,@endColor)); // IE9 and down, gets no color-stop at all for proper fallback
+  }
+
+  // Elliptical with image
+  .elliptical-image(@image: url(../images/circle.png),@startColor: #555, @endColor: #333)  {
+    background-repeat: repeat-x, no-repeat;
+    background: @startColor / 2 + @endColor / 2;
+    background-image: @image, -webkit-radial-gradient(50% 100%, ellipse farthest-side, @startColor 0%, @endColor 100%);
+    background-image: @image, -moz-radial-gradient(50% 100%, ellipse farthest-side, @startColor 0%, @endColor 100%);
+    background-image: @image, -o-radial-gradient(50% 100%, ellipse farthest-side, @startColor 0%, @endColor 100%);
+    background-image: @image, -ms-radial-gradient(50% 100%, ellipse farthest-side, @startColor 0%, @endColor 100%);
+    background-image: @image, radial-gradient(50% 100%, ellipse farthest-side, @startColor 0%, @endColor 100%);
+    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",@startColor,@endColor)); // IE9 and down, gets no color-stop at all for proper fallback
+  }
+
+}
+
+
+// good for buttons
+.awesome-blue-gradient() {
+  background: rgb(0,180,245);
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwYjRmNSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDk2ZDIiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(left,  rgba(0,180,245,1) 0%, rgba(0,150,210,1) 100%);
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,180,245,1)), color-stop(100%,rgba(0,150,210,1)));
+  background: -webkit-linear-gradient(left,  rgba(0,180,245,1) 0%,rgba(0,150,210,1) 100%);
+  background: -o-linear-gradient(left,  rgba(0,180,245,1) 0%,rgba(0,150,210,1) 100%);
+  background: -ms-linear-gradient(left,  rgba(0,180,245,1) 0%,rgba(0,150,210,1) 100%);
+  background: linear-gradient(to right,  rgba(0,180,245,1) 0%,rgba(0,150,210,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00b4f5', endColorstr='#0096d2',GradientType=1 );
+}

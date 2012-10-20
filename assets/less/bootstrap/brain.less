@@ -1,0 +1,43 @@
+//
+// Button groups
+// --------------------------------------------------
+
+
+// Make the div behave like a button
+.brain {
+  position: relative;
+  display: inline-block;
+  .ie7-inline-block();
+  font-size: 0; // remove as part 1 of font-size inline-block hack
+  vertical-align: middle; // match .brain-section alignment given font-size hack above
+  white-space: nowrap; // prevent buttons from wrapping when in tight spaces (e.g., the table on the tests page)
+  .ie7-restore-left-whitespace();
+}
+
+// Float them, remove border radius, then re-add to first and last elements
+.brain > .brain-section {
+  position: relative;
+  .border-radius(0);
+}
+.brain > .brain-section + .brain-section {
+  margin-left: -1px;
+}
+
+// Vertical button groups
+// ----------------------
+
+.brain-vertical {
+  display: inline-block; // makes buttons only take up the width they need
+  .ie7-inline-block();
+}
+.brain-vertical .brain-section {
+  display: block;
+  float: none;
+  width: 100%;
+  .border-radius(0);
+}
+.brain-vertical .brain-section + .brain-section {
+  margin-left: 0;
+  margin-top: -1px;
+}
+

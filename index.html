@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
   <head>
 
     <!-- load google fonts -->
     <script type="text/javascript">
       WebFontConfig = {
-        google: { families: [ 'Droid+Sans::latin', 'Droid+Serif:400,700', 'PT+Sans+Narrow::latin', 'Francois+One::latin', 'Open+Sans:400,300:latin', 'Oswald:400,300:latin', 'Yanone+Kaffeesatz:400,200,300:latin', 'Cuprum::latin' ] }
+        google: { families: [ 'Droid+Sans::latin', 'Droid+Serif:400,700:latin', 'Bitter:400,700:latin', 'PT+Sans+Narrow::latin', 'Francois+One::latin', 'Open+Sans:400,300:latin', 'Oswald:400,300:latin', 'Yanone+Kaffeesatz:400,200,300:latin', 'Cuprum::latin' ] }
       };
       (function() {
         var wf = document.createElement('script');
@@ -28,7 +28,10 @@
 
     <!-- styles -->
     <link href="assets/css/project.css" rel="stylesheet">
-    <link href="assets/js/prettify/prettify.css" rel="stylesheet">
+    <link href="assets/css/project-responsive.css" rel="stylesheet">
+    <link href="assets/css/project-docs.css" rel="stylesheet">
+    <link href="assets/js/vendor/bootstrap/google-code-prettify/prettify.css" rel="stylesheet" type="text/css">
+    <script src="assets/js/vendor/modernizr.js"></script>
 
     <style type="text/css">
 
@@ -181,7 +184,7 @@
       </div><!-- /panel -->
 
     </div> <!-- /container -->
-    <footer class="footer">
+    <footer id="footer" class="footer footer-gh footer-fixed-bottom">
       <div class="container">
         <nav class="footer-nav">
           <p class="pull-right"><a href="#">Back to top</a></p>
@@ -203,9 +206,12 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="assets/js/jquery.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/prettify/prettify.js"></script>
-    <script src="assets/js/docs.js"></script> <!-- switch to project.js for live -->
+    <script src="assets/js/vendor/bootstrap/bootstrap.min.js"></script>
+    <script src="assets/js/vendor/bootstrap/google-code-prettify/prettify.js"></script>
+    <script src="assets/js/vendor/bootstrap/application.js"></script>
+    <script src="assets/js/vendor/strftime.js"></script>
+    <script src="assets/js/vendor/holder.js"></script>
+    <script src="assets/js/github.js"></script>
 
   </body>
 </html>

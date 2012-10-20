@@ -1,0 +1,155 @@
+//
+// Tab Bars
+// --------------------------------------------------
+
+
+// BASE CLASS
+// ----------
+
+.tabs-bar {
+  margin-bottom: @baseLineHeight;
+  border: 1px solid #ddd;
+  .border-radius(5px 5px 0 0);
+
+  // TABS
+  // -------------
+
+  // Give the tabs something to sit on
+  .nav-tabs {
+    margin: 0;
+    #gradient > .vertical(#FAFAFA , #f5f5f5);
+    .border-radius(5px 5px 0 0);
+    .clearfix();
+  }
+
+  // Make the list-items overlay the bottom border
+  .nav-tabs > li {
+    margin: 0;
+    // Apply border radius to first tab only
+    &:first-child > a {
+      .border-radius(4px 0 0 0);
+    }
+  }
+
+  // Actual tabs (as links)
+  .nav-tabs > li > a {
+    font-size: @baseFontSize - 1;
+    color: @grayDark;
+    margin: 0;
+    border: none;
+    .border-radius(0);
+    // Hover state
+    &:hover {
+      .box-shadow(1px 0 0 #ddd, -1px 0 0 #ddd);
+    }
+  }
+  // Adjust caret color
+  .nav-tabs .dropdown-toggle .caret {
+    margin-left: 3px;
+    #translucent > .border(@linkColor, .5);
+    border-left-color: transparent;
+    border-right-color: transparent;
+  }
+  // Active state
+  .nav-tabs > .active {
+    border-bottom: 1px solid white;
+    margin-bottom: -1px;
+  }
+  // Hover State
+  .nav-tabs > .active > a,
+  .nav-tabs > .active > a:hover {
+    color: @gray;
+    background-color: @bodyBackground;
+    border: none;
+    .box-shadow(1px 0 0 #ddd, -1px 0 0 #ddd);
+  }
+
+  // Tab Pane
+  // -------------
+  .tab-pane {
+    font-size: @baseFontSize - 1;
+    padding: 15px;
+    background: @white;
+  }
+}
+
+
+
+// Tabs Below
+// --------------------------------------------
+
+.tabs-bar.tabs-below > {
+  .nav-tabs {
+    .border-radius(0);
+  }
+  .nav-tabs > li:first-child > a {
+    .border-radius(0);
+  }
+  .nav-tabs > .active > a, 
+  .nav-tabs > .active > a:hover {
+    .box-shadow(1px 0 0 #ddd, -1px 0 0 #ddd, 0 1px 0 #ddd, 0 -1px 0 @white);
+
+  }
+  // Adjust border-radius on dropups
+  .dropup > .dropdown-menu {
+    .border-radius(4px 4px 0 0);
+  }
+
+  // Tab Pane
+  // -------------
+  .tab-pane {
+    .border-radius(4px 4px 0 0);
+  }
+}
+
+
+// Tabs Left & Right
+// --------------------------------------------
+
+.tabs-bar.tabs-left >,
+.tabs-bar.tabs-right > {
+  .nav-tabs {
+    .border-radius(0);
+  }
+  // Tab Pane
+  .tab-pane {
+    .border-radius(4px 4px 0 0);
+  }
+}
+
+// Tabs Left
+.tabs-bar.tabs-left > {
+  .nav-tabs > li:first-child > a {
+    .border-radius(4px 0 0 0);
+  }
+  .nav-tabs > .active > a, 
+  .nav-tabs > .active > a:hover {
+    .box-shadow(0 1px 0 #ddd, 0 -1px 0 #ddd, 1px 0 0 #fff, );
+
+  }
+}
+// Tabs Right
+.tabs-bar.tabs-right > {
+  .nav-tabs > li:first-child > a {
+    .border-radius(0 4px 0 0);
+  }
+  .nav-tabs > .active > a, 
+  .nav-tabs > .active > a:hover {
+    .box-shadow(0 1px 0 #ddd, 0 -1px 0 #ddd, -1px 0 0 #fff, );
+  }
+}
+
+
+
+// Responsive
+// --------------------------------------
+/*
+@media (max-width: 767px) {
+  .tabs-bar .nav span {
+    padding-left: 10px;
+    padding-right: 12px;
+    font-size: 10px;
+    line-height: 14px;
+  }
+}
+*/

@@ -1,0 +1,52 @@
+//
+// Nav Sizes
+// --------------------------------------------------
+
+
+// Large
+.nav-large li > a {
+  font-size: @baseFontSize + 2;
+  padding: 10px 20px;
+  margin-right: 4px;
+  line-height: 1; 
+  .border-radius(5px);
+}
+.tabs-left .nav-large li > a,
+.tabs-right .nav-large li > a {
+  font-size: @baseFontSize + 3;
+  padding: 14px 20px;
+}
+.nav-large.nav-tabs > li > a {
+  .border-radius(5px 5px 0 0);
+}
+// Small
+.nav-mini > li > a,
+.nav-small > li > a {
+  font-size: @baseFontSize - 2;
+  padding: 6px 10px;
+  line-height: 1;
+
+  // Adjust caret position for small dropdowns
+  &.dropdown-toggle .caret {
+    margin-top: 5px;
+  }
+}
+.nav-small,
+.nav-mini {
+  li > .dropdown-menu {
+    margin: 0;
+  }
+}
+
+// Mini
+.nav-mini {
+  &.nav-tabs > li > a {
+    padding: 4px 8px;
+    .border-radius(3px 3px 0 0);
+  }
+  &.nav-pills > li > a {
+    padding: 4px 8px;
+    .border-radius(3px);
+  }
+}
+

@@ -1,139 +1,143 @@
-// Gruntfile for Theme: Boilerplate
+/*
+ * grunt
+ * http://gruntjs.com/
+ *
+ * Copyright (c) 2012 "Cowboy" Ben Alman
+ * Licensed under the MIT license.
+ * https://github.com/gruntjs/grunt/blob/master/LICENSE-MIT
+ */
 
 module.exports = function(grunt) {
-  
-  // Project configuration
+
+
+
+  // Project configuration.
   grunt.initConfig({
 
-    pkg: '<json:package.json>',
-    meta: {
-      banner: 
-        '/* ==========================================================\n' +
-        ' * <%= pkg.type %>-<%= pkg.name %> v<%= pkg.version %> \n' +
-        ' * Website: <%= pkg.homepage %>\n' +
-        ' * \n' +
-        ' * Built <%= grunt.template.today("yyyy-mm-dd") %> with grunt v<%= grunt.version %>\n' +
-        '/* ==========================================================\n' +
-        ' * Copyright <%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
-        ' * Licensed under <%= _.pluck(pkg.licenses,"type").join(", ") %> <%= _.pluck(pkg.licenses,"url").join(", ") %>\n' +
-        ' * \n' +
-        '/* ==========================================================\n' +
-        ' */'
-    },
-
-    lint: {
-      all: ['grunt.js', 'tasks/*.js', '<config:nodeunit.tasks>']
-    },
-
-    jshint: {
-      options: {
-        curly: true,
-        eqeqeq: true,
-        immed: true,
-        latedef: true,
-        newcap: true,
-        noarg: true,
-        sub: true,
-        undef: true,
-        boss: true,
-        eqnull: true,
-        node: true,
-        es5: true
-      }
-    },
-
-    // Paths
-    project: {
-      partials: 'assets/partials',
-      pages:    'assets/pages',
-      less:     'assets/less',
-      css:      'assets/css',
-      img:      'assets/img',
-      js:       'assets/js'
-    },
-
-    // Concatenate 
-    // -----------
-
-    concat: {
-
-      // Include application.js for docs
+    append: {
       docs: {
-        src: ['<%= project.js %>/bootstrap/bootstrap.min.js', '<%= project.js %>/bootstrap/application.js', '<%= project.js %>/plugins/holder.js', '<%= project.js %>/custom.js'],
-        dest: '<%= project.js %>/docs.js'
+        header: 'docs/parts/head.html',
+        footer: 'docs/parts/footer.html',
+        src: [
+            'docs/pages/base-css.html',
+            'docs/pages/components.html',
+            'docs/pages/customize.html',
+            'docs/pages/extend.html',
+            'docs/pages/getting-started.html',
+            'docs/pages/index.html',
+            'docs/pages/javascript.html',
+            'docs/pages/scaffolding.html'
+        ],
+        dest: 'docs' // destination *directory*, unnecessary to specify paths twice
       },
-      // Exclude application.js for production
-      app: {
-        src: ['<%= project.js %>/bootstrap/bootstrap.min.js', '<%= project.js %>/plugins/holder.js', '<%= project.js %>/custom.js'],
-        dest: '<%= project.js %>/app.js'
-      },
-
-      // HTML Pages
-      home: {
-        src: ['<%= project.partials %>/head.html', '<%= project.pages %>/index.html','<%= project.partials %>/footer.html'],
-        dest: 'index.html'
-      },
-      about: {
-        src: ['<%= project.partials %>/head.html', '<%= project.pages %>/about.html','<%= project.partials %>/footer.html'],
-        dest: 'about.html'
-      },      
-      blog: {
-        src: ['<%= project.partials %>/head.html', '<%= project.pages %>/blog.html','<%= project.partials %>/footer.html'],
-        dest: 'blog.html'
-      },
-      contact: {
-        src: ['<%= project.partials %>/head.html', '<%= project.pages %>/contact.html','<%= project.partials %>/footer.html'],
-        dest: 'contact.html'
-      },      
-      contact: {
-        src: ['<%= project.partials %>/head.html', '<%= project.partials %>/navbar.html', '<%= project.pages %>/get-started.html','<%= project.partials %>/footer.html'],
-        dest: 'get-started.html'
-      },
-      projects: {
-        src: ['<%= project.partials %>/head.html', '<%= project.pages %>/projects.html','<%= project.partials %>/footer.html'],
-        dest: 'projects.html'
+      html: {
+        header: 'assets/parts/head.html',
+        footer: 'assets/parts/footer.html',
+        src: [
+            'assets/pages/index.html',
+            'assets/pages/about.html',
+            'assets/pages/get-started.html'
+        ],
+        dest: '.' // destination *directory*, unnecessary to specify paths twice
       }
     },
 
-    // Less
     less: {
-      theme: {
+      dist: {
         options: {
-          paths: ['assets','assets/css','assets/less'], // alternate include paths for imports, such as variables
+          paths: ['assets','assets/less','assets/less/bootstrap','assets/less/toolkit'],
           yuicompress: false,
           compress: false
         },
         files: {
-          "assets/css/project.css": ['assets/project.less']
+          "assets/css/project-responsive-unlinted.css": ['assets/project-responsive.less'], // responsive
+          "assets/css/project-unlinted.css": ['assets/project.less'], // standard
+          "assets/css/project-docs.css": ['assets/project-docs.less'] // docs
         }
       }
     },
 
-    // Watch
-    // -----
-
-    watch: {
-      files: ['assets/**/*.*','assets/.*\.less'],  
-      tasks: 'concat less'
+    recess: {
+      less: {
+        src: ['assets/css/project-unlinted.css'],
+        dest: 'assets/css/project.css',
+        options: {
+          compile: true,
+          compress: false,             // Compress your compiled code
+          noIDs: true,                 // Doesn't complain about using IDs in your stylesheets
+          noJSPrefix: true,            // Doesn't complain about styling .js- prefixed classnames
+          noOverqualifying: true,      // Doesn't complain about overqualified selectors (ie: div#foo.bar)
+          noUnderscores: true,         // Doesn't complain about using underscores in your class names
+          noUniversalSelectors: true,  // Doesn't complain about using the universal * selector
+          prefixWhitespace: true,      // Adds whitespace prefix to line up vender prefixed properties
+          strictPropertyOrder: true,   // Complains if not strict property order
+          stripColors: true,           // Strip colors from the Terminal output
+          zeroUnits: true              // Doesn't complain if you add units to values of 0 
+        }
+      },
+      responsive: {
+        src: ['assets/css/project-responsive-unlinted.css'],
+        dest: 'assets/css/project-responsive.css',
+        options: {
+          compile: true,
+          compress: false,             // Compress your compiled code
+          noIDs: true,                 // Doesn't complain about using IDs in your stylesheets
+          noJSPrefix: true,            // Doesn't complain about styling .js- prefixed classnames
+          noOverqualifying: true,      // Doesn't complain about overqualified selectors (ie: div#foo.bar)
+          noUnderscores: true,         // Doesn't complain about using underscores in your class names
+          noUniversalSelectors: true,  // Doesn't complain about using the universal * selector
+          prefixWhitespace: true,      // Adds whitespace prefix to line up vender prefixed properties
+          strictPropertyOrder: true,   // Complains if not strict property order
+          stripColors: true,           // Strip colors from the Terminal output
+          zeroUnits: true              // Doesn't complain if you add units to values of 0 
+        }
+      }
+    },
+    concat: {
+      'assets/js/main.js' : [
+        'assets/js/vendor/bootstrap/bootstrap.js',
+        'assets/js/vendor/bootstrap/application.js',
+        'assets/js/vendor/bootstrap/google-code-prettify/prettify.js',
+        'assets/js/vendor/strftime.js'
+      ]
+    },
+/*
+    // Optimize images
+    jpgmin: {
+      src: ['assets/img/stock/*.jpg'],
+      dest: 'assets/img/optimized'
+    },
+*/
+    // Minify scripts
+    min: {
+      'assets/js/main.js' : ['assets/js/main.js']
     },
 
-    // Unit tests.
-    nodeunit: {
-      tasks: ['test/*_test.js']
-    }
+    lint: {
+      files: ['assets/js/*.js']
+    },
 
+    watch: {
+      dist: {
+        files: ['assets/**/*.*','docs/**/*.*'], 
+        tasks: 'append less recess concat'
+      },
+      scripts: {
+        files: ['assets/**/*.js'],
+        tasks: 'lint test'
+      },
+      less: {
+        files: ['assets/**/*.less'], 
+        tasks: 'less recess'
+      }
+    }
   });
 
-  // Actually load this plugin's task(s).
-  grunt.loadTasks('../node_modules/tasks');
+  grunt.loadTasks('tasks');
+  grunt.loadNpmTasks('grunt-contrib');
 
-  // plugin's task(s), then test the result.
-  grunt.renameTask('test', 'nodeunit');
-
-  // grunt.registerTask('test', 'clean less nodeunit');
-  grunt.registerTask('test', 'less nodeunit');
-
-  // By default, lint and run all tests.
-  grunt.registerTask('default', 'concat less');
+  // Default task.
+  grunt.registerTask('default', 'append less recess concat watch:dist');
 
 };
+

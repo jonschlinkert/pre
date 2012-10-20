@@ -1,0 +1,75 @@
+// 
+// Resize Inputs
+// --------------------------------------------------
+
+
+// Namespace the example code
+
+#resizeInputs {
+  input[type=text],
+  textarea {
+    width: 300px;
+    .transition(width 0.5s ease);
+  }
+
+  input[type=text]:focus,
+  textarea:focus {
+    width: 340px;
+  }
+  textarea {
+    height: 110px;
+    resize: vertical;
+  }
+}
+
+
+#disabledInput {
+  form {
+    padding: 30px;
+    margin: 0;
+  }
+
+  fieldset {
+    width: 360px;
+    margin: 0;
+    border: none;
+  }
+
+  form div {
+    padding: 0 0 15px 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  form div.ta {
+    height: auto;
+  }
+
+  label {
+    display: block;
+    padding: 0 0 5px 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  input[type="text"] {
+    width: 160px;
+    height: 14px;
+    padding: 5px;
+    margin-left: 20px;
+    font-size: 20px;
+    background: #e2e2e2;
+    border: none;
+    .transition(background 1s ease);
+  }
+
+  input:disabled {
+    background: #666666;
+  }
+
+  input[type="button"] {
+    display: block;
+    width: 200px;
+    padding: 0 20px;
+    margin: 0 0 0 40px;
+    font-size: 15px;
+  }
+}

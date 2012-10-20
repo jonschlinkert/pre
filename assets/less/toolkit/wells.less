@@ -1,0 +1,130 @@
+//
+// Well
+// --------------------------------------------------
+
+
+// Inverse Wells (appears as a dark background
+// Use inverse-wells as an alternative to .wells,not as a modifier.
+// In other words do this class="well-inverse well-large",not this class="well well-inverse well-large"
+.well-inverse {
+  .inverse();
+}
+
+
+// Alternate Wells
+// --------------------------------------------------
+
+// Inset appearance
+.well-inset {
+  #gradient > .vertical(#fff,#f2f2f2);
+  border: 1px solid #ccc;
+  .box-shadow(inset 0 2px 4px rgba(0,0,0,.4));
+}
+
+
+// Showcase and Spotlight common styles
+
+.well-spotlight{
+.well-showcase {
+  text-align: center;
+  .box-sizing(border-box);
+}
+// Spotlight
+.well-spotlight{
+  .border-radius(6px);
+  .spotlight();
+}
+// Showcase
+.well-showcase {
+  .border-radius(4px);
+  .showcase();
+}
+
+
+.well-inverse {
+  // Override lighter background from showcase and spotlight wells
+  &.well-showcase,
+  &.well-spotlight {
+    background: @inverseBackground;
+    border-color: @inverseBorderColor;
+    .box-shadow(inset 0 1px 5px rgba(0,0,0,.6),0 1px 0 @white);
+    p {
+      text-shadow: 0 -1px 0 rgba(0,0,0,.3);
+    }
+  }
+  &.well-spotlight:hover {
+    #gradient > .radial-three-stops(50%,30%,lighten(@inverseBackground,20%),0%,lighten(@inverseBackground,20%),20%,#333,100%);
+    border-bottom-color: @inverseBorderColor;
+    .box-shadow(0 1px 0 @white,1px 2px 5px rgba(0,0,0,.06) inset,0 0 7px rgba(0,0,0,.05) inset);
+  }
+  &.well-showcase {
+    background: @inverseBackground;
+    .box-shadow(inset 0 1px 3px rgba(0,0,0,.3));
+
+    // Hover
+    &:hover,
+    &.active {
+      #gradient > .vertical(lighten(@inverseBackground,8%),@inverseBackground); // active state is useful when using showcase wells for tabbed content or sliders
+    } 
+  }
+}
+
+// Transparent Well
+// ------------------------
+
+.transparent-well {
+  display: block;
+  width: auto;
+  height: auto;
+  margin: 25px;
+}
+
+
+// Progress Well
+// ------------------------
+
+.progress-well {
+  height: auto;
+  padding: 10px 12px;
+  margin: 15px 0;
+  #gradient > .vertical(#e6e6e6,#fefefe);
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0,0,0,.1);
+  border-color: #bfbfbf #e6e6e6 #e6e6e6;
+  border-color: rgba(0,0,0,.25) rgba(0,0,0,.1) rgba(0,0,0,.1);
+  .border-radius(12px);
+  .box-shadow(inset 0 1px 1px rgba(0,0,0,.7));
+}
+
+// Hanging Well
+// ------------------------
+
+.hanging-well {
+  position: static;
+  display: block;
+  width: 200px;
+  height: auto;
+  padding: 0;
+  margin: 10px 0;
+  border: 1px solid rgba(0,0,0,.2);
+  *border-right-width: 2px;
+  *border-bottom-width: 2px;
+  .border-radius(0 0 5px 5px);
+  .box-shadow(0 5px 10px rgba(0,0,0,.2));
+  .background-clip(padding-box);
+  .clearfix(); 
+}
+// Header
+.hanging-well .well-header {
+  padding: 5px 15px;
+  font-size: 12.6px;
+  font-weight: 700;
+  color: #999;
+  background-color: #F3F5F5;
+  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid rgba(0,0,0,.5);
+}
+// Body
+.hanging-well .well-body {
+  padding: 15px;
+}

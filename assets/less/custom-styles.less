@@ -1,0 +1,402 @@
+//
+// Boilerplate Theme: gh-pages
+// --------------------------------------------------
+
+
+.label {
+  .border-radius(5px);
+}
+
+.banner {
+  background: @grayDark;
+  border-bottom-color: @grayDarker;
+  .icon-git-fork {
+    font-size: 20px;
+  }
+  .close {
+    line-height: 22px;
+  }
+}
+
+
+// Featurettes
+// -----------------------------
+
+.featurette-divider {
+  margin: 60px 0;
+}
+.featurette {
+  padding: 25px 0 40px;
+}
+.featurette-image.pull-left {
+  margin-right: 40px;
+}
+.featurette-image.pull-right {
+  margin-left: 40px;
+}
+.featurette-heading {
+  font-size: 50px;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+
+// Switch
+// --------------------------------------------------
+
+
+#switch {
+  // Text Color
+  // ----------------------------------------
+
+  // Dark Background
+  .textColor (@baseColor) when (lightness(@baseColor) >= 66%) {
+    color: black; 
+  }
+  // Medium Background
+  .textColor (@baseColor) when (lightness(@baseColor) >= 33%) and not (lightness(@baseColor) >= 66%) { 
+    color: white; 
+  }
+  // Light Background
+  .textColor (@baseColor) when (lightness(@baseColor) < 33%) { 
+    color: white; 
+  }
+
+  // Link Color
+  // ----------------------------------------
+
+  // Dark Background
+  .linkColor (@baseColor) when (lightness(@baseColor) >= 50%) {
+    color: darken(@linkColor, 20%); 
+  }
+  // Light Background
+  .linkColor (@baseColor) when (lightness(@baseColor) < 50%) { 
+    color: @linkColor; 
+  }
+
+  // Dark Background
+  .linkColorHover (@baseColor) when (lightness(@baseColor) >= 50%) {
+    color: darken(@linkColor, 30%); 
+  }
+  // Light Background
+  .linkColorHover (@baseColor) when (lightness(@baseColor) < 50%) { 
+    color: @linkColorHover; 
+  }
+}
+
+
+
+// Dark Background
+.switchTextColor (@baseColor) when (lightness(@baseColor) >= 66%) {
+  color: black; 
+}
+// Medium Background
+.switchTextColor (@baseColor) when (lightness(@baseColor) >= 33%) and not (lightness(@baseColor) >= 66%) { 
+  color: white; 
+}
+// Light Background
+.switchTextColor (@baseColor) when (lightness(@baseColor) < 33%) { 
+  color: white; 
+}
+
+
+
+
+.hero-unit .lead {
+  font-size: 28px;
+  margin: 40px auto;
+}
+.hero-unit {
+  .button-github:hover,
+  .button-github:active {
+    color: #5AA84F;
+    .transition(none);
+  } 
+}
+.hero-unit .button-group .button-download {
+  margin: 30px 0 0;
+}
+
+.hero-unit {
+  h1 {
+    .switchTextColor(@altColor);
+    font-size: 280px;
+    letter-spacing: -10px;
+  }
+  p {
+    .switchTextColor(@altColor);
+  }
+  // Hero section, btn to "go to docs"
+  .btn-docs {
+    display: inline-block;
+    font-size: 20px;
+    .switchTextColor(@altColor);
+    padding: 2px 14px;
+    // background: darken(@heroUnitBackground, 15%);
+    background: #222;
+    .border-radius(30px);
+    &:hover {
+      text-decoration: none;
+      #gradient > .vertical(@themeSecondaryColor, darken(@themeSecondaryColor, 5%));
+    }
+    &:active {
+      .box-shadow(inset 0 1px 1px rgba(0,0,0,.5));
+    }
+  }
+}
+
+.hero-top {
+  background: black;
+}
+
+
+.hero-unit {
+  color: @white;
+  padding: 60px 0;
+  margin-bottom: 30px;
+  background-color: @heroUnitBackground;
+  text-align: center;
+  .border-radius(0);
+  h1 {
+    margin-bottom: 0;
+    font-family: 'Cuprum', @sansFontFamily;
+    font-size: 190px;
+    font-weight: lighter;
+    line-height: 1;
+    color: @heroUnitHeadingColor;
+    text-shadow: 0 2px 1px darken(@heroUnitBackground, 10%);
+    letter-spacing: -3px;
+  }
+  .lead {
+    // font-family: 'Bitter', @sansFontFamily;
+    font-family: 'Droid Serif' @sansFontFamily;
+    font-size: 20px;
+    font-weight: normal;
+    line-height: @baseLineHeight * 4;
+    color: @heroUnitLeadColor;
+
+    
+    line-height: 1.75;
+    color: inherit;
+    margin: 20px auto 60px;
+    display: inline-block;
+  }
+
+  // Links
+  a {
+    color: rgba(255,255,255,.5);
+    .transition(all .3s ease-in-out);
+  }
+  a:hover {
+    color: @white;
+    text-shadow: 0 0 10px rgba(255,255,255,.25);
+  }
+  .tile,
+  .btn-docs:hover {
+    text-shadow: none;
+    .transition(none);
+  }
+
+  // Textual links in masthead 
+  .hero-links {
+    list-style: none;
+    margin: 0 0 20px;
+  }
+  .hero-links li {
+    font-size: @baseFontSize + 4;
+    display: inline;
+    padding: 0 10px;
+  }
+  .hero-links li {
+    font-size: @baseFontSize + 4;
+    display: inline;
+    padding: 0 10px;
+  }
+}
+
+// Learn more links
+.hero-unit .learn-more {
+  position: relative;
+}
+.hero-unit .learn-more:after {
+  position: absolute;
+  content: "\2192";
+  display: inline-block;
+  margin-left: 5px;
+}
+.learn-more { 
+
+}
+
+
+// Container for github and download buttons
+.hero-unit .button-group {
+  display: block;
+  margin: 0 auto;
+  .button-download,
+  .button-github {
+    display: inline-block;
+  }
+  .button-download {
+    color: @white;
+    font-size: 140px;
+    text-shadow: 0 2px 1px darken(@heroUnitBackground, 10%);
+    margin: 2px 6px 40px 0;
+    vertical-align: middle;
+    &:hover {
+      color: @white;
+      text-shadow: 0 0px #044B58;
+      text-decoration: none;
+    }
+    &:active {
+      color: rgba(255,255,255,.95);
+      text-shadow: 0 -2px #044B58;
+    }
+  }
+}
+
+// Github Button
+// -----------------------------
+.hero-unit {
+  .button-github, 
+  .button-github:hover {
+    font-family: arial;
+    font-size: 20px;
+    font-weight: bold;
+  //  .switchTextColor(@altColor);
+    line-height: 60px;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 450px;
+    padding: 0 90px;
+    margin: 60px auto;
+    cursor: pointer;
+    background-color: rgba(255,255,255,.4);
+    .box-shadow(none);
+    .border-radius(30px);
+    .transition(none);
+    .transition(background-color 0.5s ease-in-out);
+    .opacity(100);
+  }
+  .button-github:hover {
+    color: @heroUnitBackground;
+    background-color: @white;
+  }
+  .button-github:active {
+    background: rgba(255,255,255,.75);
+    .box-shadow(inset 0 1px 1px 0 rgba(0,0,0,.5));
+  }
+  .button-github .icon-right-arrow {
+    font-size: 24px;
+    line-height: 16px;
+  }
+
+  // Hero section, btn to "go to docs"
+  .btn-docs {
+   // .switchTextColor(@altColor);
+    padding: 5px 14px 6px;
+    // background: darken(@heroUnitBackground, 15%);
+    #gradient > .vertical(#E94141, #6D1803);
+    .border-radius(30px);
+    &:hover {
+      text-decoration: none;
+      #gradient > .vertical(#E94141, #6D1803);
+    }
+    &:active {
+      .box-shadow(inset 0 1px 1px rgba(0,0,0,.5));
+    }
+  }
+}
+
+.btn-responsive + .btn-responsive {
+  margin-left: 5px;
+}
+
+
+
+/* Marketing section of Overview
+-------------------------------------------------- */
+
+.marketing {
+  text-align: center;
+  color: #5a5a5a;
+}
+.marketing h1 {
+  margin: 60px 0 10px;
+  font-size: 60px;
+  font-weight: 200;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+.marketing h2 {
+  font-weight: 200;
+  margin-bottom: 5px;
+}
+.marketing p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+.marketing .marketing-byline {
+  margin-bottom: 40px;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 25px;
+  color: @grayLight;
+}
+.marketing img {
+  display: block;
+  margin: 0 auto 30px;
+}
+
+
+/* Tablet to desktop
+------------------------- */
+@media (min-width: 768px) and (max-width: 980px) {
+  .hero-title {
+    font-size: 160px;
+  }
+}
+
+
+// Footer
+// --------------------------------------------------
+
+@footerBackgroundColor: @grayDark; // use this variable instead of @grayDark or another direct color, since other footer colors build off of this
+
+
+.footer {
+  padding: 60px 0 60px;
+  margin-top: -60px;
+  border-top: 1px solid darken(@footerBackgroundColor, 10%);
+  background-color: @footerBackgroundColor;
+}
+.footer p {
+  margin-bottom: 0;
+  .switchTextColor(@altColor);
+}
+.footer a,
+.footer-.nav:hover > li > a, // override footer.less styles
+.footer-links {
+  color: @grayLight;
+  margin: 10px 0;
+  &:hover {
+    color: lighten(@themePrimaryColor, 30%);
+  }
+}
+.footer-links li {
+  display: inline;
+  margin-right: 10px;
+}
+.footer-links li > a {
+  color: lighten(@themePrimaryColor, 20%);
+}
+.footer-links li > a:hover {
+  color: lighten(@themePrimaryColor, 30%);
+}
+.footer .icon-up-arrow {
+  width: auto;
+}
+.footer-links .text-disabled > a {
+  color: lighten(@footerBackgroundColor, 10%);
+}

@@ -1,0 +1,64 @@
+{   
+    // lessc prod
+    prod: {
+        globals: [
+            "custom/less/variables.less",
+            "custom/less/mixins.less",
+            "bootstrap/less/mixins.less"
+        ],
+        less: [
+            "bootstrap/less/reset.less",
+            "bootstrap/less/scaffolding.less",
+            "bootstrap/less/grid.less",
+            "bootstrap/less/layouts.less",
+            "bootstrap/less/type.less",
+            "bootstrap/less/other-components.less"
+        ],
+        minify: false,
+        css: {
+            "assets/css/project.css"
+        }
+    }
+
+    // lessc dev
+    dev: {
+        globals: [
+            "custom/less/variables.less",
+            "custom/less/mixins.less",
+            "bootstrap/less/mixins.less"
+        ],
+        less: [
+            "bootstrap/less/reset.less",
+            "bootstrap/less/scaffolding.less",
+            "bootstrap/less/grid.less",
+            "bootstrap/less/layouts.less",
+            "bootstrap/less/type.less",
+            "bootstrap/less/other-components.less"
+            "bootstrap/less/docs.less"
+        ],
+        minify: false,
+        css: {
+            "assets/css/project.css"
+        }
+    }
+    
+    // lessc components
+    components: {
+        globals: [
+            "custom/less/variables.less",
+            "custom/less/mixins.less",
+            "bootstrap/less/mixins.less"
+        ],
+        minify: false,
+        files: {
+          "assets/css/alerts.css": "assets/less/alerts.less", // right compiles to left
+          "assets/css/buttons.css": "assets/less/buttons.less",
+          "assets/css/button-groups.css": "assets/less/button-groups.less",
+          "assets/css/carousel.css": "assets/less/carousel.less",
+          "assets/css/dropdowns.css": "assets/less/dropdowns.less",
+          "assets/css/modals.css": "assets/less/modals.less"
+        }
+    }
+}
+
+

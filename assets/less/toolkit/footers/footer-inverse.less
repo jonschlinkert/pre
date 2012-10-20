@@ -1,0 +1,56 @@
+
+
+// Inverse Background
+// --------------------------------------------------
+
+
+.footer-inverse,
+.footer.inverse-background {
+  background: @black;
+  border: none;
+  .box-shadow(0 0 0 3px rgba(0,0,0,.2);
+
+  // Text
+  p {
+    color: @grayLight;
+  }
+
+  // Hightlights Section
+  .footer-content {
+    background: #111;
+    border-bottom: 1px solid @black;
+    h4 {
+      color: @grayLightest;
+    }
+    .links a {
+      color: @linkColor;
+      &:hover { color: @linkColorHover; }
+    }
+  }
+
+  // Nav
+  .footer-nav {
+    color: darken(@grayLight, 5%);
+  }
+  // Links
+  .footer-nav li > a {
+    color: @grayLight; 
+  }
+  // Hover state for nav
+  .footer-nav:hover {
+    li > a {
+      color: lighten(@grayLighter, 15%); // Hover over nav section
+    }
+    li > a:hover {
+      color: @linkColorHover; // Hover over links
+    }
+  }
+  // States
+  .footer-nav li.active > a,
+  .footer-nav li.active > a:hover {
+    color: @grayLightest;
+  }
+  .copyright {
+    color: @gray;
+  }
+}

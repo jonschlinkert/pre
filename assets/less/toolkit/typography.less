@@ -1,0 +1,132 @@
+//
+// Typography Effects
+// --------------------------------------------------
+
+
+// PULL QUOTES
+// -----------
+
+// Used in articles, usually with a larger or distinctive typeface to stand out
+.pull-quote { 
+  float: right;
+  font-size: 1.5em;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font: italic bold #777; 
+  width: 300px;
+  margin: 8px;
+}
+// block quote
+// lift-out
+// excerpt
+
+
+
+// EMBOSSED TEXT
+// -------------
+
+.text-embossed {
+  color: darken(@bodyBackground, 10%);
+  text-shadow: -1px -1px 0 @white, 1px 1px @grayLight;
+}
+.text-embossed2 {
+  color: rgba(0,0,0,.1); // transparency to allow background to come through
+  text-shadow: -1px -1px 2px rgba(255,255,255,.6), 1px 1px 1px rgba(0,0,0,.6);
+}
+.text-inset {
+
+}
+.text-letterpress {
+  color: darken(@grayLighter, 15%);
+  text-shadow: -1px -1px -1px rgba(0, 0, 0, 0.5);
+}
+// not tested
+.text-letterpress2 { 
+  text-shadow: 0px 1px 1px #4d4d4d; 
+  color: #222; 
+  font-size: 80px;
+  font-family: 'LeagueGothicRegular'; 
+}
+.text-letterpress-medium {
+  color: @gray;
+  text-shadow: 1px 1px 1px rgba(255,255,255,.75);
+}
+
+.text-engraved {
+
+}
+.text-etched {
+
+}
+.text-extrude {
+  @extrudedTextColor: @grayDark; // set this local variable only to change extruded text color  
+  color: lighten(@extrudedTextColor, 50%);
+  text-shadow: 2px 1px lighten(@extrudedTextColor, 15%), 3px 2px lighten(@extrudedTextColor, 12%), 4px 3px lighten(@extrudedTextColor, 9%), 5px 4px lighten(@extrudedTextColor, 6%), 6px 5px lighten(@extrudedTextColor, 3%); filter: Shadow(Color=#000000, strength=5, direction=135);
+}
+.text-glow {
+  color: @textColor;
+  text-shadow: 0 0 0.5em lighten(@linkColor, 20%), 0 0 0.3em lighten(@linkColor, 30%);
+}
+
+
+// Credit: http://www.midwinter-dg.com/blog_demos/css-text-shadows/
+// Dark background (not tested)
+.text-citylights { 
+  color: #fff; 
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff2d95, 0 0 30px #ff2d95, 0 0 40px #ff2d95, 0 0 50px #ff2d95, 0 0 75px #ff2d95; 
+  letter-spacing: 5px; 
+  font-size: 80px;
+  font-family: 'MisoRegular'; 
+}
+// Credit: http://www.midwinter-dg.com/blog_demos/css-text-shadows/
+// not tested
+.text-3d {
+  color: @grayLighter;
+  text-shadow: 0px 1px 0px #999, 0px 2px 0px #888, 0px 3px 0px #777, 0px 4px 0px #666, 0px 5px 0px #555, 0px 6px 0px #444, 0px 7px 0px #333, 0px 8px 7px #001135;
+}
+// Credit: http://www.midwinter-dg.com/blog_demos/css-text-shadows/
+// Dark background (not tested)
+.text-retro {
+ color: #d7ceb2; 
+ text-shadow: 3px 3px 0px #2c2e38, 5px 5px 0px #5c5f72; font: 80px;
+ font-family: 'BazarMedium'; 
+ letter-spacing: 10px; 
+}
+
+
+// INVERSE STYLES
+// --------------
+// Use with dark backgrounds
+
+.panel-inverse,
+.inverse-section {
+
+  .text-embossed {
+    color: lighten(@inverseBackground, 3%); // #3A3B3C
+    text-shadow: -1px -1px 0 lighten(@inverseBackground, 12%), 1px 1px @black;
+  }
+  .text-inset {
+
+  }
+  .text-letterpress {
+    color: @black;
+    text-shadow: 1px 1px 1px rgba(97,97,97,.75);
+  }
+  .text-engraved {
+
+  }
+  .text-etched {
+
+  }
+  .text-extrude {
+
+  }
+  .text-3d {
+    color: @white;
+  }
+  .text-glow {
+    color: @white;
+    text-shadow: 0 0 0.5em, 0 0 0.3em;
+  }
+}
+
+

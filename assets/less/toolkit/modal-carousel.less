@@ -1,0 +1,93 @@
+//
+// Carousel Extensions
+// --------------------------------------------------
+
+
+
+.modal-carousel {
+  .user-select(none);
+
+  // Modal inner
+  .modal-inner {
+    display: block;
+    .border-radius(6px);
+    overflow: hidden;
+  }
+  .modal-header {
+    text-align: center;
+    padding: 4px 15px;
+    background: @white;
+    cursor: move;
+    &:active {
+      cursor: move;
+    }
+    // Heading
+    h4 {
+      font-size: @baseFontSize + 2;
+    }
+    .close {
+      margin-top: 6px;
+      font-size: 26px;
+    }
+  }
+  .modal-body {
+    padding: 0;
+    .carousel {
+      margin: 0;
+    }
+  }
+  .modal-footer {
+    position: relative;
+    padding: 8px 15px;
+  }
+}
+
+
+
+
+// Left/right controls for nav
+// ---------------------------
+
+.modal-carousel .carousel-control {
+  position: absolute;
+  top: 10px;
+  float: left;
+  margin: 0;
+  font-size: 36px;
+  width: 30px;
+  height: 30px;
+  color: @white;
+  line-height: 30px;
+  text-align: center;
+  background: @grayDarker;
+  border: none;
+  .border-radius(30px);
+  .box-shadow(0 0 0 4px rgba(0,0,0,.15);
+  .opacity(75);
+
+  // Carets inside paddles
+  .icon-chevron-left, 
+  .icon-chevron-right {
+    color: @white;
+    font-size: 22px;
+    margin-left: -2px;
+    vertical-align: middle;
+  }
+  .icon-chevron-right {
+    margin-left: 2px;
+  }
+
+  // Reposition the right one
+  &.right {
+    float: right;
+  }
+
+  // Hover state
+  &:hover {
+    color: @white;
+    text-decoration: none;
+    background: @linkColor;
+    .opacity(60);
+  }
+}
+

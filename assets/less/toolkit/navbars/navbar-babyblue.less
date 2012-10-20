@@ -1,0 +1,112 @@
+//
+// Navbar Baby Blue
+// --------------------------------------------------
+
+// Navbar variables
+// -------------------------
+@navbarBabyblueBackgroundHighlight:       #7AC2D8;
+@navbarBabyblueBackground:                darken(@navbarBabyblueBackgroundHighlight, 10%);
+@navbarBabyblueBorder:                    darken(@navbarBabyblueBackground, 15%);
+
+@navbarBabyblueText:                      #777;
+@navbarBabyblueLinkColor:                 #777;
+@navbarBabyblueLinkColorHover:            @white;
+@navbarBabyblueLinkColorActive:           @gray;
+@navbarBabyblueLinkBackgroundHover:       transparent;
+@navbarBabyblueLinkBackgroundActive:      darken(@navbarBabyblueBackground, 5%);
+
+@navbarBabyblueBrandColor:                @navbarLinkColor;
+
+// Search
+@navbarBabyblueSearchBackground:          darken(@navbarBabyblueBackground, 10%);
+@navbarBabyblueSearchBackgroundFocus:     @white;
+@navbarBabyblueSearchBorder:              @navbarBabyblueBackground;
+@navbarBabyblueSearchPlaceholderColor:    #ccc;
+
+
+// Blue background navbar, 
+// this is an example for how to customize navbars
+// for your own project
+.navbar-babyblue {
+  .navbar-inner {
+    #gradient > .vertical(@navbarBabyblueBackgroundHighlight, @navbarBabyblueBackground);
+    border: none;
+    .box-shadow(0 2px 7px rgba(0,0,0,.15);
+    .border-radius(6px);
+  }
+  .brand,
+  .nav > li > a {
+    font-weight: bold;
+    color: rgba(255,255,255,.95);
+    text-shadow: 0 -1px 0 rgba(0,0,0,.1);
+    .icon-chevron-down {
+      font-size: 14px;
+    }
+  }
+  .nav > li {
+    line-height: 18px;
+  }
+  .brand:hover {
+    color: @navbarBabyblueLinkColorHover;
+    text-shadow: 0 0 12px rgba(255,255,255,.5);
+  }
+  .nav > li > a:hover {
+    color: @navbarBabyblueLinkColorHover;
+    background: rgba(0,0,0,.05);
+  }
+  .nav > li > a:active, 
+  .nav > .active > a, 
+  .nav > .active > a:hover, 
+  .nav > .active > a:focus,
+  .nav li.dropdown.open > .dropdown-toggle, 
+  .nav li.dropdown.active > .dropdown-toggle, 
+  .nav li.dropdown.open.active > .dropdown-toggle {
+    color: @navbarBabyblueLinkColorHover;
+    background: rgba(0,0,0,.15);
+  }
+  .dropdown-menu {
+    margin: 0;
+    .border-radius(0);
+  }
+  .dropdown-menu:before,
+  .dropdown-menu:after {
+    border: none !important;
+  }
+  .dropdown-menu li > a:hover, 
+  .dropdown-menu li > a:focus, 
+  .dropdown-submenu:hover > a {
+    background-image: none;
+    background: @navbarBabyblueBackground;
+  }
+
+  &.navbar-small {
+    .navbar-inner {
+      .border-radius(4px);
+    }
+  }
+}
+
+// Search  
+.navbar-babyblue {
+  .navbar-search {
+    .search-query {
+      background-color: @navbarBabyblueSearchBackground;
+      border: none;
+      &:hover,
+      &:focus {
+        background-color: @navbarBabyblueBackground;
+        + .search-button,
+        + .search-button:hover {
+          color: #2E86A2;
+        }
+      }
+      &:hover {
+        background-color: lighten(@navbarBabyblueSearchBackground, 10%);
+      }
+      &:focus {
+        background-color: @white;
+        border-color: darken(@navbarBabyblueSearchBackground, 5%);
+      }
+    }
+  }
+}
