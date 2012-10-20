@@ -24,8 +24,7 @@
 // Theme Colors
 // ------------------------------------
 
-
-@themeColor:               @blueMed;
+@themeColor:               @brickRed;
 
 @baseColor:                @themeColor; 
 @altColor:                 darken(saturate(@spinColor, 15%), 5%); 
@@ -40,7 +39,6 @@
 @spinColorTenth:           spin(@baseColor, 18%);
 @spinColorQuarter:         spin(@baseColor, 45%);
 @spinColorHalf:            spin(@baseColor, 90%);
-
 
 // Theme Base Colors
 // ------------------------------------------
@@ -80,6 +78,7 @@
 @yellowFaded:           #FFE169;
 @orangeMuted:           #E14829;
 @redMuted:              #D52C27;
+@brickRed:              #CC352E;
 
 
 
@@ -102,3 +101,32 @@
 
 // Footer
 @footerBackgroundColor:           @grayDark; // use this variable instead of @grayDark or another direct color, since other footer colors build off of this
+
+
+
+// Tile Variables
+@tileBackground:             @white; // depracated
+@tileBackgroundColor:        @white;
+@tileArrowWidth:             25px;
+@tileBorderRadius:           5px;
+
+      
+
+// Panel Variables
+@panelBackgroundColor:        @white;
+@panelBackground:             #fff; // deprectated
+@panelArrowWidth:             25px;
+@panelArrowColor:             #323334;
+
+// Inverse
+@panelBackgroundColorInverse: @inverseBackground;
+@inversePanelBackground:      @inverseBackground; // deprecated
+
+
+// Panel Variables
+@effectBackgroundLight:        #fbfcfd;
+@effectBackground:             #fbfcfd;
+
+// Inverse
+@effectBackgroundInverse:      @inverseBackground;
+

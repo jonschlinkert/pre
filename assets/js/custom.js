@@ -1,17 +1,28 @@
-var metas = document.getElementsByTagName('meta');
-var i;
-if (navigator.userAgent.match(/iPhone/i)) {
-  for (i=0; i<metas.length; i++) {
-    if (metas[i].name == "viewport") {
-      metas[i].content = "width=device-width, minimum-scale=1.0, maximum-scale=1.0";
-    }
+// Parallax
+// --------------------------------------
+
+// Calcualte the home banner parallax scrolling
+  function scrollBanner() {
+    //Get the scoll position of the page
+    scrollPos = jQuery(this).scrollTop();
+
+    //Scroll and fade out the banner text
+    jQuery('.hero-title').css({
+      'margin-top' : -(scrollPos/3)+"px",
+      'opacity' : 1-(scrollPos/300)
+    });
+	
+    //Scroll the background of the banner
+    jQuery('#homeBanner').css({
+      'background-position' : 'center ' + (-scrollPos/8)+"px"
+    });    
   }
-  document.addEventListener("gesturestart", gestureStart, false);
-}
-function gestureStart() {
-  for (i=0; i<metas.length; i++) {
-    if (metas[i].name == "viewport") {
-      metas[i].content = "width=device-width, minimum-scale=0.25, maximum-scale=1.6";
-    }
-  }
-}
+
+
+// Initialize
+// --------------------------------------
+	
+jQuery.noConflict();
+jQuery(document).ready(function(){
+	jQuery(".hero-title").fitText(1.7, { minFontSize: '45px', maxFontSize: '180px' });	
+});

@@ -43,7 +43,7 @@ module.exports = function(grunt) {
     },
 
     less: {
-      dist: {
+      full: {
         options: {
           paths: ['assets','assets/less','assets/less/bootstrap','assets/less/toolkit'],
           yuicompress: false,
@@ -52,6 +52,18 @@ module.exports = function(grunt) {
         files: {
           "assets/css/project-responsive-unlinted.css": ['assets/project-responsive.less'], // responsive
           "assets/css/project-unlinted.css": ['assets/project.less'], // standard
+          "assets/css/project-docs.css": ['assets/project-docs.less'] // docs
+        }
+      },
+      dist: {
+        options: {
+          paths: ['assets','assets/less','assets/less/bootstrap','assets/less/toolkit'],
+          yuicompress: false,
+          compress: false
+        },
+        files: {
+          "assets/css/project-responsive-unlinted.css": ['assets/project-responsive.less'], // responsive
+          "assets/css/project.css": ['assets/project.less'], // standard
           "assets/css/project-docs.css": ['assets/project-docs.less'] // docs
         }
       }
@@ -94,11 +106,14 @@ module.exports = function(grunt) {
       }
     },
     concat: {
-      'assets/js/main.js' : [
-        'assets/js/vendor/bootstrap/bootstrap.js',
-        'assets/js/vendor/bootstrap/application.js',
-        'assets/js/vendor/bootstrap/google-code-prettify/prettify.js',
-        'assets/js/vendor/strftime.js'
+      'assets/js/plugins.js' : [
+        'assets/js/plugins/bootstrap/application.js',
+       // 'assets/js/plugins/jquery.easing.1.3.js',
+        'assets/js/plugins/jquery.fittext.js',
+        'assets/js/plugins/bootstrap/google-code-prettify/prettify.js',
+       // 'assets/js/plugins/strftime.js',
+        'assets/js/plugins/holder.js'
+       // 'assets/js/plugins/github.js'
       ]
     },
 /*
@@ -110,7 +125,7 @@ module.exports = function(grunt) {
 */
     // Minify scripts
     min: {
-      'assets/js/main.js' : ['assets/js/main.js']
+      'assets/js/plugins.min.js' : ['assets/js/plugins.js']
     },
 
     lint: {
@@ -120,7 +135,7 @@ module.exports = function(grunt) {
     watch: {
       dist: {
         files: ['assets/**/*.*','docs/**/*.*'], 
-        tasks: 'append less recess concat'
+        tasks: 'append less recess:responsive concat'
       },
       scripts: {
         files: ['assets/**/*.js'],
@@ -137,7 +152,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib');
 
   // Default task.
-  grunt.registerTask('default', 'append less recess concat watch:dist');
+  grunt.registerTask('default', 'append less recess:responsive concat min watch:dist');
+  grunt.registerTask('full', 'append less recess concat watch:dist');
 
 };
 
