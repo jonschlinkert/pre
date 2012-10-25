@@ -45,7 +45,7 @@ module.exports = function(grunt) {
     less: {
       full: {
         options: {
-          paths: ['assets','assets/less','assets/less/bootstrap','assets/less/toolkit'],
+          paths: ['assets','assets/less','assets/less/bootstrap','assets/less/toolkit','assets/less/extensions'],
           yuicompress: false,
           compress: false
         },
@@ -84,7 +84,7 @@ module.exports = function(grunt) {
           prefixWhitespace: true,      // Adds whitespace prefix to line up vender prefixed properties
           strictPropertyOrder: true,   // Complains if not strict property order
           stripColors: true,           // Strip colors from the Terminal output
-          zeroUnits: true              // Doesn't complain if you add units to values of 0 
+          zeroUnits: true              // Doesn't complain if you add units to values of 0
         }
       },
       responsive: {
@@ -101,7 +101,7 @@ module.exports = function(grunt) {
           prefixWhitespace: true,      // Adds whitespace prefix to line up vender prefixed properties
           strictPropertyOrder: true,   // Complains if not strict property order
           stripColors: true,           // Strip colors from the Terminal output
-          zeroUnits: true              // Doesn't complain if you add units to values of 0 
+          zeroUnits: true              // Doesn't complain if you add units to values of 0
         }
       }
     },
@@ -116,13 +116,7 @@ module.exports = function(grunt) {
        // 'assets/js/plugins/github.js'
       ]
     },
-/*
-    // Optimize images
-    jpgmin: {
-      src: ['assets/img/stock/*.jpg'],
-      dest: 'assets/img/optimized'
-    },
-*/
+
     // Minify scripts
     min: {
       'assets/js/plugins.min.js' : ['assets/js/plugins.js']
@@ -132,9 +126,18 @@ module.exports = function(grunt) {
       files: ['assets/js/*.js']
     },
 
+
+/*
+    // Optimize images
+    jpgmin: {
+      src: ['assets/img/stock/*.jpg'],
+      dest: 'assets/img/optimized'
+    },
+*/
+
     watch: {
       dist: {
-        files: ['assets/**/*.*','docs/**/*.*'], 
+        files: ['assets/**/*.*','docs/**/*.*'],
         tasks: 'append less recess:responsive concat'
       },
       scripts: {
@@ -142,7 +145,7 @@ module.exports = function(grunt) {
         tasks: 'lint test'
       },
       less: {
-        files: ['assets/**/*.less'], 
+        files: ['assets/**/*.less'],
         tasks: 'less recess'
       }
     }
