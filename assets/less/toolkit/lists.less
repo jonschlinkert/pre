@@ -1,0 +1,140 @@
+//
+// List Styles
+// --------------------------------------------------
+
+ul.blank,
+ul.space,
+ul.line,
+ul.check,
+ul.zebra {
+  list-style: none;
+  margin: 0;
+  padding: 0
+}
+ul.space li {
+  margin-top: 15px
+}
+ul.space li:first-child {
+  margin-top: 0
+}
+ul.line > li {
+  margin-top: 5px;
+  padding-top: 5px
+}
+ul.line > li:first-child {
+  margin-top: 0;
+  padding-top: 0
+}
+ul.check > li {
+  margin-top: 5px
+}
+ul.check > li:first-child {
+  margin-top: 0
+}
+ul.zebra > li {
+  padding: 5px
+}
+ul.line > li > a:first-child,
+ul.check > li > a:first-child {
+  display: block
+}
+
+
+// List Styles
+// ---------------------------
+
+ul.alpha-list,
+ul.bullet-list,
+ul.decimal-list,
+ul.bullets-square,
+ul.bullets-circle {
+  list-style-type: disc; // bullets, override on decimal and alpha
+  padding-left: 1.5em
+}
+ul.alpha-list {
+  list-style-type: lower-alpha;
+}
+ul.decimal-list {
+  list-style-type: decimal;
+}
+// Bullet Styles
+ul.bullets-square {
+  list-style-type: square;
+}
+ul.bullets-circle {
+  list-style-type: circle;
+}
+// Nested lists
+ul.alpha-square > li ul,
+ul.decimal-square > li ul,
+ul.bullets-square > li ul,
+ul.circle-bullets > li ul {
+  list-style: inherit;
+}
+
+// Glyph List (icons)
+ul.glyph-list > li {
+  border-left: 1px dotted @grayLight; // only add a left border between links
+}
+// Dotted left border
+ul.bordered-list > li + li {
+  border-left: 1px dotted @grayLight; // only add a left border between links
+}
+
+
+
+
+// Bullets and Dashes
+// ------------------------------------
+
+// Add "emdash" after element
+.dash:after {
+  content: "\2014";
+  color: @grayLight;
+  display: inline-block;
+  width: 1em;
+}
+.inline-dashes li + li:before {
+  content: "\2014";
+  font-size: 10px;
+  color: @grayDark;
+  display: inline-block;
+  width: 1.4em;
+  vertical-align: top;
+}
+
+
+// Add "emdash" after element
+.verical-bar:after {
+  content: "\007C";
+  color: @grayDark;
+  display: inline-block;
+  width: 1em;
+}
+.verical-bars li + li:before {
+  content: "\007C";
+  font-size: 10px;
+  color: @grayDark;
+  display: inline-block;
+  width: 1.4em;
+  vertical-align: top;
+}
+
+
+// Add bullet after element
+.bullet:after {
+  content: "\2022";
+  font-size: 10px;
+  color: @grayLight;
+  display: inline-block;
+  vertical-align: top;
+  width: 1em;
+}
+.inline-bullets li + li:before {
+  content: "\2022";
+  font-size: 10px;
+  color: @grayDark;
+  display: inline-block;
+  width: 0.9em;
+  vertical-align: top;
+}

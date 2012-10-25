@@ -1,0 +1,74 @@
+//
+// Modal Tabs
+// --------------------------------------------------
+
+
+// Modal
+
+
+.tabbed-modal {
+
+  // Prevent scrollbar, remove if necessary for your project
+  .nav-tabs,
+  .modal-body {
+    overflow: visible;
+    zoom: 1;
+  }
+
+  // Navigation and links
+  // ----------------------------------
+
+  // Reset margin, border, and border-radius
+  .tabs-bar,
+  .tabs-bar .nav-tabs > li:first-child > a {
+    margin-bottom: 0;    
+    border: none;
+    .border-radius(0); // remove border radius inside modal-body
+  }
+  .tabs-left {
+    .nav-tabs > li > a,
+    .nav-tabs > li > a:hover {
+      #gradient > .horizontal-three-stops(fade(#f5f5f5, 0%), 0%, fade(#f5f5f5, 0%), 90%, fade(#000, 5%), 100% ); // On inactive tabs, create an inset appearance on the right side
+    }
+  }
+  .tabs-right {
+    .nav-tabs > li > a,
+    .nav-tabs > li > a:hover {
+      #gradient > .horizontal-three-stops(fade(#000, 5%), 0% , fade(#f5f5f5, 0%), 10%, fade(#f5f5f5, 0%), 100%); // On inactive tabs, create an inset appearance on the right side
+    }
+  }
+  .tabs-left,
+  .tabs-right {
+    overflow: hidden; // hide bleedover from box-shadows
+    .nav-tabs > li > a,
+    .nav-tabs > li > a:hover {
+      font-size: @baseFontSize;
+      color: #777;
+      text-shadow: 0 1px 0 @white;
+      .box-shadow(0 1px 0 rgba(255,255,255,.6), 0 -1px 0 #c5c5c5); // add the appearance of a white border on the top of link items and a gray border on the bottom
+    }
+    // Active links
+    .nav-tabs > li.active > a {
+      background: none;
+      background-color: @white;
+    }
+    // Bottom link
+    .nav-tabs > li:last-child > a {
+      margin-bottom: 0;
+    }
+  }
+  .tabs-left .tab-pane,
+  .tabs-right .tab-pane {
+    padding: 12px 20px;
+  }
+  // Body
+  .modal-body {
+    padding: 0;
+    overflow: hidden;
+  }
+  // Footer
+  .modal-footer {
+    padding: 8px 10px; // decrease padding to tighten up footer
+  }
+}
+

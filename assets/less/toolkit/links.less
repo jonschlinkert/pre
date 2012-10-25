@@ -1,0 +1,233 @@
+//
+// Links
+// --------------------------------------------------
+
+
+
+
+// Links Variables
+// -------------------------
+
+@linksComponentColor:       @linkColor;
+
+
+
+.links {
+   // link
+      // link-disabled
+      // link-active
+      // link-selected
+  // comments 
+      // comments-list
+      // comments-grid
+  // Link Types
+      // download-link(s)
+      // external-link(s)
+  // nav-links, nav-link
+  // 
+}
+
+.list {
+   // list
+      // list-muted
+      // list-inverse
+
+      // list-header
+      // list-section
+      // list-footer
+
+      // list-inline
+      // action-list
+      // link-list
+      // glyph-list
+}
+
+
+// Base
+// -------------------
+
+.links {
+  margin-bottom: @baseLineHeight;
+  margin-left: 0;
+  list-style: none;
+  .clearfix();
+}
+.links > li > a {
+  font-weight: normal;
+  display: inline-block;
+}
+.links > li > a:hover {
+  text-decoration: none;
+}
+.links > li > a:hover > span {
+  text-decoration: underline;
+}
+
+
+// Colors
+// ----------------------------
+.link-primary {
+  // current set to default link colors. you can modify this for your theme
+}
+.link-info {
+  color: @infoText;
+  &:hover {
+    color: lighten(@infoText, 15%);
+  }
+}
+.link-warning {
+  color: @warningText;
+  &:hover {
+    color: lighten(@warningText, 15%);
+  }
+}
+.link-error,
+.link-important {
+  color: @errorText;
+  &:hover {
+    color: lighten(@errorText, 15%);
+  }
+}
+.link-success {
+  color: @successText;
+  &:hover {
+    color: lighten(@successText, 15%);
+  }
+}
+.link-inverse {
+  color: @gray;
+  &:hover {
+    color: @grayDark;
+  }
+}
+// Inverse background
+[class*="inverse"] {
+  .link-inverse {
+    color: @grayDark;
+  }
+}
+
+// Sections
+// ------------------------------------------------
+
+// Headers for link lists
+.links .links-header {
+  margin: 0 0 4px;
+  font-size: @baseFontSize - 1px;
+  font-weight: bold;
+  color: @grayDarker;
+  border-bottom: 1px solid lighten(@grayLight, 5%);
+}
+// Space them out when they follow another list item
+.link-section,  
+.links li + .links-header {
+  margin-top: @baseLineHeight;
+}
+// View All link 
+.links-header > .view-all {
+  font-size: @baseFontSize - 2px;
+  font-weight: 400;
+  margin-top: -2px;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+
+// Modifiers
+// ------------------------------------------------
+
+// Link List (vertically aligned links)
+.links-list {
+  margin-bottom: 0;
+}
+.links-list > li a {
+  padding: 1px 0;
+  line-height: 1.5;
+}
+.links-list > li a:hover {
+  text-decoration: underline;
+}
+// make icons and images line up 
+.links-list img,
+.links-list [class^="icon-"] {
+  margin-right: 3px;
+  margin-top: 1px; 
+}
+
+// Divider (basically an hr) within the link list
+.links .divider,
+.links-list .divider {
+  .nav-divider();
+  margin: 6px 0 4px;
+  width: 65%;
+}
+
+
+
+
+// Inline Links (horizontally aligned links)
+// -----------------------------------------
+
+.links-inline {
+  margin-bottom: @baseLineHeight / 2;
+}
+.links-inline > li {
+  position: relative;
+  display: inline-block;
+  .ie7-inline-block();
+  vertical-align: middle;
+  line-height: 1;
+  padding-right: @baseLineHeight / 2;
+}
+.links-inline > li + li {
+  padding-left: @baseLineHeight / 2;
+}
+// Adjust vertical alignment for nav-pills 
+.links-inline .nav-pills > li > a { // remove margin specifically from links
+  margin-bottom: -15px;
+}
+.links-inline > .links-title {
+  font-weight: bold;
+  padding: 0;
+  border: none;
+}
+// Hover
+.links-inline > li > a:hover {
+  text-decoration: underline;
+}
+// Active links
+.links-inline > li.active > a {
+  color: @linkColorHover;
+  text-decoration: none;
+}
+// Disabled
+.links-inline > li.disabled > a,
+.links-inline > li.disabled > a:hover {
+  color: @grayLight;
+}
+
+// Components
+// ----------
+
+// Icons
+.links-inline [class*=" icon-"],
+.links-inline [class^="icon-"] {
+  margin-right: 3px;
+  margin-top: 1px; 
+}
+
+
+.download-links {
+  white-space: nowrap
+}
+
+
+// Jump links (for link sections on master-details)
+.jump-links .links {
+  text-align: center;
+  margin: -27px auto 9px;
+}
+.jump-links .links > li > a {
+  color: @linkColor;
+}

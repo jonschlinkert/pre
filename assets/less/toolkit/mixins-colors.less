@@ -1,0 +1,91 @@
+//
+// Color Function Mixins
+// --------------------------------
+
+
+
+// Switch
+// --------------------------------------------------
+
+
+#switch {
+  // Text Color
+  // ----------------------------------------
+
+  // Dark Background
+  .textColor (@baseColor) when (lightness(@baseColor) >= 66%) {
+    color: black; 
+  }
+  // Medium Background
+  .textColor (@baseColor) when (lightness(@baseColor) >= 33%) and not (lightness(@baseColor) >= 66%) { 
+    color: white; 
+  }
+  // Light Background
+  .textColor (@baseColor) when (lightness(@baseColor) < 33%) { 
+    color: white; 
+  }
+
+  // Link Color
+  // ----------------------------------------
+
+  // Dark Background
+  .linkColor (@baseColor) when (lightness(@baseColor) >= 50%) {
+    color: darken(@linkColor, 20%); 
+  }
+  // Light Background
+  .linkColor (@baseColor) when (lightness(@baseColor) < 50%) { 
+    color: @linkColor; 
+  }
+
+  // Dark Background
+  .linkColorHover (@baseColor) when (lightness(@baseColor) >= 50%) {
+    color: darken(@linkColor, 30%); 
+  }
+  // Light Background
+  .linkColorHover (@baseColor) when (lightness(@baseColor) < 50%) { 
+    color: @linkColorHover; 
+  }
+}
+
+
+
+
+
+
+// Dark Background
+.switchTextColor (@baseColor) when (lightness(@baseColor) >= 66%) {
+  color: black; 
+}
+// Medium Background
+.switchTextColor (@baseColor) when (lightness(@baseColor) >= 33%) and not (lightness(@baseColor) >= 66%) { 
+  color: white; 
+}
+// Light Background
+.switchTextColor (@baseColor) when (lightness(@baseColor) < 33%) { 
+  color: white; 
+}
+
+
+
+
+// Switch Mixin
+
+.switchDarkLight (dark, @color) {
+  color: darken(@color, 10%);
+}
+.switchDarkLight (light, @color) {
+  color: lighten(@color, 10%);
+}
+.switchDarkLight (@_, @color) {
+  display: block;
+}
+
+
+// Now run
+@switch: light; // changing this value to dark "switches" the color used by the mixin 
+
+.background-color {
+  .switchDarkLight(@switch, #888);
+}
+
+

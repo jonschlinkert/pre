@@ -1,0 +1,73 @@
+//
+// Highlights
+// --------------------------------------------------
+
+
+// Use the <mark> tag for all highlights. Example:
+// <mark class="highlight">This is highlighted text.</mark>
+
+
+// HIGHLIGHTED TEXT
+// ----------------
+
+mark {
+  background-color: @blueLight; 
+}
+
+
+// DEFAULT
+// -------
+
+.highlight:hover,
+.highlight.active {
+  background: @grayLighter; // appears as gray
+}
+
+// For highlighting tracked changes in news feeds 
+.highlight-yellow:hover,
+.highlight-yellow.active {
+  background: @yellowLight;
+}
+
+
+// SEMANTIC COLORS
+// ---------------
+.highlight-warning {
+    background: @yellowLight;
+}
+.highlight-info {
+    background: @blueLight;
+}
+
+
+// TRACKED CHANGES
+// ---------------
+
+.tracked-change { 
+  background-color: @grayLightest; 
+
+  // Hover state
+  &:hover { 
+    background-color: 
+    @blueLight; 
+  }
+
+  // Mini Resets
+  del { text-decoration: none; } // Remove strikethrough
+  ins { text-decoration: none; } // Remove underline
+}
+
+
+// SELECTED TEXT
+// -------------
+
+::selection { // Safari and Opera 
+  color: @white;
+  text-shadow: none;
+  background: @spinColor;
+}
+::-moz-selection { // Firefox 
+  color: @white;
+  text-shadow: none;
+  background: @spinColor;
+}

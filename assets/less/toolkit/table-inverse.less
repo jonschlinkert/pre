@@ -1,0 +1,119 @@
+//
+// Inverse Tables
+// --------------------------------------------------
+// Inverse background
+.panel-inverse,
+.table-inverse,
+.inverse-section,
+.inverse-background {
+  // Lighten default hover color on links
+  ~ a:hover {
+    color: @inverseLinkColorHover;
+  }
+}
+
+// BASELINE STYLES
+// ---------------
+
+.table-inverse {
+  // Cells
+  th, td {
+    border-top: none;
+    box-shadow: none;
+  }
+  tr + tr th, 
+  tr + tr td {
+    border-top: 1px solid @inverseTableBorder;
+    .box-shadow(inset 0 1px 0 rgba(255,255,255,.04));
+  }
+  tbody + tbody {
+    border-top: 2px solid @inverseTableBorder;
+  }
+}
+// Table header and footer
+.table-inverse {
+  .thead-inverse th,
+  .tfoot-inverse th {
+    background: rgba(255,255,255,.1);
+    border-top: 1px solid rgba(255,255,255,.02) !important; // !important to override specificity. very light top highlight to bring it forward
+    border-bottom: 1px solid @black;
+  }
+}
+
+// BORDERED VERSION
+// ----------------
+
+.table-bordered.table-inverse {
+  border-color: @inverseTableBorder;
+  border-top-width: 2px;
+  border-bottom-width: 2px;
+  .box-shadow(0 0 0 1px rgba(255,255,255,.05);
+  th, td {
+    border-left-color: @inverseTableBorder;
+  }
+}
+
+
+// ZEBRA-STRIPING
+// --------------
+
+// Default zebra-stripe styles (alternating gray and transparent backgrounds)
+.table-striped.table-inverse {
+  tbody {
+    tr:nth-child(odd) td,
+    tr:nth-child(odd) th {
+      background-color: @inverseTableBackgroundAccent;
+    }
+  }
+}
+
+
+// HOVER EFFECT
+// ------------
+// Placed here since it has to come after the potential zebra striping
+.table-hover.table-inverse {
+  tbody {
+    tr:hover td,
+    tr:hover th {
+      background-color: @inverseTableBackgroundHover;
+    }
+  }
+}
+
+
+// TABLE BACKGROUNDS
+// -----------------
+// Exact selectors below required to override .table-striped
+
+.table-inverse {
+  .table tbody tr {
+    &.success td {
+      background-color: @inverseSuccessBackground;
+    }
+    &.error td {
+      background-color: @inverseErrorBackground;
+    }
+    &.warning td {
+      background-color: @inverseWarningBackground;
+    }
+    &.info td {
+      background-color: @inverseInfoBackground;
+    }
+  }
+  // Hover states for .table-hover
+  .table-hover tbody tr {
+    &.success:hover td {
+      background-color: darken(@inverseSuccessBackground, 5%);
+    }
+    &.error:hover td {
+      background-color: darken(@inverseErrorBackground, 5%);
+    }
+    &.warning:hover td {
+      background-color: darken(@inverseWarningBackground, 5%);
+    }
+    &.info:hover td {
+      background-color: darken(@inverseInfoBackground, 5%);
+    }
+  }
+}
+

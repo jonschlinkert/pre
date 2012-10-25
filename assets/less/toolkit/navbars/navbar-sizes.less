@@ -1,0 +1,100 @@
+//
+// Navbar Sizes
+// --------------------------------------------------
+
+
+// Navbar Size Variables
+// -------------------------------------
+
+// Only adjust these sizes!!! Let meth and variables do the rest ;)
+@navbarHeightTall:    @navbarHeight + 36;
+@navbarHeightLarge:   @navbarHeight + 14;
+@navbarHeightSmall:   @navbarHeight - 8;
+@navbarHeightMini: 	  @navbarHeight - 14;
+
+
+
+// Tall
+.navbar-tall {
+  .navbar-inner {
+    min-height: @navbarHeightTall;
+  }
+  .brand {
+    padding: ((@navbarHeightTall - @baseLineHeight) / 2) 20px ((@navbarHeightTall - @baseLineHeight) / 2);
+  }
+  .nav > li > a {
+    padding: ((@navbarHeightTall - @baseLineHeight) / 2) 15px ((@navbarHeightTall - @baseLineHeight) / 2);
+  }
+} 
+
+// Large
+.navbar-large {
+  .navbar-inner {
+ 		min-height: @navbarHeightLarge;
+  }
+	.brand {
+  	padding: ((@navbarHeightLarge - @baseLineHeight) / 2) 20px ((@navbarHeightLarge - @baseLineHeight) / 2);
+	}
+  .nav > li > a {
+  	padding: ((@navbarHeightLarge - @baseLineHeight) / 2) 15px ((@navbarHeightLarge - @baseLineHeight) / 2);
+  }
+  .navbar-search {
+    margin-top: 12px;
+  }
+  .nav > li > a [class^="icon-"], 
+  .nav > li > a [class*=" icon-"] {
+    font-size: 22px;
+    vertical-align: text-top;
+  }
+  .navbar-search {
+    .search-query {
+      padding: 5px 14px;
+      margin-top: 1px;
+      border: none;
+      .border-radius(24px);
+    }
+  }
+}	
+
+// Small
+.navbar-small {
+  .navbar-inner {
+ 		min-height: @navbarHeightSmall;
+  }
+ 	.brand {
+		font-size: @baseFontSize + 3;
+  	padding: ((@navbarHeightSmall - @baseLineHeight) / 2) 15px ((@navbarHeightSmall - @baseLineHeight) / 2);
+	}
+  .nav > li > a {
+    font-size: @baseFontSize;
+  	padding: ((@navbarHeightSmall - @baseLineHeight) / 2) 15px ((@navbarHeightSmall - @baseLineHeight) / 2);
+  }
+  .navbar-search {
+    margin-top: 0;
+    .search-query {
+      padding: 3px 14px;
+      margin-top: 3px;
+      border: none;
+    }
+  }
+}
+
+// Mini
+.navbar-mini {
+	.navbar-inner {
+ 		min-height: @navbarHeightMini;
+  }
+	.brand {
+		font-size: @baseFontSize;
+  	padding: ((@navbarHeightMini - @baseLineHeight) / 2) 15px ((@navbarHeightMini - @baseLineHeight) / 2);
+	}
+  .nav > li > a {
+    font-size: @baseFontSize - 1;
+  	padding: ((@navbarHeightMini - @baseLineHeight) / 2) 15px ((@navbarHeightMini - @baseLineHeight) / 2);
+  }
+}
+
+// Bordered Nav Links
+.navbar.nav-bordered .nav > li > a {
+  border-left: 1px solid rgba(0,0,0,.1);
+}

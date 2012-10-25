@@ -1,0 +1,81 @@
+
+/* Download button */
+.masthead .btn-download {
+  padding: 19px 24px;
+  font-size: 24px;
+  font-weight: 200;
+  color: @white; /* redeclare to override the `.jumbotron a` */
+  text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+  border: 0;
+  .border-radius(6px);
+  .box-shadow(~"inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25)");
+  .transition(none);
+}
+.masthead .btn-download:hover {
+  color: @white; /* redeclare to override the `.jumbotron a` */
+  .box-shadow(~"inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25)");
+}
+.masthead .btn-download:active {
+  color: @white; /* redeclare to override the `.jumbotron a` */
+  .box-shadow(~"inset 0 2px 4px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.1)");
+}
+
+.masthead .btn-download:hover {
+  color: @white; /* redeclare to override the `.jumbotron a` */
+}
+.masthead .btn-download:active {
+  color: @white; /* redeclare to override the `.jumbotron a` */
+}
+
+
+/* Masthead (docs home)
+------------------------- */
+.masthead {
+  margin-bottom: (@baseLineHeight * 2);
+  text-shadow: none;
+  .clearfix();
+}
+.masthead h1 {
+  font-weight: normal;
+  font-size: 80px;
+  margin-top: 90px;
+}
+.masthead p {
+  font-size: 18px;
+}
+
+
+/* Textual links in masthead */
+.masthead-links {
+  margin: 0;
+  list-style: none;
+}
+.masthead-links li {
+  font-size: @baseFontSize;
+  color: rgba(255,255,255,.4);
+}
+
+
+
+
+/* Subhead (other pages)
+------------------------- */
+.subhead {
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+.subhead h1 {
+  font-size: 50px;
+  font-weight: 300;
+  color: darken(@linkColor, 5%);
+  line-height: 1;
+  letter-spacing: -1px;
+}
+.subhead p {
+  color: lighten(@linkColor, 30%);
+}
+
+.subhead .navbar {
+  display: none;
+}
+

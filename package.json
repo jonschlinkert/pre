@@ -1,0 +1,39 @@
+{
+    "name": "pre",
+    "type": "language",
+    "description": "A dynamic presentation language that compiles to HTML.",
+    "version": "0.2.0",
+    "keywords": ["compiles", "pre-compiler", "HTML", "LESS", "SASS", "HAML", "static HTML", "partials", "includes", "templating"],
+    "homepage": "http://pre.io",
+    "scripts": { "grunt": "assemble" },
+    "author": "Jon Schlinkert",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/sellside/pre.git"
+    },
+    "bugs": {
+        "url": "http://github.com/sellside/pre/issues"
+    },
+    "licenses": [
+        {
+            "type": "Apache-2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+    ],
+    "engines": {
+        "node": "0.8.x",
+        "npm": "1.1.x"
+    },
+    "devDependencies": {
+        "public": "https://github.com/twitter/bootstrap/tarball/2.1.2-wip",
+        "grunt": "",
+        "jshint": "0.6.1",
+        "uglify-js": "1.2.6",
+        "connect": "2.1.3",
+        "hogan": "",
+        "recess": "1.0.3",
+        "grunt-recess": "",
+        "nodeunit": "",
+        "grunt-contrib": ""
+    }
+}

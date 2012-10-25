@@ -1,0 +1,45 @@
+//
+// Taupe Footer
+// --------------------------------------------------
+
+@footertextColor:               @white;
+@footerLinkColor:               lighten(@footerBackgroundColor, 35%);
+@footerLinkColorHover:          @taupeThemeLinkColor;
+@footerBackgroundColor:         @taupeBackground;
+
+
+.footer-taupe {
+  padding: 60px 0 60px;
+  margin-top: -60px;
+  border-top: 1px solid darken(@footerBackgroundColor, 10%);
+  background-color: @footerBackgroundColor;
+}
+.footer-taupe p {
+  margin-bottom: 0;
+  color: @footertextColor;
+}
+// Links
+.footer-taupe {
+  .footer-nav {
+    li > a {
+      color: @footerLinkColorHover;
+    } 
+  }
+  .footer-links li {
+    display: inline;
+    margin-right: 10px;
+  }
+  a {
+    color: @footerLinkColor;
+  }
+  a:hover {
+    color: lighten(@footerLinkColorHover, 20%);
+  }
+  .footer .icon-up-arrow {
+    width: auto;
+  }
+  .footer-links .text-disabled > a {
+    color: lighten(@footerBackgroundColor, 10%);
+  }
+}
+

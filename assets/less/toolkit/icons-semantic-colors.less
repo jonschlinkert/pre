@@ -1,0 +1,48 @@
+// Semantic Icon Colors
+// ----------------------------
+
+
+// Primary
+.icon-primary {
+  color: @linkColor;
+  &:hover {
+    color: @linkColorHover;
+  }
+}
+// Info
+.icon-info {
+  color: @infoText;
+  &:hover {
+    color: lighten(@infoText, 15%);
+  }
+}
+// Warning
+.icon-warning {
+  color: @warningText;
+  &:hover {
+    color: lighten(@warningText, 15%);
+  }
+}
+// Error, danger and important
+.icon-error,
+.icon-danger,
+.icon-important {
+  color: @errorText;
+  &:hover {
+    color: lighten(@errorText, 15%);
+  }
+}
+// Success
+.icon-success {
+  color: @successText;
+  &:hover {
+    color: lighten(@successText, 15%);
+  }
+}
+// Inverse
+.icon-inverse {
+  color: lighen(@grayLighter, 10%);
+  &:hover {
+    color: @grayLighter;
+  }
+}

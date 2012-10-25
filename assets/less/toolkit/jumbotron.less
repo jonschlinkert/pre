@@ -1,0 +1,60 @@
+//
+// Jumbotrons
+// --------------------------------------------------
+
+
+.jumbotron {
+  color: @headingsColor;
+  padding: 30px 0 40px;
+  text-align: left;
+  background: #fcfcfc; 
+  .box-shadow(none);
+}
+.jumbotron p {
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 30px;
+  margin-bottom: 30px;
+}
+
+/* Link styles (used on .masthead-links as well) */
+.jumbotron a {
+  color: #fff;
+  color: rgba(255,255,255,.5);
+  .transition(all .2s ease-in-out);
+}
+.jumbotron .breadcrumb > li > a {
+  color: @linkColor;
+}
+.jumbotron a:hover {
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255,255,255,.25);
+}
+
+.jumbotron .breadcrumb > li > a {
+  color: @linkColor;
+}
+/* Tablet
+------------------------- */
+@media (max-width: 767px) {
+
+  /* Widen masthead and social buttons to fill body padding */
+  .jumbotron {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+}
+
+/* Landscape phones
+------------------------- */
+@media (max-width: 480px) {
+  /* Downsize the jumbotrons */
+  .jumbotron h1 {
+    font-size: 60px;
+  }
+  .jumbotron p,
+  .jumbotron .btn {
+    font-size: 20px;
+  }
+}
