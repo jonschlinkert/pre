@@ -165,8 +165,6 @@
 }
 
 
-
-
 // EMBOSSED
 // --------
 
@@ -180,81 +178,3 @@
   }
 }
 
-
-// EXTRUDED
-// --------
-.extrudeMixin(@extrudeColor: @grayLightest) {
-  .box-shadow(~"1px 1px darken(@extrudeColor, 20%), 2px 2px darken(@extrudeColor, 23%), 3px 3px darken(@extrudeColor, 26%), 4px 4px darken(@extrudeColor, 29%), 5px 5px darken(@extrudeColor, 32%)"); }
-.extrudeMixinInverse(@extrudeColor: @grayLightest) {
-  .box-shadow(~"1px 1px darken(@extrudeColor, 10%), 2px 2px darken(@extrudeColor, 12%), 3px 3px darken(@extrudeColor, 15%), 4px 4px darken(@extrudeColor, 20%), 5px 5px darken(@extrudeColor, 25%), inset -2px -2px rgba(255,255,255,.03)"); 
-  border-right-color: darken(@extrudeColor, 15%);
-  border-bottom-color: darken(@extrudeColor, 15%);
-}
-
-
-.panel-extrude {
-  .extrudeMixin(desaturate(@effectBackground, 20%));
-  .border-radius(9px); // increase border-radius to subtley exagerate extrude effect
-
-  // Inverse background
-  &.panel-inverse {
-    .extrudeMixinInverse(@inverseBackground);
-  }
-}
-
-
-// EMBOSSED
-// --------
-// a printing technique used to create raised surfaces in the converted paper stock
-.embossed {
-  color: darken(@bodyBackground, 10%);
-  .box-shadow(~"-1px -1px 0 @white, 1px 1px @grayLight");
-}
-
-.panel-embossed {
-  .box-shadow(~"-1px -1px 0 @white, 1px 1px @grayLight");
-}
-.panel-raised {
-  .box-shadow(rgba(0,0,0,.3) 0 1px 3px);
-}
-
-// LETTERPRESSED
-// -------------
-// A printing method that requires characters being impressed upon the page
-
-.panel-letterpress {
-  color: darken(@grayLighter, 15%);
-  .box-shadow(-1px -1px -1px rgba(0,0,0,.5));
-}
-.panel-letterpress-medium {
-  color: @gray;
-  .box-shadow(1px 1px 1px rgba(255,255,255,.75));
-}
-
-
-// THERMOGRAPHED
-// -------------
-// A raised print surface similar to the result of an embossing process
-
-.panel-thermograph {
-  color: rgba(0,0,0,.1); // transparency on to allow background to come through. results in a "rounder" appearance than embossed text
-  .box-shadow(~"-1px -1px 2px rgba(255,255,255,.6), 1px 1px 1px rgba(0,0,0,.6)");
-}
-
-
-// ENGRAVED
-// --------
-// A process that requires a design to be cut into a plate made of a relatively hard material
-.panel-engraved {
-
-}
-.panel-etched {
-
-}
-.panel-beveled {
-
-}
-.panel-glow {
-  color: @bodyBackground;
-  .box-shadow(~"0 0 0.5em lighten(@linkColor, 20%), 0 0 0.3em lighten(@linkColor, 30%)");
-}

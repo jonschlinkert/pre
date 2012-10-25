@@ -152,8 +152,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib');
 
   // Default task.
-  grunt.registerTask('default', 'append less recess:responsive concat min watch:dist');
-  grunt.registerTask('full', 'append less recess concat watch:dist');
+  grunt.registerTask('default', 'append less recess:responsive concat watch:dist');
+  grunt.registerTask('full', 'append less recess concat min watch:dist');
 
 };
 
