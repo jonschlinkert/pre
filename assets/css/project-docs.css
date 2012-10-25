@@ -92,7 +92,7 @@ hr.soften {
 }
 .jumbotron h1 {
   font-weight: bold;
-  color: #d92a21;
+  color: #009edf;
   line-height: 37px;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizelegibility;
@@ -112,7 +112,7 @@ hr.soften {
   transition: all 0.2s ease-in-out;
 }
 .jumbotron .breadcrumb > li > a {
-  color: #d92a21;
+  color: #009edf;
 }
 .jumbotron a:hover {
   color: #fff;
@@ -226,12 +226,12 @@ hr.soften {
 .subhead h1 {
   font-size: 50px;
   font-weight: 300;
-  color: #c2251e;
+  color: #008cc6;
   line-height: 1;
   letter-spacing: -1px;
 }
 .subhead p {
-  color: #f1a6a2;
+  color: #79d8ff;
   margin-bottom: 20px;
 }
 .subhead .navbar {
