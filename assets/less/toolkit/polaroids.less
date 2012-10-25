@@ -1,0 +1,243 @@
+//
+// Polaroids
+// -------------------------------------
+
+
+
+// Wrap the cards with a white frame
+.picture-frame {
+  position: relative;
+  float: left;
+  font-size: 14px;
+  line-height: 20px;
+  width: 240px;
+  z-index: 2;
+  #dropShadow > .effect14(); // Drop shadow effect
+}
+
+// The polaroid Card
+.polaroid {
+  position: relative;
+  margin: 10px;
+  padding: 9px;
+  cursor: pointer;
+  background: @white;
+  border: 1px solid #E6E7E8;
+  border-bottom-color: #DCDDDE;
+  .border-radius(2px);
+}
+
+
+
+
+// SECTIONS
+// -------------------------
+
+// polaroid Footer
+.polaroid-footer {
+  margin-top: 6px;
+}
+
+// Description
+.polaroid > .polaroid-description {
+  position: absolute;
+  top: 9px;
+  bottom: 9px;
+  left: 9px;
+  right: 9px;
+  padding: 20px 10px 10px;
+  text-align: center;
+  font-size: @baseFontSize - 1px;
+  line-height: @baseLineHeight + 4px;
+  .transition(all 0.1s ease-out);
+  .opacity(0);  
+}
+.polaroid:hover > .polaroid-description {
+  cursor: default;
+  .opacity(100);
+}
+
+
+
+// CONTAINERS
+// -------------------------
+
+// polaroid List 
+.polaroids {
+  margin: -10px;
+  padding: 0;
+  list-style: none;
+  .clearfix();
+}
+
+
+
+// COMPONENTS
+// -------------------------
+
+// Main Image
+.polaroid img {
+  display: block;
+  margin: 0 auto;
+  .transition(all 0.1s ease-out);
+}
+.polaroid:hover img {
+  .opacity(0);
+}
+
+// Buttons
+.polaroids .btn {
+  font-weight: 700;
+  margin-top: @baseLineHeight;
+  padding: 5px 28px;
+  .border-radius(3px);
+}
+
+// Labels
+.polaroid .label-polaroid {
+  color: #888;
+  text-shadow: 0 1px 0 white;
+  border: 1px solid #ddd;
+  border-bottom-color: #ccc;
+  background: #f0f1f2;
+}
+.mini-polaroids .polaroid .label,
+.small-polaroids .polaroid .label,
+.polaroid .label-polaroid {
+  position: absolute;
+  bottom: 11px;
+  right: 10px;
+  font-size: 10px;
+  line-height: 15px;
+  text-transform: uppercase !important;
+  margin: 0;
+  padding: 0 2px;
+  .border-radius(3px);
+  .box-shadow(inset 0 1px 0 rgba(255,255,255,.25));
+}
+
+// Data Fields
+.polaroid-price,
+.polaroid-title,
+.polaroid-vendor,
+.polaroid-product {
+  font-size: @baseFontSize - 1px;
+  font-weight: bold;
+  line-height: 1;
+}
+.polaroid-vendor,
+.polaroid-title {
+  font-weight: normal;
+  color: lighten(@gray, 20%);
+}
+.polaroid-product {
+  padding: 0 0 5px;
+  margin: 0;
+}
+.polaroid-price {
+  // color: rgb(81,163,81);
+  .text-overflow();
+  width: 50%;
+}
+
+
+
+
+// SIZE MODIFIERS
+// ---------------------------
+
+// Small Cards
+.small-polaroids {
+  .picture-frame {
+    width: 188px;
+  }
+  .polaroid {
+    padding: 7px;
+  }
+  .polaroid-footer {
+    padding: 0;
+    margin: 6px 0 -6px 0;
+    height: 22px;
+  }
+  .polaroid-description {
+    padding: 15px 0 0;
+  }
+  
+  // Components
+  .polaroid .label,
+  .polaroid .label-polaroid {
+    bottom: 7px;
+    right: 7px;
+  }
+  .btn {
+    margin-top: 5px;
+    padding: 4px 9px;
+  }
+}
+
+
+// Mini Cards
+.mini-polaroids {
+  .picture-frame {
+    width: 145px;
+  }
+  .polaroid {
+    padding: 5px;
+  }
+  .polaroid-footer {
+    margin: 7px 0 -6px 2px;
+    height: 22px;
+  }
+  .polaroid-description {
+    padding: 6px;
+  }
+  .polaroid-price {
+    margin: 7px 0 0 0;
+    padding: 0;
+  }
+  
+  // Components
+  .polaroid .label,
+  .polaroid .label-polaroid {
+    bottom: 6px;
+    right: 6px;
+  }
+  .btn {
+    margin-top: 5px;
+    padding: 4px 9px;
+  }
+}
+
+// Toggle opacity for sale tag and availability
+.small-polaroids,
+.mini-polaroids  {
+  .polaroid {
+    .label-info,
+    &:hover .label-success {
+      .opacity(0);
+    }
+    .label-success,
+    &:hover .label-info {
+      .opacity(100);
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,32 @@
+//
+// Navbar Warning
+// --------------------------------------------------
+
+// Red background navbar, 
+// this is an example for how to customize navbars
+// for your own project
+.navbar-warning .navbar-inner {
+  #gradient > .vertical(@btnWarningBackground, @btnWarningBackgroundHighlight);
+  border-color: @btnWarningBackgroundHighlight;
+  .box-shadow(0 2px 7px rgba(0,0,0,.15);
+}
+.navbar-warning .brand,
+.navbar-warning .nav > li > a {
+  color: rgba(255,255,255,.8);
+  text-shadow: none;
+}
+.navbar-warning .brand:hover {
+  color: @white;
+  text-shadow: 0 0 18px @white; // brighten versus other bars, due to yellow background
+}
+.navbar-warning .nav > li > a:hover {
+  color: @white;
+  background: rgba(0,0,0,.05);
+}
+.navbar-warning .nav > li > a:active, 
+.navbar-warning .nav > .active > a, 
+.navbar-warning .nav > .active > a:hover, 
+.navbar-warning .nav > .active > a:focus {
+  color: @white;
+  background: rgba(0,0,0,.1);
+}

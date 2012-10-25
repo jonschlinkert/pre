@@ -1,0 +1,72 @@
+//
+// Posts
+// --------------------------------------------------
+
+
+
+.post {
+  position: relative;
+  display: inline-block;
+  margin-bottom: (@baseLineHeight * 3);
+}
+
+.post-summary,
+.post-author,
+.post-body {
+  font-family: @serifFontFamily;
+}
+
+// Header
+// ---------------------------------------
+.post-title {
+  font-family: @headingsFontFamily;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 1.5;
+  color: @grayDark;
+  margin: 0 0 25px;
+}
+.post-metadata {
+  display: block;
+  padding-top: (@baseLineHeight / 2);
+  margin-bottom: @baseLineHeight;
+  border-top: 2px solid #eee;
+  .clearfix();
+
+  // List Items
+  li {
+    color: rgba(0,0,0,.5);
+    white-space: nowrap;
+    list-style: none;
+  }
+  li.author {
+    display: block;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+  }
+}
+
+
+// Icons
+.post-metadata li > [class*="icon-"] {
+  font-size: @baseFontSize + 6;
+  color: spin(@linkColor, 180);
+  margin-right: 0;
+}
+
+.post-summary {
+  font-family: @altFontFamily;
+  font-size: 30px;
+  line-height: 40px;
+  margin-bottom: @baseLineHeight;
+  color: @grayLight;
+}
+
+.post-body {
+  font-size: 22px;
+  line-height: 32px;
+  color: #444;
+}
+.post-body ~ p {
+  margin-top: 35px;
+}

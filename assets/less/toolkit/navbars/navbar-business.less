@@ -1,0 +1,61 @@
+//
+// Navbar Business
+// --------------------------------------------------
+
+// Business navbar variables
+@navbarBusinessBackground:                #f7f7f7;
+@navbarBusinessBorder:                    #e5e5e5;
+
+@navbarBusinessText:                      @grayLight;
+@navbarBusinessLinkColor:                 lighten(saturate(@infoText, 20%), 20%); // pinkish organge
+@navbarBusinessLinkColorHover:            @navbarBusinessLinkColor;
+@navbarBusinessLinkColorActive:           @gray;
+@navbarBusinessLinkBackgroundHover:       transparent;
+@navbarBusinessLinkBackgroundActive:      @navbarBusinessBackground;
+
+@navbarBusinessSearchBackground:          lighten(@navbarBusinessBackground, 25%);
+@navbarBusinessSearchBackgroundFocus:     @white;
+@navbarBusinessSearchBorder:              @navbarBusinessBackground;
+@navbarBusinessSearchPlaceholderColor:    #ccc;
+
+@navbarBusinessBrandColor:                @navbarBusinessLinkColorHover;
+
+
+
+// Navbar
+// -------------------------------
+
+// Light gray background navbar, 
+// this is an example for how to customize navbars
+// for your own project
+.navbar-business .navbar-inner {
+  background-image: none;
+  background: @navbarBusinessBackground;
+  border-top: 4px solid @navbarBusinessLinkColorHover;
+  .border-radius(0);
+}
+.navbar-business .brand,
+.navbar-business .nav > li > a {
+  font-weight: bold;
+  color: @navbarBusinessLinkColor;
+  text-shadow: none;
+  text-transform: uppercase;
+}
+.navbar-business .nav > li > a {
+  border-left: 1px solid @navbarBusinessBorder;
+}
+.navbar-business .nav > li > a:hover,
+.navbar-business .nav > li > a:focus {
+  color: @navbarBusinessLinkColor;
+  background: rgba(0,0,0,.05);
+}
+.navbar-business .nav > li > a:active,
+.navbar-business .nav > .active > a, 
+.navbar-business .nav > .active > a:hover {
+  color: @navbarBusinessLinkColorActive;
+  .box-shadow(inset 0 3px 6px rgba(0,0,0,.06));
+  #gradient > .vertical-three-stops(fade(#000, 7%), 10%, fade(#000, 0%), 90%, fade(#000, 0%), 100%);
+}
+.navbar-business .nav > li > a:active {
+  color: @navbarBusinessLinkColor;
+}

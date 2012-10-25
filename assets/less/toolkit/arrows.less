@@ -1,0 +1,119 @@
+//
+// ARROWS
+// ----------------------------------------------------
+
+// Variables
+// ---------
+
+// Sizes
+@arrowWidthSmall:     @arrowWidth - 3px;
+@arrowWidth:          15px;
+@arrowWidthLarge:     @arrowWidth + 5px;
+
+// arrow offset accounts for box-shadows inside parent element
+@arrowOffsetSmall:    @arrowWidthSmall - 5px; 
+@arrowOffset:         @arrowWidth - 5px; 
+@arrowOffsetLarge:    @arrowWidthLarge - 5px; 
+
+// Colors
+@arrowColor:          @white;
+@arrowInverseColor:   @grayDark;
+
+// Special enhancement for arrows
+@arrowOuterWidth:  @arrowWidth + 1;
+@arrowOuterColor:  rgba(0,0,0,.25);
+
+
+
+
+// Arrows as pseudo-elements
+// ---------------------------------------
+// Add .arrow to parent element
+
+
+// Base
+// -----------------
+.has-arrow .arrow,
+.has-arrow .arrow:after,
+.has-pseudo-arrow:after {
+  position: absolute;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+}
+.has-arrow .arrow:after,
+.has-pseudo-arrow:after {
+  content: "";
+  z-index: -1;
+}
+.has-pseudo-arrow {
+  position: relative;
+}
+
+
+
+// The Arrows
+// ---------------------------------------
+
+.has-arrow .arrow.top,
+.top.has-pseudo-arrow:after  {
+  top: -@arrowOffset;
+  left: @arrowWidth;
+  border-left: @arrowWidth solid transparent;
+  border-right: @arrowWidth solid transparent;
+  border-bottom: @arrowWidth solid @arrowColor;
+}
+.has-arrow .arrow.right,
+.right.has-pseudo-arrow:after  {
+  top: @arrowWidth;
+  right: -@arrowOffset;
+  border-width: @arrowWidth 0 @arrowWidth @arrowWidth;
+  border-left-color: @arrowColor;
+}
+.has-arrow .arrow.bottom,
+.bottom.has-pseudo-arrow:after  {
+  bottom: -@arrowOffset;
+  left: @arrowWidth;
+  border-width: @arrowWidth @arrowWidth 0;
+  border-top-color: @arrowColor;
+}
+.has-arrow .arrow.left,
+.left.has-pseudo-arrow:after  {
+  top: @arrowWidth;
+  left: -@arrowOffset;
+  border-width: @arrowWidth @arrowWidth @arrowWidth 0;
+  border-right-color: @arrowColor;
+}
+
+
+
+// Sizes
+// ---------------------------------------
+
+// Small
+.arrow.small.top,    .top.arrow-small:after      { top: -@arrowOffsetSmall;     border-width: 0 @arrowWidthSmall @arrowWidthSmall; }
+.arrow.small.right,  .right.arrow-small:after    { right: -@arrowOffsetSmall;   border-width: @arrowWidthSmall 0 @arrowWidthSmall @arrowWidthSmall; }
+.arrow.small.bottom, .bottom.arrow-small:after   { bottom: -@arrowOffsetSmall;  border-width: @arrowWidthSmall @arrowWidthSmall 0; }
+.arrow.small.left,   .left.arrow-small:after     { left: -@arrowOffsetSmall;    border-width: @arrowWidthSmall @arrowWidthSmall @arrowWidthSmall 0; }
+
+// Large
+.arrow.large.top,    .top.arrow-large:after      { top: -@arrowOffsetLarge;     border-width: 0 @arrowWidthLarge @arrowWidthLarge; }
+.arrow.large.right,  .right.arrow-large:after    { right: -@arrowOffsetLarge;   border-width: @arrowWidthLarge 0 @arrowWidthLarge @arrowWidthLarge; }
+.arrow.large.bottom, .bottom.arrow-large:after   { bottom: -@arrowOffsetLarge;  border-width: @arrowWidthLarge @arrowWidthLarge 0; }
+.arrow.large.left,   .left.arrow-large:after     { left: -@arrowOffsetLarge;    border-width: @arrowWidthLarge @arrowWidthLarge @arrowWidthLarge 0; }
+
+
+
+// Colors
+// ---------------------------------------
+.arrow-inverse:after {
+  z-index: 1; // remove negative z-index to bring arrow to top with dark backgrounds. this is good for box shadows
+}
+
+// Inverse Arrow (appears as dark gray)
+.arrow.inverse.top,    .top.arrow-inverse:after       { border-bottom-color: @arrowInverseColor; }
+.arrow.inverse.right,  .right.arrow-inverse:after     { border-left-color: @arrowInverseColor; }
+.arrow.inverse.bottom, .bottom.arrow-inverse:after    { border-top-color: @arrowInverseColor; }
+.arrow.inverse.left,   .left.arrow-inverse:after      { border-right-color: @arrowInverseColor; }

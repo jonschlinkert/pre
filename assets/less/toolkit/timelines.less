@@ -1,0 +1,228 @@
+//
+// Examples
+// -------------------------------------------------
+
+@eventArrowWidth:             8px;
+@eventMarkerRadius:           5px;
+@eventMarkerBorderWidth:      4px;
+@eventTimelineBorderWidth:    5px;
+@eventPaddingTopBottom:       15px;
+
+
+.timeline {
+  padding: (@baseLineHeight / 2) 0;
+}
+.timeline,
+.timeline-event {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  .box-sizing(border-box);
+  .clearfix();
+}
+.timeline-event {
+  margin-left: -20px;
+  padding-bottom: @eventPaddingTopBottom;
+}
+.timeline-event + .timeline-event {
+  padding-top: @eventPaddingTopBottom;
+  padding-bottom: @eventPaddingTopBottom;
+  margin: 0 0 0 -@baseLineHeight;
+  border-top: 1px dashed @grayLighter;
+}
+
+
+// Timeline Event (li)
+// ------------------------
+.event-details {
+  position: relative;
+  margin-left: -14px;
+  width: 550px;
+  background-color: @dropdownBackground;
+  border: 1px solid #ccc; // Fallback for IE7-8
+  border: 1px solid @dropdownBorder;
+  *border-right-width: 2px;
+  *border-bottom-width: 2px;
+  .border-radius(4px);
+  .box-shadow(0 5px 10px rgba(0,0,0,.2));
+  .box-sizing(border-box);
+  -webkit-background-clip: padding-box;
+     -moz-background-clip: padding;
+          background-clip: padding-box;
+
+  // Dividers (basically an hr) within the dropdown
+  .divider {
+    .nav-divider(@dropdownDividerTop, @dropdownDividerBottom);
+  }
+
+  // Arrows
+  // --------------
+  &:before, 
+  &:after {
+    position: absolute;
+    content: '';
+    display: inline-block;
+  }
+  &:before {
+    border-top: (@eventArrowWidth + 1) solid transparent;
+    border-bottom:  (@eventArrowWidth + 1) solid transparent;
+    border-right: (@eventArrowWidth + 1) solid #999;
+    left: -(@eventArrowWidth + 1);
+    top: (@eventArrowWidth + 4);
+  }
+  &:after {
+    border-top: @eventArrowWidth solid transparent;
+    border-bottom:  @eventArrowWidth solid transparent;
+    border-right: @eventArrowWidth solid @dropdownBackground;
+    left: -@eventArrowWidth;
+    top: (@eventArrowWidth + 5);
+  }
+}
+
+// Event Markers
+// --------------------------
+
+// the circular "target" on the timeline
+.event-marker {
+  position: absolute;
+  top: 15px; 
+  left: 100px;
+  content: "";
+  height: @eventMarkerRadius;
+  width: @eventMarkerRadius;
+  background:  darken(@grayLighter, 20%);
+  border: @eventMarkerBorderWidth solid @white;
+  .border-radius(20px);
+  .box-shadow(0 0 0 4px @grayLight);
+}
+.timeline-event + .timeline-event .event-marker {
+  top: 30px; 
+}
+
+// Vertical timeline border for markers to sit on 
+.timeline-event:before {
+  position: absolute;
+  left: 104px;
+  top: 0;
+  bottom: 0;
+  content: "";
+  border-left: 5px solid @grayLighter;
+  display: block;
+}
+
+
+// Event Header 
+// ---------------------------
+
+.event-header {
+  padding: 9px 15px;
+  border-bottom: 1px solid #eee;
+  // Close icon
+  .close { margin-top: 2px; }
+  .header-image {
+    overflow: hidden;
+    zoom: 1;
+  }
+  .header-details {
+    display: inline-block;
+    margin: 0 0 0 (@baseLineHeight / 2);
+    vertical-align: top;
+  }
+  // Heading
+  h3, h4 {
+    color: @linkColor;
+    margin: 0;
+    line-height: 30px;
+    vertical-align: top;
+  }
+}
+
+
+
+// Body (where all event content resides)
+.event-body {
+  overflow-y: auto;
+  max-height: 400px;
+  padding: 15px;
+}
+// Remove bottom margin if need be
+.event-form {
+  margin-bottom: 0;
+}
+
+// Footer (for actions)
+.event-footer {
+  padding: 8px 12px;
+  margin-bottom: 0;
+  background-color: @grayLightest;
+  border-top: 1px solid #ddd;
+  .border-radius(0 0 6px 6px);
+  .box-shadow(inset 0 1px 0 @white);
+  .clearfix(); // clear it in case folks use .pull-* classes on buttons
+
+  // Properly space out buttons
+  .btn + .btn {
+    margin-left: 3px;
+    margin-bottom: 0; // account for input[type="submit"] which gets the bottom margin like all other inputs
+  }
+  // but override that for button groups
+  .btn-group .btn + .btn {
+    margin-left: -1px;
+  }
+}
+
+.btn-attendance {
+  color: @successText;
+  width: 80px;
+  background-image: none;
+  background-color: @successBackground;
+  border-color: @successBorder;
+  .transition(0.3s); // extension
+  .text-decline {
+    display: none;
+  }
+  &:hover {
+    background-color: @errorBackground; 
+    border-color: @errorBorder; 
+    .transition(0.3s); // extension
+
+    .text-attending {
+      display: none;
+    }
+    .text-decline {
+      color: @errorText; 
+      display: inline;
+    }
+  }
+}
+
+.event-date,
+.event-details {
+  float: left;
+  min-height: 1px;
+}
+
+.event-date {
+  position: relative;
+  margin-left: 20px;
+  width: 80px;
+  margin-right: 40px;
+}
+.event-year,
+.event-month {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: @baseFontSize;
+  line-height: 1;
+  margin-top: 0;
+}
+.event-day {
+  font-size: 60px;  
+  line-height: 30px;
+}
+
+
+
+
+
+

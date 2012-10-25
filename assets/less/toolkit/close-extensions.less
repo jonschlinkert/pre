@@ -1,0 +1,49 @@
+// 
+// Close Extensions
+// --------------------------------------------------
+
+
+
+
+// Sizes
+// --------------------------------------------------
+
+// Large
+.close-large {
+  // properties
+}
+
+// Medium
+.close-medium {
+  font-size: 26px;
+  line-height: 18px;
+}
+.modal-header .close-medium {
+  margin: 0;
+}
+
+// Small
+.close-small {
+  // properties
+}
+
+
+
+// Alternate Close Buttons
+// --------------------------------------------------
+
+// Lighten close button over inverse backgrounds
+[class*="inverse"] .close {
+  color: @white;
+  text-shadow: 0 -1px 0 rgba(0,0,0,1);
+  .opacity(20);
+  &:hover {
+    color: @white;
+    text-decoration: none;
+    cursor: pointer;
+    .opacity(40);
+  }
+}
+[class*="inverse"] .close-medium {
+  line-height: 17px; // move it up a pixel to compensate for inverse text-shadow
+}

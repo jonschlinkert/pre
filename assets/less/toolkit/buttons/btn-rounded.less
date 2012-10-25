@@ -1,0 +1,77 @@
+//
+// Rounded Buttons
+// --------------------------------------------------
+
+
+// Namespace the button for development
+#btnRounded {
+
+  // BASE
+  // -------------------
+
+  .button {
+    display: inline-block;
+    padding: 10px 40px 14px;
+    font-family: 'Bitter', serif;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1;
+    letter-spacing: 1px;
+    color: @white;
+    text-align: center;
+    vertical-align: middle;
+    text-shadow: 0 -1px -1px rgba(0,0,0,.3);
+    .border-radius(30px);
+    .transition(all 0.2s linear);
+    &:hover {
+      color: @white;
+      text-decoration: none;
+    }
+  }
+
+
+
+  // COLORS
+  // ------------------------
+
+  // Purple 
+  .button-purple {
+    #gradient > .vertical(#7217B3, #4B0E77);
+    border: 1px solid #4B0E77;
+    border-color: #4B0E77 #4B0E77 darken(#4B0E77, 15%);
+    .box-shadow(~"0 2px 4px rgba(0,0,0,.5), inset 0 1px 5px rgba(255,255,255,.2)");
+    // Hover state
+    &:hover {
+      .box-shadow(~"0 0 10px #210634, inset 0 1px 5px rgba(255,255,255,.2)");
+    }
+  }
+
+  // Turquiose 
+  .button-turquoise {
+    #gradient > .vertical(#00B1DD, #00728F);
+    border: 1px solid #00728F;
+    border-color: #00728F #00728F darken(#00728F, 15%);
+    .box-shadow(~"0 2px 4px rgba(0,0,0,.5), inset 0 1px 5px rgba(255,255,255,.4)");
+    // Hover state
+    &:hover {
+     .box-shadow(~"0 0 10px #2c95af, inset 0 1px 5px rgba(255,255,255,.4)");
+    }
+  }
+
+
+  // Disabled
+  .button.disabled {
+    color: #f2f2f2 !important;
+    text-shadow: none;
+    background: #e9e9e9;
+    border: 1px solid #e9e9e9;
+  }
+
+  .button.disabled:hover {
+    color: #f2f2f2 !important;
+    background: #e9e9e9;
+    border: 1px solid #e9e9e9;
+    .box-shadow(none);
+  }
+
+}

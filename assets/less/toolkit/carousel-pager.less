@@ -1,0 +1,99 @@
+//
+// Carousel Pager (for paging through slides)
+// --------------------------------------------------
+
+
+
+// Pager Options
+// - numbered, using .pagination
+// - next, previous, first, last using .pager
+// - numbered using custom bullets
+// - images
+
+
+
+
+// Carousel Pager Variables
+// ----------------------------------
+@carouselPagerBackground:         @grayLight;
+@carouselPagerActiveBackground:   @grayDark;
+@carouselPagerDotDiameter:        10px;
+
+
+
+.carousel-pager {
+  text-align: center;
+  line-height: 36px;
+  cursor: pointer;
+}
+// Pager Nav
+.carousel-pager ul {
+  display: inline-block;
+  .ie7-inline-block();
+  margin: 0;
+}
+.carousel-pager .pager-item {
+  display: inline;
+}
+
+
+// Round Pager Buttons
+.carousel-pager .pager-item > a {
+  position: relative;
+  top: 0;
+  float: left;
+  line-height: (@baseLineHeight * 2) - 2;
+  text-decoration: none;
+  content: "";
+  padding: 0;
+  margin: 0 8px;
+  width: @carouselPagerDotDiameter;
+  height: @carouselPagerDotDiameter;
+  background-color: @carouselPagerBackground;
+  background-color: #ccc;
+  #gradient > .vertical(#fff, #ccc);
+  .border-radius(20px);
+  .box-shadow(0 0 0 1px rgba(255,255,255,.5), 0 0 0 3px rgba(0,0,0,.5));
+}
+// Hover
+.carousel-pager .pager-item:hover a {
+  #gradient > .vertical(#ddd, #bbb);
+}
+// Active
+.carousel-pager .pager-item.active > a {
+  background-image: none;
+  background-color: @carouselPagerActiveBackground;
+  .box-shadow(0 0 0 3px rgba(0,0,0,.5));
+  cursor: default;
+}
+.carousel-pager .pager-item.disabled > a,
+.carousel-pager .pager-item.disabled > a:hover {
+  background-color: #ddd;
+  border-color: #ddd;
+  cursor: default;
+}
+
+
+// Pause Button
+// -------------------------
+
+.btn-pause {
+  background: #ddd;
+  line-height: 20px;
+  text-decoration: none;
+  padding: 3px 6px 0;
+  margin-top: -2px;
+  margin-right: 5px;
+  border: none;
+  .border-radius(4px);
+  color: #555;
+  // States
+  &:hover {
+    background: #ccc;
+  }
+  &.active,
+  &:active {
+    background: @gray;
+    color: @grayLightest;
+  }
+}

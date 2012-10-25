@@ -1,0 +1,58 @@
+//
+// Alert Extensions
+// --------------------------------------------------
+
+
+// Base Modifier
+// -------------------------
+
+.alert {
+  background-color: #F9F9F9;
+  border: 1px solid darken(@grayLighter, 6%);
+  color: @grayDark;
+}
+
+
+
+// Restate alternate styles to override alert modifiers
+// --------------------------------------------------
+
+.alert-success {
+  background-color: @successBackground;
+  border-color: @successBorder;
+  color: @successText;
+}
+.alert-danger,
+.alert-error {
+  background-color: @errorBackground;
+  border-color: @errorBorder;
+  color: @errorText;
+}
+.alert-info {
+  background-color: @infoBackground;
+  border-color: @infoBorder;
+  color: @infoText;
+}
+
+
+
+// Extended styles
+// --------------------------------------------------
+
+.alert-primary {
+  background-color: @warningBackground;
+  border-color: @warningBorder;
+  color: @warningText;
+}
+.alert-warning {
+  background-color: @warningBackground;
+  border-color: @warningBorder;
+  color: @warningText;
+}
+
+.alert-inverse {
+  background-color: @inverseBackground;
+  border-color: @inverseBorderColor;
+  color: @inverseTextColor;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
+}

@@ -1,0 +1,288 @@
+//
+// Search
+// -------------------------------------
+
+
+// Search variables
+// -------------------------------------------------
+
+// Sizes
+@searchQueryWidthLarge:           350px;
+@searchQueryWidthMedium:          250px;
+@searchQueryWidthSmall:           150px;
+
+// Background and border
+@searchBackground:                darken(@navbarBackground, 5%);
+@searchBackgroundHover:           lighten(desaturate(@searchBackground, 20%), 20%);
+@searchBackgroundFocus:           @white;
+@searchBorder:                    @navbarBackground;
+
+// Search icons
+@searchIconColor:                 @grayDark;
+@searchIconColorHover:            @grayDark;
+
+// Placeholders
+@searchPlaceholderColor:          rgba(255,255,255,.75);
+@searchPlaceholderHoverColor:     @white;
+@searchPlaceholderFocusColor:     @gray;
+
+
+
+// Search input defaults
+// -------------------------------------------------
+
+// The search input
+body .search-query {
+  color: @white;
+  width: 210px;
+  text-shadow: none;
+  padding: 4px 14px;
+  background-color: @navbarSearchBackground;
+  border-color: @navbarSearchBorder;
+  .border-radius(25px);
+  .placeholder(@searchPlaceholderColor);
+  .background-clip(padding-box);
+  .box-shadow(~"inset 1px 2px 2px -1px rgba(0, 0, 0, 0.2), 0 1px rgba(255, 255, 255, 0.3)");
+  .transition(~"color linear 0.1s, background linear 0.1s, border linear 0.2s, box-shadow linear 0.3s");
+
+  // Ext hover states
+  &:hover {
+    border-color: @searchBackgroundHover;
+    background-color: @searchBackgroundHover;
+    .placeholder(@searchPlaceholderHoverColor);
+  }
+
+  // Input focus state (we use .focused since IE7-8 and down doesn't support :focus)
+  &:focus,
+  &.focused {
+    color: @grayDark;
+    text-shadow: none;
+    background-color: @searchBackgroundFocus;
+    border-color: darken(@searchBorder, 5%);
+    .box-shadow(0 0 3px rgba(0,0,0,.15));
+    // Placeholder variable
+    .placeholder(@searchPlaceholderFocusColor);
+  }
+
+  // Increase opacity on icons when .search-query is hovered and focused
+  &:hover + .search-button, // .search-button is a modifier for an arbitrary search icon
+  &:focus + .search-button,
+  &.focused + .search-button {
+    text-shadow: none;
+    background: transparent;
+    .opacity(80);
+     &:hover {
+      background: transparent;
+      color: @grayDark; // default icon hover color
+      .opacity(100);
+    }
+  }
+}
+
+// Search Icon defaults
+// -------------------------------------------------
+
+// Search button or icon, example: <a href="#" class="search-button icon-search"></a> or <button type="submit"></button>
+.search-button {
+  background-repeat: no-repeat;
+  color: @searchIconColor;
+  position: absolute;
+  top: 50%;
+  bottom: 50%;
+  right: 10px;
+  font-size: 18px;
+  margin-top: -6px; // negative margin is approximately half of the icon's height to center it vertically
+  .opacity(40);
+
+  // Default hover state for search icons, reset a few things
+  &:hover {
+    text-decoration: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    .box-shadow(none);
+    .opacity(80);
+  }
+}
+
+// Moz fix!!! - counter firefox pushing the icon down a pixel for some reason. Yes, only a pixel... but still.
+@-moz-document url-prefix() { 
+  .search-query + .search-button {
+    margin-top: -7px; 
+  } 
+}
+
+
+
+// Modifiers
+// -----------------------------------------------
+
+// Common placements
+// -----------------
+
+// Defaults for search forms
+.form-search,
+.navbar-search {
+  position: relative; // relative for absolute positioned icons
+  float: left; 
+  margin-bottom: 0;
+  .clearfix();
+
+  .search-query { // the input
+    margin-bottom: 0;
+    line-height: 16px;
+    .border-radius(14px);
+  }
+}
+// Adjust margins when divider and search are back to back
+.divider + .dropdown-search,
+.divider + li > .form-search {
+  margin-top: 0;
+}
+
+// Dropdowns 
+.dropdown-search {
+  .form-search {
+    .search-query { // the input
+      .placeholder(@gray);
+      margin: 4px 8px 8px; 
+      .border-radius(4px);
+      &:focus {
+        color: @grayDarker;
+        border-color: #aaa;
+        .box-shadow(inset 0 1px 2px rgba(0,0,0,.2));
+      }
+    }
+
+    .search-button {
+      font-size: @baseFontSize + 3;
+      padding: 0;
+      margin: -9px 4px 0 0;
+      line-height: 1;
+    }
+  }
+}
+.dropdown-search + .divider { // back to back divider and search
+  margin-top: 0;
+}
+
+
+
+// Subnav  
+.subnav-search {
+  .search-query {
+    &:hover,
+    &:focus {
+      background-color: #EAF4F7;
+      border-color: #ADD0DB;
+      + .search-button,
+      + .search-button:hover {
+        color: #2E86A2;
+      }
+    }
+    &:hover {
+      background-color: #F7F9FA;
+    }
+    &:focus {
+      background-color: @white;
+      border-color: #75B7C0;
+      .box-shadow(~"inset 0 1px 2px rgba(0,0,0,.1), 0 0 8px rgba(82,168,236,.4)");
+    }
+  }
+}
+
+
+// Navbar Pills
+// Adjust search position when navbar is set to .navbar-pills
+.navbar-pills .navbar-search {
+  margin-top: 8px; // increases top margin to accomodate pills
+}
+
+
+
+// Horizontal nav tabs search
+.nav-tabs {
+  .search-query {
+    padding: 3px 12px;
+    margin-top: 2px;
+    .placeholder(@gray);
+  }
+  .search-query + .search-button {
+    color: @gray;
+    margin-top: -5px;
+    width: 1em;
+  }
+}
+
+
+
+// Sidenav
+.sidenav-search {
+  position: relative;
+  padding: 8px;
+  border: 1px solid #E5E5E5;
+  .clearfix();
+  .border-radius(4px 4px 0 0);
+}
+.sidenav-search > .form-search {
+  width: 100%;
+  .search-query {
+    padding-left: 10px;
+    padding-right: 10px;
+    .input-block-level();
+    .placeholder(@gray);
+  }
+  .search-query + .search-button,
+  .search-query:focus + .search-button {
+    right: 0;
+    color: @grayDark;
+    font-size: 18px;
+    margin-top: -7px; // add more negative margin to account for size difference
+    margin-right: 8px;
+  }
+}
+
+
+// Search loading indicators
+// -----------------------------------------------
+.search-loader {
+  position: absolute;
+  right: 0;
+  top: 27px;
+  margin-right: 0;
+  display: inline-block;
+  background: @infoBackground;
+  padding: 3px 0;
+  width: 100%;
+  text-align: center;
+  border-radius: 0 0 4px 4px;
+  border: 1px solid @infoBorder;
+  .box-sizing(border-box);
+  .box-shadow(0 2px 5px rgba(0,0,0,.2));
+  -webkit-background-clip: padding-box;
+     -moz-background-clip: padding;
+          background-clip: padding-box;
+  .opacity(80);
+
+  .img-spinner {
+    .opacity(50);
+  }
+}
+
+
+
+// Sizes
+// -----------------------------------------------
+
+.search-input-large {
+  width: @searchQueryWidthLarge;
+}
+.search-input-medium {
+  width: @searchQueryWidthMedium;
+}
+.search-input-small {
+  width: @searchQueryWidthSmall;
+}
+
+
+

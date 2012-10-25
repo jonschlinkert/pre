@@ -1,0 +1,576 @@
+// PAPER STACKS
+// ------------
+
+// Example container
+.paper-stack { 
+  position: relative;
+  display: block;
+  margin-bottom: @baseLineHeight;
+  .transition(all 1.5s ease-in-out 0s);
+  .box-shadow(0 10px 15px rgba(0, 0, 0, 0.15));
+  .clearfix();
+  z-index: 4;
+
+  // Sheets
+  .sheet {
+    position: absolute;
+    top: 0;
+    padding: 20px 15px 15px;
+    border: 1px solid #CCC;
+    padding: 8px 15px;
+    border-top: none;
+    background-color: @white;
+    .box-shadow(~"0 1px 1px rgba(0,0,0,.20)");
+  }
+  .sheet1 {
+    position: relative;
+    z-index: 6;
+    bottom: auto !important;
+    content: "";
+    .transition(all 0.4s ease-in-out 0s);
+  }
+  .sheet2 {
+    z-index: 5;
+    top: 0;
+    right: 2px;
+    bottom: -3px;
+    left: 2px;
+    .transition(all 0.6s ease-in-out 0s);
+  }
+  .sheet3 {
+    z-index: 4;
+    top: 0;
+    right: 5px;
+    bottom: -6px;
+    left: 5px;
+    .transition(all 0.7s ease-in-out 0s);
+  }
+}
+
+// Dashed line indicating an attachment
+// example:  <div class="paper-stack paper-attachment">
+.paper-attachment .sheet {
+  padding: 20px 15px 15px;
+  border-top: 1px dashed rgba(0,0,0,.25);
+}
+
+
+// Components
+// ------------------------------------
+
+.paper-stack p {
+  margin: 0;
+  color: rgb(71, 69, 49);
+  text-shadow: 0px 1px rgba(255, 255, 255, 0.5);
+}
+.paper {
+  position: relative;
+  display: block;
+  height: 200px;
+  margin-top: 40px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.15);
+}
+
+
+
+// Sizes
+// ------------------------------------
+
+// Small
+.small-stack { 
+  .box-shadow(0 8px 12px rgba(0,0,0,.15));
+  .sheet {
+    padding: 8px;
+    .box-shadow(~"0 1px 1px rgba(0,0,0,.1)");
+  }
+  .sheet1 {
+    .transition(all 0.4s ease-in-out 0s);
+  }
+  .sheet2 {
+    z-index: 5;
+    top: 0;
+    right: 2px;
+    bottom: -3px;
+    left: 2px;
+    .transition(all 0.6s ease-in-out 0s);
+  }
+  .sheet3 {
+    z-index: 4;
+    top: 0;
+    right: 5px;
+    bottom: -6px;
+    left: 5px;
+    .transition(all 0.7s ease-in-out 0s);
+  }
+}
+
+
+
+
+
+// MODIFIERS
+// ------------------------
+
+.paper-stack + .panel {
+  margin-top: 18px; 
+}
+
+.panel + .paper-stack {
+  margin-top: -@baseLineHeight - 4;
+  margin-bottom: @baseLineHeight + 9;
+}
+.panel + .paper-stack > .sheet {
+  .border-radius(0 0 5px 5px);
+}
+
+
+.paper-info .sheet {
+  background-color: lighten(@btnInfoBackground, 35%);
+}
+.paper-warning .sheet {
+  background-color: rgb(255,249,177);
+  .box-shadow(~"0 1px 3px rgba(34,25,25,.2)");
+  &.sheet1 {
+    #gradient > .vertical-three-colors(rgb(255,249,177), rgb(255,249,177), 40%,rgb(255,252,209)); }
+  &.sheet3 {
+    .box-shadow(~"0 1px 5px rgba(34,25,25,.3)" );
+  }
+}
+.paper-success .sheet {
+  background-color: lighten(@btnSuccessBackground, 40%);
+}
+.paper-danger .sheet {
+  background-color: lighten(@btnDangerBackground, 40%);
+}
+
+
+#warningStack {
+  .paper-stack {
+    left: 50%;
+    width: 680px;
+    margin-left: -340px;
+    text-align: left;
+    .transition(all 0s ease 0s);
+  }
+  .sheet {
+    padding: 17px 20px 13px;
+  }
+  .sheet .sheet-text {
+    font-weight: 300;
+    overflow: hidden;
+  }
+  .sheet .sheet-text strong {
+    font-weight: bold;
+  }
+  .sheet .sheet-actions {
+    float: right;
+    margin: 6px 0px 0px 20px;
+    text-align: right;
+    max-width: 330px;
+  }
+  .sheet .sheet-actions .btn {
+    margin-left: 10px;
+  }
+  .sheet .sheet-actions .btn:first-child {
+    margin: 0px 0px 5px;
+  }
+}
+
+
+
+// Image Stacks
+// ---------------------------------------
+
+// here is how the stacks work, the outter wrap (img-stack) has bottom padding only, and only the bottom has a border. the img inside
+// has a full border all around, so the two together make the appearance of the first two "stacks." The last two stacks are created
+// by the :before and :after pseudo-selectors. For all the stacks to match up, adjust the padding on the img-stack, and the negative bottom values
+// of :before and :after. e.g. padding-bottom: 4px, bottom: -4px; bottom: -8px;
+
+// This is the frame around the stack
+.img-stack {
+  position: relative;
+  display: inline-block;
+  padding: 0 0 3px; // bottom padding controls appearance of the 2nd stack, the img itself forms the inside border wich is the first stack
+  margin-right: @baseLineHeight / 3;
+  margin-bottom: @baseLineHeight;
+  vertical-align: top;
+  background-color: @white;
+  border: 1px solid #ddd;
+  .box-sizing(border-box);
+  .box-shadow(none);
+  &:hover {
+    border-color: #ddd;
+    .box-shadow(none);
+  }
+  &:before,
+  &:after {
+    position: absolute;
+    right: -1px;
+    left: -1px;
+    content: "";
+    height: 15px;
+    display: block;
+    width: 100%;
+    border: 1px solid #ddd;
+    z-index: -1;
+  }
+  &:before {
+    bottom: -5px;
+  }
+  &:after {
+    bottom: -9px;
+  }
+}
+.img-stack img {
+  position: relative;
+  display: block;
+  width: 160px;
+  padding: 8px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+}
+// Create some space between back to back images 
+.img-stack + .img-stack {
+//  margin-left: @baseLineHeight / 2;
+}
+
+
+// Sizes
+//-----------------------------------------
+
+// Large
+.stack-large {  
+  padding: 0 0 5px; // reduce padding on *2nd* stack
+  margin-right: @baseLineHeight / 2;
+  margin-bottom: @baseLineHeight;
+  &:before {
+    bottom: -7px;
+  }
+  &:after {
+    bottom: -12px;
+  }
+}
+// Large image
+.stack-large img {
+  width: 240px;
+}
+
+// Small and Mini Stacks
+.stack-small, 
+.stack-mini {  
+  margin-right: @baseLineHeight / 3;
+  margin-bottom: @baseLineHeight / 3;
+  padding: 0 0 2px; // reduce padding on *2nd* stack
+  &:before {
+    bottom: -4px;
+  }
+  &:after {
+    bottom: -7px;
+  }
+}
+// small image
+.stack-small img {
+  width: 100px;
+  padding: 6px;
+}
+// small image
+.stack-mini img {
+  width: 65px;
+  padding: 5px;
+}
+// Reduce marging a bit between small and small stacks
+.stack-mini + .stack-mini,
+.stack-small + .stack-small {
+//  margin-left: @baseLineHeight / 3; 
+}
+
+
+
+// Rounded
+//-----------------------------------------
+
+// Rounded corners on each layer of the stack
+.stack-rounded,
+.stack-rounded img {
+  .border-radius(5px);
+  &:before,
+  &:after {
+    .border-radius(5px);
+  }
+}
+.stack-rounded.stack-mini,
+.stack-rounded.stack-mini img {
+  .border-radius(4px);
+  &:before,
+  &:after {
+    .border-radius(4px);
+  }
+}
+
+
+
+
+
+
+// CONCEPT 3
+// ------------------------------------
+/*
+.image-stack-concept-3 {
+  .clearfix();
+  div[class*='stack'] {
+    float: left;
+    position: relative;
+    margin: 50px;
+  }
+
+  div[class*='stack'], 
+  div[class*='stack']:before, 
+  div[class*='stack']:after {
+    border: 6px solid #fff;
+    height: 200px; width: 200px;
+    .box-shadow(2px 2px 5px rgba(0,0,0,0.3));
+  }
+  div[class*='stack']:before, 
+  div[class*='stack']:after {
+    background: #768590;
+    content: "";
+    position: absolute;
+    z-index: -1;
+    
+    // Dirty IE8 hack 
+    height: 0px\9; width: 0px\9; 
+    border: none\9;
+  }
+  div[class*='stack']:before {
+    background: #eff4de;
+  }
+
+  // Stack One 
+  .stack-one {
+    &:before {
+      top: 4px;
+      left: -6px;
+    &:after {
+      top: -2px;
+      left: -6px;
+    }
+  }
+  // two 
+  .stack-two {
+    &:before {
+      top: 0px;
+      left: -10px;
+      .rotate(-5deg);
+    &:after {
+      top: 5px; 
+      left: 0px;
+      .rotate(4deg);
+    }
+  }
+  // three 
+  .stack-three {
+    &:before {
+      top: 5px;
+      left: -15px;
+      z-index: -1;
+      .rotate(-10deg);
+    &:after {
+      top: -2px;
+      left: -10px;
+      .rotate(-5deg);
+    }
+  }
+}
+
+*/
+
+// Concept 4
+// ----------------------------------------
+
+.image-stack-concept-4 {
+  .clearfix();
+
+  .stack-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    float: left;
+    width: 100%;
+    .clearfix();
+  }
+
+  // The three rotated elements 
+  .stack-list li, 
+  .stack-list a, 
+  .stack-list img {
+    border: 0;
+    display: inline-block; 
+    float: left; // Fixes bug in FF where inline elements don't seem to rotate on the correct axis. 
+    background-color: #fff;
+    .box-shadow(0 0 3px rgba(0,0,0,.4));
+  }
+
+  // First rotation 
+  .stack-list li {
+    margin: 0 25px 25px 0;
+    padding: 1px;
+    .rotate(3deg);
+  }
+
+  // Second rotation will appear as -2deg. 
+  .stack-list a {
+    padding: 0;
+    .rotate(-5deg);
+  }
+
+  // Third rotation will appear as 0. 
+  .stack-list img {
+    padding: 5px;
+    .rotate(2deg);
+  }
+}
+
+// Concept 5
+// ----------------------------------------
+
+
+.image-stack-concept-5 {
+  margin: 0; padding: 0;
+  .clearfix();
+
+  /*FRONT IMAGE STYLES*/
+  div[class*='stack'] {
+    border: 6px solid #fff;
+    float: left;
+    height: 200px; width: 200px;
+    position: relative;
+    margin: 50px;
+    .box-shadow(2px 2px 5px rgba(0,0,0,0.3));
+  }
+  // Other image styles
+  div[class*='stack']:before, 
+  div[class*='stack']:after {
+    background: #768590;
+    border: 6px solid #fff;
+    content: "";
+    height: 200px; width: 200px; 
+    position: absolute;
+    z-index: -1;
+    .box-shadow(2px 2px 5px rgba(0,0,0,0.3));
+    
+    /*Dirty IE8 hack*/
+    height: 0px\9; width: 0px\9; 
+    border: none\9;
+  }
+
+  div[class*='stack']:before {
+    background: #eff4de;
+  }
+
+  div[class*='stack']:hover {
+    .box-shadow(2px 2px 10px rgba(0,0,0,0.7));
+  }
+
+  /*STACK ONE*/
+  .stackone:after {
+    top: -2px;
+    left: -6px;
+  }
+
+  .stackone:before {
+    top: 4px;
+    left: -6px;
+  }
+
+  /*STACK TWO*/
+  .stacktwo:after {
+    top: 5px; left: 0px;
+    .rotate(4deg);
+  }
+
+  .stacktwo:before {
+    top: 0px;
+    left: -10px;
+    .rotate(-5deg);
+  }
+
+  /*STACK THREE*/
+  .stackthree:after {
+    top: -2px;
+    left: -10px;
+    .rotate(-5deg);
+  }
+
+  .stackthree:before {
+    top: 5px;
+    left: -15px;
+    z-index: -1;
+    .rotate(-10deg);
+  }
+
+  /*STACK FOUR*/
+  .stackfour:after {
+    top: -17px;
+    left: -16px;
+    .rotate(-3deg);
+  }
+
+  .stackfour:before {
+    top: -19px;
+    left: -26px;
+    .rotate(-7deg);
+  }
+
+  /*STACK FIVE*/
+  .stackfive:after {
+    top: -8px;
+    left: -6px;
+    .rotate(5deg);
+  }
+
+  .stackfive:before {
+    top: -10px;
+    left: -6px;
+    .rotate(9deg);
+  }
+
+  /*STACK SIX*/
+  .stacksix:after {
+    top: -2px;
+    left: 8px;
+    .rotate(2deg);
+  }
+
+  .stacksix:before {
+    top: -6px;
+    left: 12px;
+    .rotate(8deg);
+  }
+
+  /*STACK SEVEN*/
+  .stackseven:after {
+    top: -5px;
+    left: -6px;
+    .rotate(-8deg);
+  }
+
+  .stackseven:before {
+    top: -5px;
+    left: -6px;
+    .rotate(8deg);
+  }
+
+  /*STACK EIGHT*/
+  .stackeight:after {
+    top: -5px;
+    left: -6px;
+    .rotate(-18deg);
+  }
+
+  .stackeight:before {
+    top: -5px;
+    left: -6px;
+    .rotate(18deg);
+  }
+}

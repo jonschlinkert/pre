@@ -1,0 +1,37 @@
+//
+// Brand
+// --------------------------------------------------
+
+
+// Brand Variables 
+// Add to variables in your own project
+// --------------------------------------------------
+@brandColor:            @gray;
+
+
+// BASE
+// --------------------------------------------------
+
+// Keep styles similar to .navbar .brand for simplicity
+.brand {
+  float: left;
+  display: block;
+  // Vertically center the text given @navbarHeight
+  padding: ((@navbarHeight - @baseLineHeight) / 2) 20px ((@navbarHeight - @baseLineHeight) / 2);
+  margin-left: -20px; // negative indent to left-align the text down the page
+  font-size: 24px;
+  font-weight: bold;
+  color: @brandColor;
+  &:hover {
+    text-decoration: none;
+  }
+}
+.brand h1 {
+  line-height: 18px;
+  margin: 0;
+  padding: 0;
+}
+
+.logo {
+  // logo img styles
+}
