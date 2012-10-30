@@ -1,3 +1,18 @@
+.clearfix {
+  *zoom: 1;
+}
+
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+
+.clearfix:after {
+  clear: both;
+}
+
 .hide-text {
   font: 0/0 a;
   color: transparent;
@@ -975,7 +990,7 @@
   }
   .nav-collapse .nav > li > a:hover,
   .nav-collapse .dropdown-menu a:hover {
-    background-color: #009edf;
+    background-color: #049cdb;
   }
   .navbar-inverse .nav-collapse .nav > li > a,
   .navbar-inverse .nav-collapse .dropdown-menu a {
@@ -1023,8 +1038,8 @@
     float: none;
     padding: 10px 15px;
     margin: 10px 0;
-    border-top: 1px solid #009edf;
-    border-bottom: 1px solid #009edf;
+    border-top: 1px solid #049cdb;
+    border-bottom: 1px solid #049cdb;
     -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
        -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
             box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
@@ -1059,23 +1074,6 @@
   }
 }
 
-/*
-
-@import "responsive-utilities.less";
-
-// Large desktops
-@import "responsive-1200px-min.less";
-
-// Tablets to regular desktops
-@import "responsive-768px-979px.less";
-
-// Phones to portrait tablets and narrow desktops
-@import "responsive-767px-max.less";
-
-// From 979px and below, show a button to toggle navbar contents
-@import "responsive-navbar.less";
-*/
-
 @media (max-width: 1200px) {
   .hero-title,
   .hero-unit h1 {
@@ -1106,10 +1104,6 @@
 }
 
 @media (max-width: 767px) {
-  {
-    /* Faded out hr */
-  
-  }
   .banner .container {
     margin-right: 20px;
     margin-left: 20px;
