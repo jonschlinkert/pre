@@ -71,14 +71,14 @@ function render(mode, el, holder, src){
 	var dimensions = holder.dimensions, theme = holder.theme, text = holder.text;
 	var dimensions_caption = dimensions.width + "x" + dimensions.height;
 		theme = (text ? extend(theme, {	text: text	}) : theme);
-	
+
 	if(mode == "image"){
 		el.setAttribute("data-src", src);
 		el.setAttribute("alt", text ? text : theme.text ? theme.text + " [" + dimensions_caption + "]" : dimensions_caption);
 		el.style.width = dimensions.width + "px";
 		el.style.height = dimensions.height + "px";
 		el.style.backgroundColor = theme.background;
-		
+
 		if(!fallback){
 			el.setAttribute("src", draw(ctx, dimensions, theme));
 		}
@@ -88,15 +88,15 @@ function render(mode, el, holder, src){
 			el.style.backgroundImage = "url("+draw(ctx, dimensions, theme)+")";
 		}
 	}
-	
+
 };
 
 function parse_flags(flags, options){
-	
+
 	var ret = {
 		theme: settings.themes.gray
 		}, render = false;
-	
+
 	for (sl = flags.length, j = 0; j < sl; j++) {
 				if (app.flags.dimensions.match(flags[j])) {
 					render = true;
@@ -110,9 +110,9 @@ function parse_flags(flags, options){
 					ret.text = app.flags.text.output(flags[j]);
 				}
 	}
-	
+
 	return render ? ret : false;
-	
+
 };
 
 var settings = {
@@ -199,7 +199,7 @@ app.run = function (o) {
 		preempted = true;
 
 	var cssregex = new RegExp(options.domain+"\/(.*?)\"?\\)");
-	
+
 	for(var l = elements.length, i = 0; i < l; i++){
 		var src = window.getComputedStyle(elements[i],null).getPropertyValue("background-image");
 		var flags = src.match(cssregex);

@@ -1,6 +1,15 @@
 //
 // Hero unit
 // --------------------------------------------------
+.hero-unit {
+  p {
+    font-size: 18px;
+    font-weight: 200;
+    line-height: @baseLineHeight * 1.5;
+    color: @heroUnitLeadColor;
+  }
+}
+
 
 
 .hero-unit {
@@ -27,22 +36,25 @@
     font-weight: normal;
     line-height: @baseLineHeight * 4;
     color: @heroUnitLeadColor;
-
-    
     line-height: 1.75;
-    color: inherit;
     margin: 20px auto 60px;
     display: inline-block;
   }
-
+  p {
+    font-size: 18px;
+    font-weight: 200;
+    line-height: 1.5;
+    color: @heroUnitLeadColor;
+  }
   // Links
   a {
     color: rgba(255,255,255,.5);
     .transition(all .3s ease-in-out);
-  }
-  a:hover {
-    color: @white;
-    text-shadow: 0 0 10px rgba(255,255,255,.25);
+    // Hover
+    &:hover {
+      color: @white;
+      text-shadow: 0 0 10px rgba(255,255,255,.25);
+    }
   }
   .tile,
   .btn-docs:hover {
@@ -50,7 +62,7 @@
     .transition(none);
   }
 
-  // Textual links in masthead 
+  // Textual links in masthead
   .hero-links {
     list-style: none;
     margin: 0 0 20px;
@@ -81,7 +93,7 @@ hr.soften {
   display: inline-block;
   margin-left: 5px;
 }
-.learn-more { 
+.learn-more {
 
 }
 
@@ -115,7 +127,7 @@ hr.soften {
 // Github Button
 // -----------------------------
 .hero-unit {
-  .button-github, 
+  .button-github,
   .button-github:hover {
     font-family: arial;
     font-size: 20px;
@@ -179,7 +191,7 @@ hr.soften {
   position: relative;
   padding: 30px 0 40px;
   text-align: center;
-  background: #fcfcfc; 
+  background: #fcfcfc;
 }
 .jumbotron h1 {
   font-weight: bold;
@@ -216,8 +228,8 @@ hr.soften {
   font-weight: 200;
   color: @white; /* redeclare to override the `.jumbotron a` */
   text-shadow: 0 -1px 0 rgba(0,0,0,.25);
-  border: 0;
   .border-radius(6px);
+  border: 0;
   .box-shadow(~"inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25)");
   .transition(none);
 }
