@@ -14,149 +14,124 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
 
-    append: {
+    // Reduce repetitive tasks
+    paths: {
+      less: [
+        'assets',
+        'assets/less',
+        'assets/less/bootstrap',
+        'assets/less/toolkit'
+      ]
+    },
+
+    wrap: {
+      assets: {
+        header: 'assets/parts/head.html',
+        footer: 'assets/parts/footer.html',
+        src:    'assets/pages/*.html',
+        dest:   './' // destination *directory*
+      },
       docs: {
         header: 'docs/parts/head.html',
         footer: 'docs/parts/footer.html',
-        src: [
-            'docs/pages/base-css.html',
-            'docs/pages/components.html',
-            'docs/pages/customize.html',
-            'docs/pages/extend.html',
-            'docs/pages/getting-started.html',
-            'docs/pages/index.html',
-            'docs/pages/javascript.html',
-            'docs/pages/scaffolding.html'
-        ],
-        dest: 'docs' // destination *directory*, unnecessary to specify paths twice
-      },
-      html: {
-        header: 'assets/parts/head.html',
-        footer: 'assets/parts/footer.html',
-        src: [
-            'assets/pages/index.html',
-            'assets/pages/about.html',
-            'assets/pages/get-started.html'
-        ],
-        dest: '.' // destination *directory*, unnecessary to specify paths twice
+        src:    'docs/pages/*.html',
+        dest:   'docs' // destination *directory*
       }
     },
 
     less: {
-      full: {
+      all: {
         options: {
-          paths: ['assets','assets/less','assets/less/bootstrap','assets/less/toolkit','assets/less/extensions'],
-          yuicompress: false,
+          paths: '<config:paths.less>',
           compress: false
         },
         files: {
-          "assets/css/project-responsive-unlinted.css": ['assets/project-responsive.less'], // responsive
-          "assets/css/project-unlinted.css": ['assets/project.less'], // standard
-          "assets/css/project-docs.css": ['assets/project-docs.less'] // docs
-        }
+          "assets/css/*.css": ['assets/*.less'] }
       },
-      dist: {
+      min: {
         options: {
-          paths: ['assets','assets/less','assets/less/bootstrap','assets/less/toolkit'],
-          yuicompress: false,
-          compress: false
+          paths: '<config:paths.less>',
+          compress: true
         },
         files: {
-          "assets/css/project-responsive-unlinted.css": ['assets/project-responsive.less'], // responsive
-          "assets/css/project.css": ['assets/project.less'], // standard
-          "assets/css/project-docs.css": ['assets/project-docs.less'] // docs
-        }
+          "assets/css/*.min.css": ['assets/*.less'] }
       }
     },
 
     recess: {
       less: {
-        src: ['assets/css/project-unlinted.css'],
-        dest: 'assets/css/project.css',
+        src: ['assets/css/pre.css'],
+        dest: 'assets/css/pre.css',
         options: {
           compile: true,
-          compress: false,             // Compress your compiled code
-          noIDs: true,                 // Doesn't complain about using IDs in your stylesheets
-          noJSPrefix: true,            // Doesn't complain about styling .js- prefixed classnames
-          noOverqualifying: true,      // Doesn't complain about overqualified selectors (ie: div#foo.bar)
-          noUnderscores: true,         // Doesn't complain about using underscores in your class names
-          noUniversalSelectors: true,  // Doesn't complain about using the universal * selector
-          prefixWhitespace: true,      // Adds whitespace prefix to line up vender prefixed properties
-          strictPropertyOrder: true,   // Complains if not strict property order
-          stripColors: true,           // Strip colors from the Terminal output
-          zeroUnits: true              // Doesn't complain if you add units to values of 0
+          compress: false
         }
       },
       responsive: {
-        src: ['assets/css/project-responsive-unlinted.css'],
-        dest: 'assets/css/project-responsive.css',
+        src: ['assets/css/responsive.css'],
+        dest: 'assets/css/responsive.css',
         options: {
           compile: true,
-          compress: false,             // Compress your compiled code
-          noIDs: true,                 // Doesn't complain about using IDs in your stylesheets
-          noJSPrefix: true,            // Doesn't complain about styling .js- prefixed classnames
-          noOverqualifying: true,      // Doesn't complain about overqualified selectors (ie: div#foo.bar)
-          noUnderscores: true,         // Doesn't complain about using underscores in your class names
-          noUniversalSelectors: true,  // Doesn't complain about using the universal * selector
-          prefixWhitespace: true,      // Adds whitespace prefix to line up vender prefixed properties
-          strictPropertyOrder: true,   // Complains if not strict property order
-          stripColors: true,           // Strip colors from the Terminal output
-          zeroUnits: true              // Doesn't complain if you add units to values of 0
+          compress: false
         }
       }
     },
+
+    // Concatenate scripts
     concat: {
-      'assets/js/plugins.js' : [
-        'assets/js/plugins/bootstrap/application.js',
-       // 'assets/js/plugins/jquery.easing.1.3.js',
-        'assets/js/plugins/jquery.fittext.js',
-        'assets/js/plugins/bootstrap/google-code-prettify/prettify.js',
-       // 'assets/js/plugins/strftime.js',
-        'assets/js/plugins/holder.js'
-       // 'assets/js/plugins/github.js'
-      ]
+      head: {
+        src: [
+              'assets/js/vendor/jquery.js',
+              'assets/js/vendor/modernizr.js',
+        ],
+        dest: 'assets/js/head.js' // only script in the head
+      },
+      footer: {
+        src: [
+              'assets/js/lib/bootstrap/bootstrap.js',
+              'assets/js/lib/bootstrap/application.js',                      // application.js is for docs
+              'assets/js/lib/bootstrap/google-code-prettify/prettify.js',    // google code prettify
+              'assets/js/plugins/fittext.js',                                // Responsive text in masthead
+              'assets/js/plugins/holder.js',                                 // image placeholders
+              'assets/js/lib/pre-paralax.js'                                 // custom scripts go last
+        ],
+        dest: 'assets/js/footer.js' // place this in the footer
+      }
     },
 
     // Minify scripts
     min: {
-      'assets/js/plugins.min.js' : ['assets/js/plugins.js']
+      head: {
+        src: ['assets/js/head.js'],
+        dest: 'assets/js/head.min.js'
+      },
+      footer: {
+        src: ['assets/js/footer.js'],
+        dest: 'assets/js/footer.min.js'
+      }
     },
 
     lint: {
       files: ['assets/js/*.js']
     },
 
-
-/*
-    // Optimize images
-    jpgmin: {
-      src: ['assets/img/stock/*.jpg'],
-      dest: 'assets/img/optimized'
-    },
-*/
-
     watch: {
-      dist: {
-        files: ['assets/**/*.*','docs/**/*.*'],
-        tasks: 'append less recess:responsive concat'
+      all: {
+        files: ['assets/**/*.*'],
+        tasks: 'wrap less recess:responsive concat'
       },
-      scripts: {
-        files: ['assets/**/*.js'],
-        tasks: 'lint test'
-      },
-      less: {
-        files: ['assets/**/*.less'],
-        tasks: 'less recess'
+      docs: {
+        files: ['docs/**/*.*'],
+        tasks: 'wrap less recess:responsive concat'
       }
     }
   });
 
-  grunt.loadTasks('tasks');
+  grunt.loadTasks('build');
   grunt.loadNpmTasks('grunt-contrib');
 
   // Default task.
-  grunt.registerTask('default', 'append less recess:responsive concat watch:dist');
-  grunt.registerTask('full', 'append less recess concat min watch:dist');
+  grunt.registerTask('default', 'wrap less recess concat min watch');
 
 };
 

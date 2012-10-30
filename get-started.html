@@ -2,8 +2,8 @@
 <html lang="en" class="no-js">
   <head>
 
-    <!-- load google fonts -->
-    <script type="text/javascript">
+    <!-- load google fonts - TODO: reduce fonts after testing -->
+    <script>
       WebFontConfig = {
         google: { families: [ 'Droid+Sans::latin', 'Droid+Serif:400,700:latin', 'Bitter:400,700:latin', 'PT+Sans+Narrow::latin', 'Francois+One::latin', 'Open+Sans:400,300:latin', 'Oswald:400,300:latin', 'Yanone+Kaffeesatz:400,200,300:latin', 'Cuprum::latin' ] }
       };
@@ -15,7 +15,7 @@
         wf.async = 'true';
         var s = document.getElementsByTagName('script')[0];
         s.parentNode.insertBefore(wf, s);
-      })(); 
+      })();
     </script>
 
     <meta charset="utf-8">
@@ -23,17 +23,15 @@
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Pre, by Jon Schlinkert</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="HTML/CSS, LESS and JavaScript components for quickly building front-end projects.">
+    <meta name="description" content="Dynamic presentation language that compiles to HTML">
     <meta name="author" content="Brian Woodward, Jon Schlinkert">
 
 
     <!-- styles -->
-    <link href="assets/css/project.css" rel="stylesheet">
-    <link href="assets/css/project-responsive.css" rel="stylesheet">
-    <link href="assets/css/project-docs.css" rel="stylesheet">
-    <link href="assets/js/plugins/bootstrap/google-code-prettify/prettify.css" rel="stylesheet" type="text/css">
-    <script src="assets/js/vendor/jquery.js"></script>
-    <script src="assets/js/vendor/modernizr.js"></script>
+    <link href="assets/css/pre.css" rel="stylesheet">
+    <link href="assets/css/responsive.css" rel="stylesheet">
+    <link href="assets/js/lib/bootstrap/google-code-prettify/prettify.css" rel="stylesheet">
+    <script src="assets/js/head.min.js"></script>
 
     <style type="text/css">
 
@@ -53,14 +51,16 @@
   </head>
 
   <body>
+
     <!-- Welcome Banner
     ================================================== -->
     <div class="alert banner banner-fixed-top">
       <div class="container">
         <button type="button" class="close" data-dismiss="banner">&times;</button>
-        <span class="banner-message"><strong>Welcome!</strong> <a href="https://github.com/sellside/pre" class="banner-link">fork Pre on Github</a> or <a href="https://github.com/sellside/pre/issues?state=open" class="banner-link">request features here</a>.</span>
+        <span class="banner-message">Welcome! <a href="https://github.com/sellside/pre" class="banner-link">fork Pre on Github</a> or <a href="https://github.com/sellside/pre/issues?state=open" class="banner-link">request features here</a>.</span>
       </div>
     </div><!--/banner-->
+
 
     <!-- Navbar
     ================================================== -->
@@ -72,11 +72,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="./index.html">assemble</a>
+          <a class="brand" href="./index.html">Pre</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class=""><a href="./index.html">Home</a></li>
               <li class="active"><a href="#">Get started</a></li>
+              <li class=""><a href="docs/base-css.html">Base CSS</a></li>
+              <li class=""><a href="docs/components.html">Components</a></li>
+              <li class=""><a href="docs/javascript.html">JavaScript</a></li>
             </ul>
           </div>
         </div>
@@ -317,8 +320,21 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="assets/js/plugins/bootstrap/bootstrap.min.js"></script>
-    <script src="assets/js/plugins.js"></script>
+    <script src="assets/js/footer.min.js"></script>
+
+    <script type="text/javascript">
+
+      jQuery(document).ready(function($) {
+
+        $("#fittext1").fitText();
+        $("#fittext2").fitText(1.2);
+        $("#hero-title").fitText(0.1, { minFontSize: '50px', maxFontSize: '220px' });
+
+        Holder.add_theme("gray",{ foreground:"#aaa", background:"#eee", size: 10 }).add_image("placeholder.js/200x100/new", "img").run()
+
+      });
+
+    </script>
 
   </body>
 </html>

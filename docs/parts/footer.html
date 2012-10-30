@@ -1,23 +1,39 @@
-    <footer id="footer" class="footer footer-fixed-bottom">
+    <footer id="footer" class="footer footer-gh footer-fixed-bottom">
       <div class="container">
         <nav class="footer-nav">
           <p class="pull-right"><a href="#">Back to top</a></p>
           <ul class="links links-inline">
-            <li class=""><a href="#">Blog</a></li>
-            <li class=""><a href="#">About</a></li>
-            <li class=""><a href="#">GitHub</a></li>
-            <li class=""><a href="#">Contact</a></li>
+            <li class=""><a href="#">Toolkit</a></li>
+            <li class=""><a href="#">Roadmap</a></li>
+            <li class=""><a href="#">Issues</a></li>
+            <li class=""><a href="#">Contribute</a></li>
           </ul>
-          <p>Follow Jon on Twitter <a href="http://twitter.com/jonschlinkert" target="_blank">@jonschlinkert</a></p>
-          <p class="copyright">&copy; 2012 Jon Schlinkert. All rights reserved.</p>
+          <p>Hacked together at <a href="http://twitter.com/sellside" target="_blank">@sellside</a> by <a href="http://twitter.com/jonschlinkert" target="_blank">@jonschlinkert</a> and <a href="http://twitter.com/doowb" target="_blank">@doowb</a>.</p>
+          <p class="license">Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+          <p class="copyright">&copy; 2012 Sellside, Inc. All rights reserved.</p>
         </nav>
       </div>
     </footer>
-    <script src="../assets/js/jquery.js"></script>
-    <script src="../assets/js/vendor/bootstrap/bootstrap.min.js"></script>
-    <script src="../assets/js/vendor/bootstrap/application.js"></script>
-    <script src="../assets/js/vendor/strftime.js"></script>
-    <script src="../assets/js/vendor/holder.js"></script>
-    <script src="../assets/js/github.js"></script>
+
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../assets/js/footer.min.js"></script>
+
+    <script type="text/javascript">
+
+      jQuery(document).ready(function($) {
+
+        $("#fittext1").fitText();
+        $("#fittext2").fitText(1.2);
+        $("#hero-title").fitText(0.1, { minFontSize: '50px', maxFontSize: '220px' });
+
+        Holder.add_theme("gray",{ foreground:"#aaa", background:"#eee", size: 10 }).add_image("placeholder.js/200x100/new", "img").run()
+
+      });
+
+    </script>
+
   </body>
 </html>
