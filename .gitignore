@@ -44,3 +44,7 @@ temp/*
 node_modules/
 */node_modules/*
 */less.js/
+
+*/less/*
+*/pages/*
+*/parts/*
