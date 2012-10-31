@@ -24,7 +24,7 @@ this
 .one {}
 ```
 
-ompiles to:
+compiles to:
 
 ```html
 <div class="one"></div>
@@ -62,7 +62,7 @@ strong {
   class: "code";
   text: "Hello, World!";
 }
-```css
+```
 
 both render to:
 
@@ -86,7 +86,7 @@ html {
 ```
 would render to:
 
-```css
+```html
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"></html>
 ```
 
@@ -249,7 +249,7 @@ Simple syntax comparison between HTML, Pre, Jade and HAML
 
 ### HTML
 
-```HTML
+```html
 <strong class="code" id="message">Hello, World!</strong>
 ```
 
