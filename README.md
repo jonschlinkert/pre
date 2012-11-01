@@ -112,14 +112,14 @@ grunt.cmd pre
 
 Pre's lexicon follows HTML convention, and targeting is accomplished using the selector syntax of CSS, and a grammar similar to LESS or JSON. Take this example:
 
-```pre
+```css
 section {}
 ```
 This is recognized as an HTML tag since the selector is not preceded by `.` or `#`, and so it compiles to this:
 
 `<section></section>`
 
-```pre
+```css
 .section {}
 ```
 The above statement would be recognozed as an HTML attribute, since the selector is preceded by `.`, and so it compiles to this:
@@ -143,7 +143,7 @@ Declaration blocks in Pre work the same way as CSS. Accept in Pre, declarations 
 
 If you know CSS, you have a huge head start using Pre. If you know LESS, you almost know Pre. A tag is simply a leading word:
 
-```pre
+```css
 html {}
 ```
 
@@ -151,7 +151,7 @@ for example is converted to `<html></html>`
 
 tags can also have classes using the same syntax as CSS:
 
-```pre
+```css
 .row-fluid {}
 ```
 
@@ -159,7 +159,7 @@ which would render `<div class="row-fluid"></div>`
 
 Ids work the same
 
-```pre
+```css
 #myCarousel {}
 ```
 
@@ -167,7 +167,7 @@ renders `<div id="myCarousel"></div>`
 
 By default, `.` and `#` both compile to a `div` tag. To specify another tag, just add it before the `.` or `#`:
 
-```pre
+```css
 p.lead {}
 ```
 
@@ -175,7 +175,7 @@ renders `<p class="lead"></p>`
 
 use classes and ids together, just like [Emmet](https://github.com/sergeche/zen-coding) (fka ZenCoding):
 
-```pre
+```css
 div#one.two.three > .nested {}
 ```
 renders
@@ -185,7 +185,7 @@ renders
 
 No need to write divs over and over, just do:
 
-```pre
+```css
 #one {}
 .two {}
 .three {}
@@ -201,7 +201,7 @@ which outputs:
 
 and this
 
-```pre
+```css
 #one {
   .two {}
 }
@@ -217,7 +217,7 @@ compiles to:
 
 Use multipliers to reduce code footprint for repeating elements:
 
-```pre
+```css
 .two*3 {}
 ```
 outputs:
@@ -232,7 +232,7 @@ outputs:
 
 You can either do this:
 
-```pre
+```css
 .one {
 }
 .two {
@@ -240,13 +240,13 @@ You can either do this:
 ```
 or this:
 
-```pre
+```css
 .one + .two {}
 ```
 
 to get this:
 
-```pre
+```css
 <div class="one"></div>
 <div class="two"></div>
 ```
@@ -256,7 +256,7 @@ to get this:
 
 Need text? Simply place some content inside the `text` property:
 
-```pre
+```css
 p { text: "Lorem ipsum" }
 ```
 
@@ -264,12 +264,12 @@ renders `<p>Lorem ipsum</p>`.
 
 You can add as much text as you need this way:
 
-```pre
+```css
 h1 { text: "War and Peace, Chapter 1" }
 p { text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit..." }
 ```
 renders
-```pre
+```css
 <h1>War and Peace, Chapter 1</h1>
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
 ```
@@ -280,7 +280,7 @@ If you need to escape your text, ...
 
 Need to add custom attributes? Just add them as a property and they will be compiled as attributes in the resulting HTML:
 
-```pre
+```css
 .row {
   data-tooltip: "This is a tooltip!";
   myAttr: "Invalid markup is awesome!";
@@ -299,43 +299,43 @@ renders
 
 Remember, classes are attributes too, so you have options for applying classes (or multiple classes). You can either do this:
 
-```pre
+```css
 .one.two {}
 ```
 or this...
 
-```pre
+```css
 .one {
   class: "two";
 }
 ```
 and both examples yield the same result:
 
-```pre
+```css
 <div class="one two"></div>
 ```
 
 The same goes for Id's. This:
 
-```pre
+```css
 #main.content {}
 ```
 renders to:
 
-```pre
+```css
 <div id="main" class="content"></div>
 ```
 
 And this:
 
-```pre
+```css
 #main.content {
   class: "wide-content";
 }
 ```
 compiles to:
 
-```pre
+```css
 <div id="main" class="content wide-content"></div>
 ```
 
@@ -345,7 +345,7 @@ If static text doesn't work for you, use your templating language of choice inst
 
 Mustache:
 
-```pre
+```css
 p { text: "{{name}}"; }
 p { text: "{{company}}"; }
 ```
@@ -353,7 +353,7 @@ results in `<p>{{name}}</p><p>{{company}}</p>`
 
 Web Forms:
 
-```pre
+```css
 p { text: "<%: name %>"; }
 p { text: "<%: company %>"; }
 ```
@@ -361,7 +361,7 @@ results in `<p><%: name %></p><p><%: company %></p>`
 
 Razor:
 
-```pre
+```css
 p { text: "@name"; }
 p { text: "@company"; }
 ```
@@ -374,7 +374,7 @@ Remember, to escape the template code you need to keep it wrapped in quotation m
 Pre allows variables to be defined. Pre variables are defined with an at sign (@), and variable assignment is done with a colon (:).
 During translation, the values of the variables are inserted into the output HTML document.
 
-```pre
+```css
 @loremText:  "lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.";
 
 p { text: @loremText; }
@@ -385,7 +385,7 @@ results in `<p>lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do 
 
 Remember multipliers? They're even better with variables:
 
-```pre
+```css
 @items: 5; // arbitrary number or another variable
 
 .item*@items {}
@@ -404,7 +404,7 @@ outputs:
 
 Variables must be interpolated to be evaluated inside of escaped strings. So this:
 
-```pre
+```css
 @name:       "Brian";
 @greeting:   "Goodbye World";
 
@@ -419,7 +419,7 @@ produces this: `<p>Brian said Goodbye World at the developer conference.</p>`
 
 If you want to want to pass through a string unevaluated, add quotation marks around the value.
 
-```pre
+```css
 p { text: "@name"; }
 p { text: "@company"; }
 ```
@@ -427,7 +427,7 @@ results in `<p>@name</p><p>@name</p>` (a good way to use Razor, mustache or your
 
 This also works as a good tactic to escape HTML:
 
-```pre
+```css
 .username {
   "text": "<strong>Bob Smith</strong>"
 }
@@ -436,7 +436,7 @@ results in `<div><strong>Bob Smith</strong></div>`
 
 ###JavaScript
 
-```pre
+```css
 script {
   "text": "alert('Hello, World!')"
 }
@@ -451,7 +451,7 @@ results in
 
 And this:
 
-```pre
+```css
 a.button {
   href: "#";
   onClick: "alert('Hello, World!'); return false;";
@@ -469,7 +469,7 @@ results in
 TODO: add json hash example, e.g.
 
 Hash:
-```pre
+```css
 {
   "name": "Chris",
   "company": "<b>GitHub</b>"
@@ -482,7 +482,7 @@ Similar to LESS, in Pre any number or variable can be operated on. Operations sh
 
 TODO: need to think of some good use cases before I document operations. The following isn't very compelling, but it's not hard to do:
 
-```pre
+```css
 @ticketsSold:               500;
 @seatsAvailable:            1000;
 @twoForMeUnderTheTable:     2;
@@ -491,7 +491,7 @@ TODO: need to think of some good use cases before I document operations. The fol
 
 And use it like this:
 
-```pre
+```css
 ul {
   li*@seatsLeft {}
 }
@@ -504,7 +504,7 @@ Again, not compelling, possibly unethical, and I'm not even sure how this exampl
 
 Variables can be embeded inside strings in a similar way to LESS, ruby or PHP, with the `@{name}` construct:
 
-```pre
+```css
 @base-url: "http://sub.domain.com";
 
 img {
@@ -520,7 +520,7 @@ outputs `<img src="http://sub.domain.com/img/bg.png">`
 
 CSS-style comments are preserved by Pre:
 
-```pre
+```css
 /* Hello, I'm a CSS-style comment */
 ```
 
@@ -532,7 +532,7 @@ Single-line comments are also valid in Pre, but they are ‘silent’, so they d
 
 Single line comments can be used inline with other
 
-```pre
+```css
 /* this is a valid comment */
 .content {
     text: "Yeah!"; // so is this
@@ -555,7 +555,7 @@ would output
 
 A block comment is legal as well:
 
-```pre
+```css
 /*
   .content {
       text: "Yeah!";
@@ -580,7 +580,7 @@ Pre allows you to either nest tags in the "traditional" way, or use block expans
 
 So you can do this:
 
-```pre
+```css
 #one {
   .two {}
 }
@@ -590,7 +590,7 @@ So you can do this:
 
 or use block expansion, like this:
 
-```pre
+```css
 #one > .two {}
 ```
 
@@ -609,7 +609,7 @@ TODO: Brian, could use some peer review. Please feel free to cut this out of the
 
 Case statements take the following form:
 
-```pre
+```css
 ul {
   when (@seatsAvailable > @ticketsSold) {
     li > a { href: "Buy Now"; }
@@ -632,7 +632,7 @@ TODO
 <a name="a6-10"/>
 ### HTML
 
-```pre
+```css
 html {}
 ```
 yields:
@@ -643,7 +643,7 @@ yields:
 
 And this:
 
-```pre
+```css
 html {
   head {
     title: { text: "Home"; }
@@ -738,7 +738,7 @@ TODO
 
 In Pre, it is possible to add the properties (HTML attributes) from ruleset to those of another ruleset. So, for example, let's say you have the following block:
 
-```pre
+```css
 .username {
   "text": "<strong>@name</strong>"
 }
@@ -750,7 +750,7 @@ And you want to use these properties inside other rulesets, just drop the class 
 
 And use it like this:
 
-```pre
+```css
 .profile {
   .username;
 }
@@ -762,7 +762,7 @@ it will result in:
 
 Mixins will also process selectors as well as their properties, so if you create the mixin like this:
 
-```pre
+```css
 .username() {
   .username {
     "text": "<strong>@name</strong>"
@@ -771,7 +771,7 @@ Mixins will also process selectors as well as their properties, so if you create
 ```
 And use it the same way:
 
-```pre
+```css
 .profile {
   .username;
 }
@@ -785,7 +785,7 @@ it will result in:
 
 Turn the last example into a parametric mixin:
 
-```pre
+```css
 .username(@name: "Bob Smith") {
   "text": "<strong>@name</strong>"
 }
@@ -793,7 +793,7 @@ Turn the last example into a parametric mixin:
 
 And use it like this:
 
-```pre
+```css
 .profile {
   .username();
 }
@@ -807,7 +807,7 @@ which results in:
 
 Mixins can also use variables for default values. So a mixin like this:
 
-```pre
+```css
 @exampleUsername: "Bob Smith";
 
 .username(@name: @exampleUsername) {
@@ -817,7 +817,7 @@ Mixins can also use variables for default values. So a mixin like this:
 
 would still be used like this:
 
-```pre
+```css
 .profile {
   .username();
 }
@@ -835,19 +835,19 @@ and result in:
 TODO: documentation on this is wip, the following examples are incomplete but are left here as starting points.
 
 Use mustache tags and partials:
-```pre
+```css
 .container {
   {{> template}}
 }
 ```
 
 Pre mixins:
-```pre
+```css
 .container();
 ```
 
 Or underscore templates:
-```pre
+```css
 .container {
   <%= template %>
 }
@@ -865,7 +865,7 @@ Or underscore templates:
 Below is an example Gruntfile used to compile _pages/*.pre_
 into _pages/*.html_ files by simply executing `grunt pre`.
 
-```pre
+```css
 pre: {
   docs: {
     src: 'pages/index.pre',
