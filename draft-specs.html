@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+
+    <!-- load google fonts - TODO: reduce fonts after testing -->
+    <script>
+      WebFontConfig = {
+        google: { families: [ 'Droid+Sans::latin', 'Droid+Serif:400,700:latin', 'Bitter:400,700:latin', 'PT+Sans+Narrow::latin', 'Francois+One::latin', 'Open+Sans:400,300:latin', 'Oswald:400,300:latin', 'Yanone+Kaffeesatz:400,200,300:latin', 'Cuprum::latin' ] }
+      };
+      (function() {
+        var wf = document.createElement('script');
+        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+          '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+        wf.type = 'text/javascript';
+        wf.async = 'true';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(wf, s);
+      })();
+    </script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Pre, by Jon Schlinkert</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dynamic presentation language that compiles to HTML">
+    <meta name="author" content="Brian Woodward, Jon Schlinkert">
+
+
+    <!-- styles -->
+    <link href="assets/css/pre.css" rel="stylesheet">
+    <link href="assets/css/responsive.css" rel="stylesheet">
+    <link href="assets/js/lib/bootstrap/google-code-prettify/prettify.css" rel="stylesheet">
+    <script src="assets/js/head.min.js"></script>
+
+    <style type="text/css">
+
+    </style>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- fav and touch icons -->
+    <link rel="shortcut icon" href="assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+
+  </head>
+
+  <body>
+
+    <!-- Welcome Banner
+    ================================================== -->
+    <div class="alert banner banner-fixed-top">
+      <div class="container">
+        <button type="button" class="close" data-dismiss="banner">&times;</button>
+        <span class="banner-message">Welcome! <a href="https://github.com/sellside/pre" class="banner-link">fork Pre on Github</a> or <a href="https://github.com/sellside/pre/issues?state=open" class="banner-link">request features here</a>.</span>
+      </div>
+    </div><!--/banner-->
+
+<div class="container">
+  <h1>
+    <a name="pre-dynamic-presentation-language" href="https://pre.io">Pre dynamic presentation language</a>
+  </h1>
+  <p> Pre is dynamic presentation language that compiles into HTML. </p>
+  <p> Pre does for HTML what LESS and SASS do for CSS. Pre was heavily influenced by Zen-Coding, <a href="http://lesscss.org/">Less</a> and <a href="https://github.com/visionmedia/jade">Jade</a> and implemented with JavaScript for <a href="http://nodejs.org/">node</a>. </p>
+  <p><a href="https://github.com/gruntjs/grunt">Grunt</a> is a javascript-based build tool that will be used to compile Pre. Once you have node and npm running, pull down the developer dependencies from <em>package.json</em> , grab the example gruntfile (coming soon), and run: </p>
+  <p>
+    <code>grunt pre</code>
+  </p>
+  <h2><a name="test-drive" href="https://github.com/sellside/prehttps://github.com/sellside/pre#test-drive"></a>Test drive </h2>
+  <p>TODO</p>
+  <p> And be sure you check the gh-pages branch too for activity and updates! </p>
+  <h2><a name="readme-contents" href="https://github.com/sellside/prehttps://github.com/sellside/pre#readme-contents"></a>README Contents </h2>
+  <p>TODO: needs to be reorganized and ToC needs to be corrected</p>
+  <ul>
+    <li>
+      <a href="https://github.com/sellside/prehttps://github.com/sellside/pre#a1">Features</a>
+    </li>
+    <li>
+      <a href="https://github.com/sellside/pre#a2">Implementations</a>
+    </li>
+    <li>
+      <a href="https://github.com/sellside/prehttps://github.com/sellside/pre#a3">Getting Started</a>
+    </li>
+    <li>Public API</li>
+    <li>
+      <a href="https://github.com/sellside/prehttps://github.com/sellside/pre#a6">Syntax</a>
+      <ul>
+        <li>
+          <a href="https://github.com/sellside/prehttps://github.com/sellside/pre#a6-1">Line Endings</a>
+        </li>
+        <li>
+          <a href="https://github.com/sellside/prehttps://github.com/sellside/pre#a6-2">Tags</a>
+        </li>
+        <li>
+          <a href="https://github.com/sellside/prehttps://github.com/sellside/pre#a6-3">Text Nodes</a>
+        </li>
+        <li>
+          <a href="https://github.com/sellside/prehttps://github.com/sellside/pre#a6-4">Comments</a>
+        </li>
+        <li>
+          <a href="https://github.com/sellside/prehttps://github.com/sellside/pre#a6-5">Block Comments</a>
+        </li>
+        <li>
+          <a href="https://github.com/sellside/prehttps://github.com/sellside/pre#a6-6">Nesting</a>
+        </li>
+        <li>
+          <a href="https://github.com/sellside/prehttps://github.com/sellside/pre#a6-7">Block Expansion</a>
+        </li>
+        <li>
+          <a href="https://github.com/sellside/prehttps://github.com/sellside/pre#a6-8">Case</a>
+        </li>
+        <li>
+          <a href="https://github.com/sellside/prehttps://github.com/sellside/pre#a6-9">Attributes</a>
+        </li>
+        <li>
+          <a href="https://github.com/sellside/prehttps://github.com/sellside/pre#a6-10">HTML</a>
+        </li>
+        <li>
+          <a href="https://github.com/sellside/prehttps://github.com/sellside/pre#a6-11">Doctypes</a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href="https://github.com/sellside/prehttps://github.com/sellside/pre#a8">Executable Code</a>
+    </li>
+    <li>
+      <a href="https://github.com/sellside/prehttps://github.com/sellside/pre#a9">Iteration</a>
+    </li>
+    <li>
+      <a href="https://github.com/sellside/prehttps://github.com/sellside/pre#a10">Conditionals</a>
+    </li>
+    <li>
+      <a href="https://github.com/sellside/prehttps://github.com/sellside/pre#a11">Template inheritance</a>
+    </li>
+    <li>
+      <a href="https://github.com/sellside/prehttps://github.com/sellside/pre#a13">Includes</a>
+    </li>
+    <li>
+      <a href="https://github.com/sellside/prehttps://github.com/sellside/pre#a14">Mixins</a>
+    </li>
+    <li>
+      <a href="https://github.com/sellside/prehttps://github.com/sellside/pre#a15">Generated Output</a>
+    </li>
+    <li>
+      <a href="https://github.com/sellside/prehttps://github.com/sellside/pre#a16">Example Gruntfile</a>
+    </li>
+    <li>
+      <a href="https://github.com/sellside/prehttps://github.com/sellside/pre#a17">pre(1)</a>
+    </li>
+    <li>
+      <a href="https://github.com/sellside/prehttps://github.com/sellside/pre#a18">Tutorials</a>
+    </li>
+    <li>
+      <a href="https://github.com/sellside/prehttps://github.com/sellside/pre#a19">License</a>
+    </li>
+  </ul>
+  <p>
+    <a name="a1"></a>
+  </p>
+  <h2>
+    <a name="features" href="https://github.com/sellside/prehttps://github.com/sellside/pre#features"></a>
+    Features </h2>
+  <ul>
+    <li>reusability, component-oriented</li>
+    <li>better readability than Jade or HAML</li>
+    <li>whitespace agnostic, flexible indentation</li>
+    <li>html lexicon</li>
+    <li>syntax and semantics of CSS and LESS</li>
+    <li>mixins</li>
+    <li>parametric mixins</li>
+    <li>variables</li>
+    <li>guards</li>
+    <li>partials and static includes</li>
+    <li>attribute interpolation</li>
+    <li>html 5 mode (the default doctype)</li>
+    <li>combine dynamic and static tag classes</li>
+    <li>template inheritance</li>
+    <li>block append / prepend</li>
+    <li>
+      block comments and inline comments
+      <ul>
+        <li>
+          :stylus must have
+          <a href="http://github.com/LearnBoost/stylus">stylus</a>
+          installed
+        </li>
+        <li>
+          :less must have
+          <a href="http://github.com/cloudhead/less.js">less.js</a>
+          installed
+        </li>
+        <li>
+          :markdown must have
+          <a href="http://github.com/evilstreak/markdown-js">markdown-js</a>
+          ,
+          <a href="http://github.com/visionmedia/node-discount">node-discount</a>
+          , or
+          <a href="http://github.com/chjj/marked">marked</a>
+          installed
+        </li>
+        <li>
+          :coffeescript must have
+          <a href="http://jashkenas.github.com/coffee-script/">coffee-script</a>
+          installed
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href="http://github.com/jonschlinkert/pre-sublime-highlighter">Sublime Text Syntax Highlighting</a>
+    </li>
+  </ul>
+  <p>
+    <a name="a3"></a>
+  </p>
+  <h2>
+    <a name="getting-started" href="https://github.com/sellside/prehttps://github.com/sellside/pre#getting-started"></a>
+    Getting Started </h2>
+  <p>via npm:</p>
+  <div>
+    <pre>$ npm install pre  </pre>
+  </div>
+  <p>
+    <a name="a4"></a>
+  </p>
+  <h2>
+    <a name="compiling" href="https://github.com/sellside/prehttps://github.com/sellside/pre#compiling"></a>
+    Compiling </h2>
+  <p> To compile pre to static HTML, use the
+    <a href="http://sellside.github.com/grunt-pre">grunt-pre</a>
+    task, and simply execute: </p>
+  <div>
+    <pre>$ grunt pre  </pre>
+  </div>
+  <p> If you are are a Windows user, when executing
+    <a href="https://github.com/gruntjs/grunt">gruntjs</a>
+    from the same folder as the grunt.js file, you must execute: </p>
+  <div>
+    <pre>grunt.cmd pre  </pre>
+  </div>
+  <p>
+    <a name="a6"></a>
+  </p>
+  <h2>
+    <a name="syntax" href="https://github.com/sellside/prehttps://github.com/sellside/pre#syntax"></a>
+    Syntax </h2>
+  <p>
+    <a name="a6-1"></a>
+  </p>
+  <h3>
+    <a name="line-endings" href="https://github.com/sellside/prehttps://github.com/sellside/pre#line-endings"></a>
+    Line Endings </h3>
+  <p>
+    <strong>CRLF</strong> and <strong>CR</strong> are converted to <strong>LF</strong> before parsing. </p>
+  <p> Pre's lexicon follows HTML convention, and targeting is accomplished using the selector syntax of CSS, and a grammar similar to LESS or JSON. Take this example: </p>
+  <div>
+    <pre>section {}  </pre>
+  </div>
+  <p> This is recognized as an HTML tag since the selector is not preceded by . or #, and so it compiles to this: </p>
+  <p>&lt;section&gt;&lt;/section&gt;</p>
+  <div>
+    <pre>.section {}  </pre>
+  </div>
+  <p> The above statement would be recognozed as an HTML attribute, since the selector is preceded by ., and so it compiles to this: </p>
+  <p>&lt;div class="section"&gt;&lt;/div&gt;</p>
+  <p> The default tag is always div unless a specific HTML tag is explicity stated. </p>
+  <p>
+    <a name="a6-1"></a>
+  </p>
+  <h3>
+    <a name="line-endings-1" href="https://github.com/sellside/prehttps://github.com/sellside/pre#line-endings-1"></a>
+    Line Endings </h3>
+  <p>
+    <strong>CRLF</strong> and <strong>CR</strong> are converted to <strong>LF</strong> before parsing. </p>
+  <p>
+    <a name="a6-2"></a>
+  </p>
+  <h3>
+    <a name="declarations" href="https://github.com/sellside/prehttps://github.com/sellside/pre#declarations"></a>
+    Declarations </h3>
+  <p> Declaration blocks in Pre work the same way as CSS. Accept in Pre, declarations reference text and attribute nodes attached to specific selectors. Like CSS, declarations consist of two parts: properties which directly map to HTML attributes, e.g. : and value which is equivalent of HTML value, e.g. 10pt. NOTE: properties are always ended with a colon. </p>
+  <h3>
+    <a name="tags" href="https://github.com/sellside/prehttps://github.com/sellside/pre#tags"></a>
+    Tags </h3>
+  <p> If you know CSS, you have a huge head start using Pre. If you know LESS, you almost know Pre. A tag is simply a leading word: </p>
+  <div>
+    <pre>html {}  </pre>
+  </div>
+  <p>for example is converted to &lt;html&gt;&lt;/html&gt;</p>
+  <p>tags can also have classes using the same syntax as CSS:</p>
+  <div>
+    <pre>.row-fluid {}  </pre>
+  </div>
+  <p>which would render &lt;div class="row-fluid"&gt;&lt;/div&gt;</p>
+  <p>Ids work the same</p>
+  <div>
+    <pre>#myCarousel {}  </pre>
+  </div>
+  <p>renders &lt;div id="myCarousel"&gt;&lt;/div&gt;</p>
+  <p> By default, . and # both compile to a div tag. To specify another tag, just add it before the . or #: </p>
+  <div>
+    <pre>p.lead {}  </pre>
+  </div>
+  <p>renders &lt;p class="lead"&gt;&lt;/p&gt;</p>
+  <p> use classes and ids together, just like
+    <a href="https://github.com/sergeche/zen-coding">Emmet</a>
+    (fka ZenCoding): </p>
+  <div>
+    <pre>div#one.two.three &gt; .nested {}  </pre>
+  </div>
+  <p> renders &lt;div id="one" class="two three"&gt; &lt;div class="nested"&gt;&lt;/div&gt; &lt;/div&gt;
+  </p>
+  <p>No need to write divs over and over, just do:</p>
+  <div>
+    <pre>#one {}  .two {}  .three {}  </pre>
+  </div>
+  <p>which outputs:</p>
+  <div>
+    <pre>&lt;div id="one"&gt;&lt;/div&gt;  &lt;div class="two"&gt;&lt;/div&gt;  &lt;div class="three"&gt;&lt;/div&gt;  </pre>
+  </div>
+  <p>and this</p>
+  <div>
+    <pre>#one {    .two {}  }    </pre>
+  </div>
+  <p>compiles to:</p>
+  <div>
+    <pre>&lt;div id="one"&gt;    &lt;div class="two"&gt;&lt;/div&gt;  &lt;/div&gt;  </pre>
+  </div>
+  <p> Use multipliers to reduce code footprint for repeating elements: </p>
+  <div>
+    <pre>.two*3 {}  </pre>
+  </div>
+  <p>outputs:</p>
+  <div>
+    <pre>&lt;div class="two"&gt;&lt;/div&gt;  &lt;div class="two"&gt;&lt;/div&gt;  &lt;div class="two"&gt;&lt;/div&gt;  </pre>
+  </div>
+  <h3>
+    <a name="siblings" href="https://github.com/sellside/prehttps://github.com/sellside/pre#siblings"></a>
+    Siblings </h3>
+  <p>You can either do this:</p>
+  <div>
+    <pre>.one {  }  .two {  }  </pre>
+  </div>
+  <p>or this:</p>
+  <div>
+    <pre>.one + .two {}  </pre>
+  </div>
+  <p>to get this:</p>
+  <div>
+    <pre>&lt;div class="one"&gt;&lt;/div&gt;  &lt;div class="two"&gt;&lt;/div&gt;  </pre>
+  </div>
+  <p>
+    <a name="a6-3"></a>
+  </p>
+  <h3>
+    <a name="text-nodes" href="https://github.com/sellside/prehttps://github.com/sellside/pre#text-nodes"></a>
+    Text Nodes </h3>
+  <p> Need text? Simply place some content inside the text property: </p>
+  <div>
+    <pre>p { text: "Lorem ipsum" }  </pre>
+  </div>
+  <p>renders &lt;p&gt;Lorem ipsum&lt;/p&gt;.</p>
+  <p>You can add as much text as you need this way:</p>
+  <div>
+    <pre>h1 { text: "War and Peace, Chapter 1" }  p { text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit..." }  </pre>
+  </div>
+  <p>renders</p>
+  <div>
+    <pre>&lt;h1&gt;War and Peace, Chapter 1&lt;/h1&gt;  &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit...&lt;/p&gt;  </pre>
+  </div>
+  <p>If you need to escape your text, ...</p>
+  <h3>
+    <a name="attributes" href="https://github.com/sellside/prehttps://github.com/sellside/pre#attributes"></a>
+    Attributes </h3>
+  <p> Need to add custom attributes? Just add them as a property and they will be compiled as attributes in the resulting HTML: </p>
+  <div>
+    <pre>.row {    data-tooltip: "This is a tooltip!";    myAttr: "Invalid markup is awesome!";    p {      text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit...";    }  }  </pre>
+  </div>
+  <p>renders</p>
+  <div>
+    <pre>&lt;div class="row" data-tooltip="This is a tooltip!" myAttr="Invalid markup is awesome!"&gt;    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit...&lt;/p&gt;  &lt;/div&gt;  </pre>
+  </div>
+  <p> Remember, classes are attributes too, so you have options for applying classes (or multiple classes). You can either do this: </p>
+  <div>
+    <pre>.one.two {}  </pre>
+  </div>
+  <p>or this...</p>
+  <div>
+    <pre>.one {    class: "two";  }  </pre>
+  </div>
+  <p>and both examples yield the same result:</p>
+  <div>
+    <pre>&lt;div class="one two"&gt;&lt;/div&gt;  </pre>
+  </div>
+  <p>The same goes for Id's. This:</p>
+  <div>
+    <pre>#main.content {}  </pre>
+  </div>
+  <p>renders to:</p>
+  <div>
+    <pre>&lt;div id="main" class="content"&gt;&lt;/div&gt;  </pre>
+  </div>
+  <p>And this:</p>
+  <div>
+    <pre>#main.content {    class: "wide-content";  }  </pre>
+  </div>
+  <p>compiles to:</p>
+  <div>
+    <pre>&lt;div id="main" class="content wide-content"&gt;&lt;/div&gt;  </pre>
+  </div>
+  <h3>
+    <a name="template-syntax" href="https://github.com/sellside/prehttps://github.com/sellside/pre#template-syntax"></a>
+    Template Syntax </h3>
+  <p> If static text doesn't work for you, use your templating language of choice instead of text. </p>
+  <p>Mustache:</p>
+  <div>
+    <pre>p { text: "{{name}}"; }  p { text: "{{company}}"; }  </pre>
+  </div>
+  <p> results in &lt;p&gt;{{name}}&lt;/p&gt;&lt;p&gt;{{company}}&lt;/p&gt;
+  </p>
+  <p>Web Forms:</p>
+  <div>
+    <pre>p { text: "&lt;%: name %&gt;"; }  p { text: "&lt;%: company %&gt;"; }  </pre>
+  </div>
+  <p> results in &lt;p&gt;&lt;%: name %&gt;&lt;/p&gt;&lt;p&gt;&lt;%: company %&gt;&lt;/p&gt;
+  </p>
+  <p>Razor:</p>
+  <div>
+    <pre>p { text: "@name"; }  p { text: "@company"; }  </pre>
+  </div>
+  <p> results in &lt;p&gt;@name&lt;/p&gt;&lt;p&gt;@company&lt;/p&gt;
+  </p>
+  <p> Remember, to escape the template code you need to keep it wrapped in quotation marks. More about escaping
+    <a href="https://github.com/sellside/pre">here</a>
+    . </p>
+  <h2>
+    <a name="variables" href="https://github.com/sellside/prehttps://github.com/sellside/pre#variables"></a>
+    Variables </h2>
+  <p> Pre allows variables to be defined. Pre variables are defined with an at sign (@), and variable assignment is done with a colon (:). During translation, the values of the variables are inserted into the output HTML document. </p>
+  <div>
+    <pre>@loremText:  "lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.";    p { text: @loremText; }  </pre>
+  </div>
+  <p> results in &lt;p&gt;lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.&lt;/p&gt;
+  </p>
+  <h3>
+    <a name="variables-for-repeating-elements" href="https://github.com/sellside/prehttps://github.com/sellside/pre#variables-for-repeating-elements"></a>
+    Variables for repeating elements </h3>
+  <p>Remember multipliers? They're even better with variables:</p>
+  <div>
+    <pre>@items: 5; // arbitrary number or another variable    .item*@items {}  </pre>
+  </div>
+  <p>outputs:</p>
+  <div>
+    <pre>&lt;div class="item"&gt;&lt;/div&gt;  &lt;div class="item"&gt;&lt;/div&gt;  &lt;div class="item"&gt;&lt;/div&gt;  &lt;div class="item"&gt;&lt;/div&gt;  &lt;div class="item"&gt;&lt;/div&gt;  </pre>
+  </div>
+  <h3>
+    <a name="variable-interpolation" href="https://github.com/sellside/prehttps://github.com/sellside/pre#variable-interpolation"></a>
+    Variable interpolation </h3>
+  <p> Variables must be interpolated to be evaluated inside of escaped strings. So this: </p>
+  <div>
+    <pre>@name:       "Brian";  @greeting:   "Goodbye World";    p {    text: "@{name} said @{greeting} at the developer conference."  }  </pre>
+  </div>
+  <p> produces this: &lt;p&gt;Brian said Goodbye World at the developer conference.&lt;/p&gt;
+  </p>
+  <h3>
+    <a name="escaping" href="https://github.com/sellside/prehttps://github.com/sellside/pre#escaping"></a>
+    Escaping </h3>
+  <p> If you want to want to pass through a string unevaluated, add quotation marks around the value. </p>
+  <div>
+    <pre>p { text: "@name"; }  p { text: "@company"; }  </pre>
+  </div>
+  <p> results in &lt;p&gt;@name&lt;/p&gt;&lt;p&gt;@name&lt;/p&gt; (a good way to use Razor, mustache or your preferred templating engine) </p>
+  <p>This also works as a good tactic to escape HTML:</p>
+  <div>
+    <pre>.username {    "text": "&lt;strong&gt;Bob Smith&lt;/strong&gt;"  }  </pre>
+  </div>
+  <p> results in &lt;div&gt;&lt;strong&gt;Bob Smith&lt;/strong&gt;&lt;/div&gt;
+  </p>
+  <h3>
+    <a name="javascript" href="https://github.com/sellside/prehttps://github.com/sellside/pre#javascript"></a>
+    JavaScript </h3>
+  <div>
+    <pre>script {    "text": "alert('Hello, World!')"  }  </pre>
+  </div>
+  <p>results in</p>
+  <div>
+    <pre>&lt;script&gt;    alert('Hello, World!')  &lt;/script&gt;  </pre>
+  </div>
+  <p>And this:</p>
+  <div>
+    <pre>a.button {    href: "#";    onClick: "alert('Hello, World!'); return false;";    text: "Click Here";  }  </pre>
+  </div>
+  <p>results in</p>
+  <div>
+    <pre>&lt;a class="button" href="#" onclick="alert('Hello world!'); return false;"&gt;Click Here&lt;/a&gt;  </pre>
+  </div>
+  <p>TODO: add json hash example, e.g.</p>
+  <p>Hash:</p>
+  <div>
+    <pre>{    "name": "Chris",    "company": "&lt;b&gt;GitHub&lt;/b&gt;"  }  </pre>
+  </div>
+  <h3>
+    <a name="operations" href="https://github.com/sellside/prehttps://github.com/sellside/pre#operations"></a>
+    Operations </h3>
+  <p> Similar to LESS, in Pre any number or variable can be operated on. Operations should be performed within parentheses. Here are a couple of examples: </p>
+  <p> TODO: need to think of some good use cases before I document operations. The following isn't very compelling, but it's not hard to do: </p>
+  <div>
+    <pre>@ticketsSold:               500;  @seatsAvailable:            1000;  @twoForMeUnderTheTable:     2;  @seatsLeft:         (@seatsAvailable - @ticketsSold - @twoForMeUnderTheTable);  </pre>
+  </div>
+  <p>And use it like this:</p>
+  <div>
+    <pre>ul {    li*@seatsLeft {}  }  </pre>
+  </div>
+  <p> Again, not compelling, possibly unethical, and I'm not even sure how this example would even work unless it was compiled on the fly in the browser. Nonetheless, maybe a smarter mind than my own will come up with a good use case for operations in pre. </p>
+  <h3>
+    <a name="string-interpolation" href="https://github.com/sellside/prehttps://github.com/sellside/pre#string-interpolation"></a>
+    String interpolation </h3>
+  <p> Variables can be embeded inside strings in a similar way to LESS, ruby or PHP, with the @{name} construct: </p>
+  <div>
+    <pre>@base-url: "http://sub.domain.com";    img {    src : "@{base-url}/img/bg.png";  }  </pre>
+  </div>
+  <p>outputs &lt;img src="http://sub.domain.com/img/bg.png"&gt;</p>
+  <p>
+    <a name="a6-4"></a>
+  </p>
+  <h3>
+    <a name="comments" href="https://github.com/sellside/prehttps://github.com/sellside/pre#comments"></a>
+    Comments </h3>
+  <p>CSS-style comments are preserved by Pre:</p>
+  <div>
+    <pre>/* Hello, I'm a CSS-style comment */  </pre>
+  </div>
+  <p> Single-line comments are also valid in Pre, but they are 'silent', so they don't show up in the processed HTML: </p>
+  <pre>// This is a JavaScript-style, silent comment. It won't show up in your HTML  </pre>
+  <p>Single line comments can be used inline with other</p>
+  <div>
+    <pre>/* this is a valid comment */  .content {      text: "Yeah!"; // so is this  }  // And so is this  </pre>
+  </div>
+  <p>would output</p>
+  <div>
+    <pre>&lt;!-- this is a valid comment --&gt;  &lt;div class="content"&gt;Yeah!&lt;/div&gt;  </pre>
+  </div>
+  <p>
+    <a name="a6-5"></a>
+  </p>
+  <h3>
+    <a name="block-comments" href="https://github.com/sellside/prehttps://github.com/sellside/pre#block-comments"></a>
+    Block Comments </h3>
+  <p>A block comment is legal as well:</p>
+  <div>
+    <pre>/*    .content {        text: "Yeah!";    }  */  </pre>
+  </div>
+  <p>will output</p>
+  <div>
+    <pre>&lt;body&gt;    &lt;!--    &lt;div class="content"&gt;Yeah!&lt;/div&gt;    --&gt;  &lt;/body&gt;  </pre>
+  </div>
+  <p>
+    <a name="a6-6"></a>
+  </p>
+  <h3>
+    <a name="nesting" href="https://github.com/sellside/prehttps://github.com/sellside/pre#nesting"></a>
+    Nesting </h3>
+  <p> Pre allows you to either nest tags in the "traditional" way, or use block expansion if you prefer terse, single-line nested tags: </p>
+  <p>So you can do this:</p>
+  <div>
+    <pre>#one {    .two {}  }  </pre>
+  </div>
+  <p>
+    <a name="a6-7"></a>
+  </p>
+  <h3>
+    <a name="code-expansion" href="https://github.com/sellside/prehttps://github.com/sellside/pre#code-expansion"></a>
+    Code Expansion </h3>
+  <p>or use block expansion, like this:</p>
+  <div>
+    <pre>#one &gt; .two {}  </pre>
+  </div>
+  <p>and both will compile to this:</p>
+  <div>
+    <pre>&lt;div id="one"&gt;    &lt;div class="two"&gt;&lt;/div&gt;  &lt;/div&gt;  </pre>
+  </div>
+  <p>
+    <a name="a6-8"></a>
+  </p>
+  <h3>
+    <a name="case" href="https://github.com/sellside/prehttps://github.com/sellside/pre#case"></a>
+    Case </h3>
+  <p> TODO: Brian, could use some peer review. Please feel free to cut this out of the spec, revise it, or suggest changes: </p>
+  <p>Case statements take the following form:</p>
+  <div>
+    <pre>ul {    when (@seatsAvailable &gt; @ticketsSold) {      li &gt; a { href: "Buy Now"; }    }    when (@seatsAvailable &lt; @ticketsSold) {      li { text: "Sold Out"; }    }    else {      li { text: "There are @{tickets} tickets available."; }    }  }  </pre>
+  </div>
+  <p>
+    <a name="a6-9"></a>
+  </p>
+  <h3>
+    <a name="attributes-1" href="https://github.com/sellside/prehttps://github.com/sellside/pre#attributes-1"></a>
+    Attributes </h3>
+  <p>TODO</p>
+  <p>
+    <a name="a6-10"></a>
+  </p>
+  <h3>
+    <a name="html" href="https://github.com/sellside/prehttps://github.com/sellside/pre#html"></a>
+    HTML </h3>
+  <div>
+    <pre>html {}  </pre>
+  </div>
+  <p>yields:</p>
+  <div>
+    <pre>&lt;html&gt;&lt;/html&gt;  </pre>
+  </div>
+  <p>And this:</p>
+  <div>
+    <pre>html {    head {      title: { text: "Home"; }    }    body {      .container {        .row {          .span3 {}          .span9 {}        }      }    }  }  </pre>
+  </div>
+  <p>yields:</p>
+  <div>
+    <pre>&lt;html&gt;    &lt;head&gt;      &lt;title&gt;Home&lt;/title&gt;    &lt;/head&gt;    &lt;body&gt;      &lt;div class="container"&gt;        &lt;div class="row"&gt;          &lt;div class="span3"&gt;&lt;/div&gt;          &lt;div class="span9"&gt;&lt;/div&gt;        &lt;/div&gt;      &lt;/div&gt;    &lt;/body&gt;  &lt;/html&gt;  </pre>
+  </div>
+  <p>
+    <a name="a6-11"></a>
+  </p>
+  <h3>
+    <a name="doctypes" href="https://github.com/sellside/prehttps://github.com/sellside/pre#doctypes"></a>
+    Doctypes </h3>
+  <p> NOTE: doctypes should probably be built in as keywords rather than leaving it to devs to define mixins. Mixins would be clunky. I'd like some feedback and ideas on best approach. </p>
+  <p> For example, the following doctype is HTML5, we could assign the keyword <em>DOCTYPE(5)</em> to yield: </p>
+  <div>
+    <pre>&lt;!DOCTYPE html&gt;  </pre>
+  </div>
+  <p> and <em>DOCTYPE(strict)</em> to yield </p>
+  <div>
+    <pre>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;  </pre>
+  </div>
+  <p> With the idea being that "normal" mixin syntax requires that a . precedes the mixin, but a "keyword" mixin is "hard-coded" and thus is not preceded with a .. </p>
+  <p>Another option is to allow variables to be passed in:</p>
+  <p>
+    <em>DOCTYPE(@doctype)</em>
+  </p>
+  <p>
+    <a name="a8"></a>
+  </p>
+  <h2>
+    <a name="executable-code" href="https://github.com/sellside/prehttps://github.com/sellside/pre#executable-code"></a>
+    Executable Code </h2>
+  <p>TODO</p>
+  <p>
+    <a name="a9"></a>
+  </p>
+  <h2>
+    <a name="iteration" href="https://github.com/sellside/prehttps://github.com/sellside/pre#iteration"></a>
+    Iteration </h2>
+  <p>TODO</p>
+  <p>
+    <a name="a10"></a>
+  </p>
+  <h2>
+    <a name="conditionals" href="https://github.com/sellside/prehttps://github.com/sellside/pre#conditionals"></a>
+    Conditionals </h2>
+  <p>TODO</p>
+  <p>
+    <a name="a11"></a>
+  </p>
+  <h2>
+    <a name="template-inheritance" href="https://github.com/sellside/prehttps://github.com/sellside/pre#template-inheritance"></a>
+    Template inheritance </h2>
+  <p>TODO</p>
+  <p>
+    <a name="a13"></a>
+  </p>
+  <h2>
+    <a name="includes" href="https://github.com/sellside/prehttps://github.com/sellside/pre#includes"></a>
+    Includes </h2>
+  <p>TODO</p>
+  <p>
+    <a name="a14"></a>
+  </p>
+  <h3>
+    <a name="mixins" href="https://github.com/sellside/prehttps://github.com/sellside/pre#mixins"></a>
+    Mixins </h3>
+  <p> In Pre, it is possible to add the properties (HTML attributes) from ruleset to those of another ruleset. So, for example, let's say you have the following block: </p>
+  <div>
+    <pre>.username {    "text": "&lt;strong&gt;@name&lt;/strong&gt;"  }  </pre>
+  </div>
+  <p> which compiles to: &lt;div class="username"&gt;&lt;strong&gt;Bob Smith&lt;/strong&gt;&lt;/div&gt;
+  </p>
+  <p> And you want to use these properties inside other rulesets, just drop the class into any other ruleset in which we wish to include its properties, like so: </p>
+  <p>And use it like this:</p>
+  <div>
+    <pre>.profile {    .username;  }  </pre>
+  </div>
+  <p>it will result in:</p>
+  <p>
+    &lt;div class="profile"&gt;&lt;strong&gt;Bob Smith&lt;/strong&gt;&lt;/div&gt;
+  </p>
+  <p> Mixins will also process selectors as well as their properties, so if you create the mixin like this: </p>
+  <div>
+    <pre>.username() {    .username {      "text": "&lt;strong&gt;@name&lt;/strong&gt;"    }  }  </pre>
+  </div>
+  <p>And use it the same way:</p>
+  <div>
+    <pre>.profile {    .username;  }  </pre>
+  </div>
+  <p>it will result in:</p>
+  <p>
+    &lt;div class="profile"&gt;&lt;div class="username"&gt;&lt;strong&gt;Bob Smith&lt;/strong&gt;&lt;/div&gt;&lt;/div&gt;
+  </p>
+  <h2>
+    <a name="parametric-mixins" href="https://github.com/sellside/prehttps://github.com/sellside/pre#parametric-mixins"></a>
+    Parametric Mixins </h2>
+  <p>Turn the last example into a parametric mixin:</p>
+  <div>
+    <pre>.username(@name: "Bob Smith") {    "text": "&lt;strong&gt;@name&lt;/strong&gt;"  }  </pre>
+  </div>
+  <p>And use it like this:</p>
+  <div>
+    <pre>.profile {    .username();  }  </pre>
+  </div>
+  <p>which results in:</p>
+  <p>
+    &lt;div class="profile"&gt; &lt;div class="username"&gt;&lt;strong&gt;Bob Smith&lt;/strong&gt;&lt;/div&gt; &lt;/div&gt;
+  </p>
+  <p> Mixins can also use variables for default values. So a mixin like this: </p>
+  <div>
+    <pre>@exampleUsername: "Bob Smith";    .username(@name: @exampleUsername) {    "text": "@name"  }  </pre>
+  </div>
+  <p>would still be used like this:</p>
+  <div>
+    <pre>.profile {    .username();  }  </pre>
+  </div>
+  <p>and result in:</p>
+  <p>
+    &lt;div class="profile"&gt; &lt;div class="username"&gt;Bob Smith&lt;/div&gt; &lt;/div&gt;
+  </p>
+  <h3>
+    <a name="templates-and-partials" href="https://github.com/sellside/prehttps://github.com/sellside/pre#templates-and-partials"></a>
+    Templates and Partials </h3>
+  <p> TODO: documentation on this is wip, the following examples are incomplete but are left here as starting points. </p>
+  <p>Use mustache tags and partials:</p>
+  <div>
+    <pre>.container {    {{&gt; template}}  }  </pre>
+  </div>
+  <p>Pre mixins:</p>
+  <div>
+    <pre>.container();  </pre>
+  </div>
+  <p>Or underscore templates:</p>
+  <div>
+    <pre>.container {    &lt;%= template %&gt;  }  </pre>
+  </div>
+  <p>
+    <a name="a15"></a>
+  </p>
+  <h2>
+    <a name="generated-output" href="https://github.com/sellside/prehttps://github.com/sellside/pre#generated-output"></a>
+    Generated Output </h2>
+  <p>
+    <a name="a16"></a>
+  </p>
+  <h2>
+    <a name="example-gruntfile" href="https://github.com/sellside/prehttps://github.com/sellside/pre#example-gruntfile"></a>
+    Example Gruntfile </h2>
+  <p> Below is an example Gruntfile used to compile <em>pages/*.pre</em> into <em>pages/*.html</em> files by simply executing grunt pre. </p>
+  <div>
+    <pre>pre: {    docs: {      src: 'pages/index.pre',      dest: 'index.html',      options: {        pretty: true      }    },    dev: {      options: {        pretty: true      },      files: {        "docs": ['docs/**/*.pre'],        "app": ['pages/*.pre']      }    }  }  </pre>
+  </div>
+  <p> this can be combined with the grunt-contrib-watch task to run the Pre tasks whenever watched files change: </p>
+  <div>
+    <pre>$ grunt watch:pre  </pre>
+  </div>
+  <p>
+    <a name="a17"></a>
+  </p>
+  <h2>
+    <a name="pre1" href="https://github.com/sellside/prehttps://github.com/sellside/pre#pre1"></a>
+    pre(1) </h2>
+  <p>TODO</p>
+  <p>
+    <a name="a18"></a>
+  </p>
+  <h2>
+    <a name="tutorials" href="https://github.com/sellside/prehttps://github.com/sellside/pre#tutorials"></a>
+    Tutorials </h2>
+  <p>TODO</p>
+  <p>
+    <a name="a19"></a>
+  </p>
+  <h2>
+    <a name="license" href="https://github.com/sellside/prehttps://github.com/sellside/pre#license"></a>
+    License </h2>
+  <p>(The MIT License)</p>
+  <p>Copyright (c) 2012 Jon Schlinkert</p>
+  <p> Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: </p>
+  <p> The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. </p>
+  <p> THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXpreSS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. </p>
+  <p>
+    <a name="a20"></a>
+  </p>
+  <h2>
+    <a name="credits" href="https://github.com/sellside/prehttps://github.com/sellside/pre#credits"></a>
+    Credits </h2>
+  <ul>
+    <li>
+      Jade: This documenation draws heavily upon the docs for
+      <a href="https://github.com/visionmedia/pre">Jade</a>
+      , credit goes to
+      <a href="https://github.com/visionmedia">TJ Holowaychuk</a>
+      and the contributors of Jade
+    </li>
+    <li>LESS</li>
+    <li>HAML</li>
+    <li>Jekyll</li>
+    <li>ZenCoding</li>
+    <li>Mustache</li>
+  </ul>
+</div>
+
+    <footer id="footer" class="footer footer-gh footer-fixed-bottom">
+      <div class="container">
+        <nav class="footer-nav">
+          <p class="pull-right"><a href="#">Back to top</a></p>
+          <ul class="links links-inline">
+            <li class=""><a href="#">Toolkit</a></li>
+            <li class=""><a href="#">Roadmap</a></li>
+            <li class=""><a href="#">Issues</a></li>
+            <li class=""><a href="#">Contribute</a></li>
+          </ul>
+          <p>Hacked together at <a href="http://twitter.com/sellside" target="_blank">@sellside</a> by <a href="http://twitter.com/jonschlinkert" target="_blank">@jonschlinkert</a> and <a href="http://twitter.com/doowb" target="_blank">@doowb</a>.</p>
+          <p class="license">Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+          <p class="copyright">&copy; 2012 Sellside, Inc. All rights reserved.</p>
+        </nav>
+      </div>
+    </footer>
+
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="assets/js/footer.min.js"></script>
+
+    <script type="text/javascript">
+
+      jQuery(document).ready(function($) {
+
+        $("#fittext1").fitText();
+        $("#fittext2").fitText(1.2);
+        $("#hero-title").fitText(0.1, { minFontSize: '50px', maxFontSize: '220px' });
+
+        Holder.add_theme("gray",{ foreground:"#aaa", background:"#eee", size: 10 }).add_image("placeholder.js/200x100/new", "img").run()
+
+      });
+
+    </script>
+
+  </body>
+</html>

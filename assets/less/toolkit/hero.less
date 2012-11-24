@@ -132,7 +132,7 @@ hr.soften {
     font-family: arial;
     font-size: 20px;
     font-weight: bold;
-    .switchTextColor(@altColor);
+    color: @baseColor;
     line-height: 60px;
     text-decoration: none;
     text-transform: uppercase;
@@ -148,7 +148,7 @@ hr.soften {
     opacity: 1;
   }
   .button-github:hover {
-    color: @themePrimaryColor;
+    color: darken(@baseColor, 10%);
     background-color: rgba(255,255,255,1);
   }
   .button-github:active {
@@ -162,7 +162,7 @@ hr.soften {
 
   // Hero section, btn to "go to docs"
   .btn-docs {
-    .switchTextColor(@altColor);
+    color: @baseColor;
     padding: 5px 14px 6px;
     // background: darken(@heroUnitBackground, 15%);
     #gradient > .vertical(#E94141, #6D1803);

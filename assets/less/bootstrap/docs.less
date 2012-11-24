@@ -3,12 +3,16 @@
   Special styles for presenting Bootstrap's documentation and examples
 */
 
-body {
-  padding-top: @baseLineHeight;
-}
 
 /* Body and structure
 -------------------------------------------------- */
+
+body {
+  position: relative;
+  padding: 0;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
 
 /* Code in headings */
 h3 code {
@@ -42,8 +46,6 @@ body > .navbar .brand:hover {
   text-decoration: none;
   text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.4);
 }
-
-
 
 
 /* Sections
@@ -84,110 +86,6 @@ hr.soften {
 /* Jumbotrons
 -------------------------------------------------- */
 
-/* Base class
-------------------------- */
-.jumbotron {
-  position: relative;
-  padding: 30px 0 40px;
-  text-align: center;
-  background: #fcfcfc; 
-}
-.jumbotron h1 {
-  font-weight: bold;
-  color: @themePrimaryColor;
-  line-height: 37px;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizelegibility; // Fix the character spacing for headings
-}
-.jumbotron p {
-  font-size: 24px;
-  font-weight: 300;
-  line-height: 30px;
-  margin-bottom: 30px;
-}
-
-/* Link styles (used on .masthead-links as well) */
-.jumbotron a {
-  color: #fff;
-  color: rgba(255,255,255,.5);
-  -webkit-transition: all .2s ease-in-out;
-     -moz-transition: all .2s ease-in-out;
-          transition: all .2s ease-in-out;
-}
-.jumbotron .breadcrumb > li > a {
-  color: @themePrimaryColor;
-}
-.jumbotron a:hover {
-  color: #fff;
-  text-shadow: 0 0 10px rgba(255,255,255,.25);
-}
-
-/* Download button */
-.masthead .btn-download {
-  padding: 19px 24px;
-  font-size: 24px;
-  font-weight: 200;
-  color: @white; /* redeclare to override the `.jumbotron a` */
-  text-shadow: 0 -1px 0 rgba(0,0,0,.25);
-  border: 0;
-  -webkit-border-radius: 6px;
-     -moz-border-radius: 6px;
-          border-radius: 6px;
-  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25);
-     -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25);
-          box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25);
-  -webkit-transition: none;
-     -moz-transition: none;
-          transition: none;
-}
-.masthead .btn-download:hover {
-  color: @white; /* redeclare to override the `.jumbotron a` */
-  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25);
-     -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25);
-          box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25);
-}
-.masthead .btn-download:active {
-  color: @white; /* redeclare to override the `.jumbotron a` */
-  -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.1);
-     -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.1);
-          box-shadow: inset 0 2px 4px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.1);
-}
-
-
-/* Masthead (docs home)
-------------------------- */
-.masthead {
-  padding: 70px 0 80px;
-  margin-bottom: (@baseLineHeight * 2);
-  color: #fff;
-  text-shadow: none;
-  .clearfix();
-}
-.masthead h1 {
-  font-weight: normal;
-  font-size: 80px;
-  margin-top: 90px;
-  line-height: 1;
-  letter-spacing: -2px;
-}
-.masthead p {
-  font-size: 18px;
-  font-weight: 200;
-  line-height: 1.25;
-}
-
-/* Textual links in masthead */
-.masthead-links {
-  margin: 0;
-  list-style: none;
-}
-.masthead-links li {
-  font-size: @baseFontSize;
-  display: inline;
-  padding: 0 10px;
-  color: rgba(255,255,255,.4);
-}
-
 /* Social proof buttons from GitHub & Twitter */
 .bs-docs-social {
   padding: 15px 0;
@@ -212,26 +110,6 @@ hr.soften {
   *zoom: 1;
 }
 
-/* Subhead (other pages)
-------------------------- */
-.subhead {
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-}
-.subhead h1 {
-  font-size: 50px;
-  font-weight: 300;
-  color: darken(@themePrimaryColor, 5%);
-  line-height: 1;
-  letter-spacing: -1px;
-}
-.subhead p {
-  color: lighten(@themePrimaryColor, 30%);
-  margin-bottom: 20px;
-}
-.subhead .navbar {
-  display: none;
-}
 
 
 
@@ -740,12 +618,12 @@ form.bs-docs-example {
   opacity: 1;
 }
 .bs-docs-sidenav.affix {
-  top: 100px;
+  top: 70px;
 }
 .bs-docs-sidenav.affix-bottom {
   position: absolute;
   top: auto;
-  bottom: 300px;
+  bottom: 270px;
 }
 
 
@@ -969,7 +847,7 @@ form.bs-docs-example {
   .featurette-image,
   .featurette-image.pull-right {
     float: none;
-    margin: 0 0 20px; 
+    margin: 0 0 20px;
   }
   .featurette-divider {
     margin: 40px 0;
@@ -1033,7 +911,7 @@ form.bs-docs-example {
     border-top: none;
   }
   .featurette-image {
-    margin-right: 20px; 
+    margin-right: 20px;
   }
   .featurette-divider {
     margin: 0;
@@ -1087,16 +965,16 @@ form.bs-docs-example {
 
 // iPad media Queries
 
-@media (max-device-width: 1024px) and (orientation: landscape) { 
+@media (max-device-width: 1024px) and (orientation: landscape) {
 
 }
 
-@media (max-device-width: 768px) and (orientation: portrait) { 
+@media (max-device-width: 768px) and (orientation: portrait) {
 
 }
 
 // iPhone 4
 
-@media only screen and (-webkit-min-device-pixel-ratio : 1.5), only screen and (min-device-pixel-ratio : 1.5) { 
+@media only screen and (-webkit-min-device-pixel-ratio : 1.5), only screen and (min-device-pixel-ratio : 1.5) {
 
 }

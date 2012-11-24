@@ -1,11 +1,6 @@
-/*
- * grunt
- * http://gruntjs.com/
- *
- * Copyright (c) 2012 "Cowboy" Ben Alman
- * Licensed under the MIT license.
- * https://github.com/gruntjs/grunt/blob/master/LICENSE-MIT
- */
+//
+// build pre gh-pages
+// -----------------------------------------------
 
 module.exports = function(grunt) {
 
@@ -30,13 +25,13 @@ module.exports = function(grunt) {
         footer: 'assets/parts/footer.html',
         src:    'assets/pages/*.html',
         dest:   './' // destination *directory*
-      },
-      docs: {
-        header: 'docs/parts/head.html',
-        footer: 'docs/parts/footer.html',
-        src:    'docs/pages/*.html',
-        dest:   'docs' // destination *directory*
       }
+      // docs: {
+      //   header: 'docs/parts/head.html',
+      //   footer: 'docs/parts/footer.html',
+      //   src:    'docs/pages/*.html',
+      //   dest:   'docs' // destination *directory*
+      // }
     },
 
     less: {
@@ -82,7 +77,7 @@ module.exports = function(grunt) {
       head: {
         src: [
               'assets/js/vendor/jquery.js',
-              'assets/js/vendor/modernizr.js',
+              'assets/js/vendor/modernizr.js'
         ],
         dest: 'assets/js/head.js' // only script in the head
       },
@@ -115,23 +110,24 @@ module.exports = function(grunt) {
       files: ['assets/js/*.js']
     },
 
+    reload: {
+        proxy: {}
+    },
+    server : {
+        port : 8000
+    },
+
     watch: {
-      all: {
-        files: ['assets/**/*.*'],
-        tasks: 'wrap less recess:responsive concat'
-      },
-      docs: {
-        files: ['docs/**/*.*'],
-        tasks: 'wrap less recess:responsive concat'
-      }
+      files: ['assets/**/*.html','assets/**/*.js','assets/**/*.less'],
+      tasks: 'wrap less recess reload'
     }
   });
 
   grunt.loadTasks('build');
   grunt.loadNpmTasks('grunt-contrib');
+  grunt.loadNpmTasks('grunt-reload');
 
   // Default task.
-  grunt.registerTask('default', 'wrap less recess concat min watch');
+  grunt.registerTask('default', 'wrap less recess reload watch');
 
 };
-

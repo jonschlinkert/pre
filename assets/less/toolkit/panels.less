@@ -2,28 +2,6 @@
 // Panels
 // --------------------------------------------------
 
-// Panel Variables
-@panelBackground:             #fff;
-@panelArrowWidth:             25px;
-@panelArrowColor:             #323334;
-
-// Inverse
-@inversePanelBackground:      @inverseBackground;
-
-
-// Panel Variables
-@effectBackgroundLight:        #fbfcfd;
-@effectBackground:             #fbfcfd;
-
-// Inverse
-@effectBackgroundInverse:      @inverseBackground;
-
-
-
-// TODO
-// - panel-bordered?
-// - panel-transparent? panel-scaffold, panel-placeholder
-
 
 // Base styles
 // --------------------------------------------------
@@ -31,13 +9,11 @@
 // Core
 .panel {
   position: relative; // required for drop shadows, generated content and other effects
-  color: @textColor; // redeclare text color and shadow to override specificity with nested panels
-  text-shadow: 0 1px 0 rgba(255,255,255,.75);
   min-height: @baseLineHeight;
   padding: 0 @baseLineHeight 40px;
   margin: @baseLineHeight 0;
-  background-color: #fff;
-  border: 1px solid #d2d3d4;
+  background-color: @panelBackgroundColor;
+  border: 1px solid @panelBorderColor;
   .border-radius(5px);
   .box-shadow(inset 0 0 0 1px @white);
   .box-sizing(border-box); //
@@ -62,7 +38,7 @@
 
 .panel-header {
   border-bottom: 1px solid #eee;
-  margin: 0 -@baseLineHeight 18px;
+  margin: 0 -20px 18px;
   padding: 0 @baseLineHeight 18px;
 }
 
@@ -75,7 +51,6 @@
   padding: (@baseLineHeight * 1.5);
   .border-radius(8px);
 }
-
 // Small
 .panel-small {
   padding: 9px;
